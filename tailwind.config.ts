@@ -8,13 +8,37 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        customLightGreen: '#f0ffd9',
+        greenxd: '#C2DEAD',
+        greens: '#002600',
+        greenp: '#053003'
       },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
+
+      spacing: {
+        '100': '32rem', 
+        '26':  '105px',
+  
+      },
+      width: {
+        '90': '26rem',
+        '128': '32rem',  // 512px
+        '144': '36rem',  // 576px
+        '160': '40rem',  // 640px
+      },
+
+      height: {
+        '60': '22rem',
+        '110': '32rem',
+        '128': '32rem',  // 512px
+        '144': '36rem',  // 576px
+        '160': '40rem',  // 640px
+      }
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar'),],
 };
 export default config;
