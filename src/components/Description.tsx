@@ -6,7 +6,7 @@ import { RiShakeHandsLine } from "react-icons/ri";
 
 const Description = () => {
   return (
-    <div className='w-full bg-black pb-[4rem] flex flex-col mt-2'>
+    <div className='w-[100%] bg-black pb-28 flex flex-col'>
       <div className='flex justify-center items-center'>
         <div className='text-center'>
           <h1 className=' mt-28 text-[20px] sm:text-[30px] md:text-3xl xl:text-3xl font-bold text-customLightGreen mb-4'>Por que nos visitar?</h1>
@@ -34,7 +34,7 @@ const Description = () => {
           </div>
           <div>
             <h1 className=' font-bold mt-2 ml-4 text-1xl'>Experiência Única</h1>
-            <p className='w-[180px] max-w-full text-sm font-semibold mt-0 ml-4'>Nossos eventos temáticos visam proporcionar muita diversão.</p>
+            <p className='w-[260px] max-w-full text-sm font-semibold mt-0 ml-4'>Nossos eventos visam proporcionar muita diversão.</p>
           </div>
 
         </div>

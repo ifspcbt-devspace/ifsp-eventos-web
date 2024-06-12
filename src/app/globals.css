@@ -6,17 +6,30 @@ body {
   background-color: black;
 }
 
+::-webkit-scrollbar {
+  width: 4px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #4d4c4c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f0ffd9; 
+  border-radius: 4px; 
+}
+
 .nav-link {
-  @apply relative font-bold text-white cursor-pointer text-[17px] w-fit md:block hidden;
+  @apply relative text-customLightGreen cursor-pointer text-[17px] w-fit md:block hidden;
 }
 
 
 .nav-link-mobile {
-  @apply relative mb-[2rem] font-bold text-white cursor-pointer text-[27px] w-fit;
+  @apply relative mb-[2rem] font-bold text-customLightGreen cursor-pointer text-[27px] w-fit;
 }
 
 .nav-link-mobile::after {
-  @apply block absolute h-[2px] w-full scale-x-0 transition duration-300 origin-center;
+  @apply block absolute h-[2px] bg-customLightGreen w-full scale-x-0 transition duration-300 origin-center;
   content: '';
 }
 

@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className=" bg-zinc-950 text-white py-16">
             <div className="-mt-12 ">
-                <h1 className="text-customLightGreen font-extrabold text-1xl ml-72">IFSP EVENTOS</h1>
+                <h1 className="text-customLightGreen font-extrabold text-1xl ml-72 mt-8">IFSP EVENTOS</h1>
                 <p className="w-[120px] text-customLightGreen max-w-full font-semibold text-[13px] mt-2 ml-72">Proporcionando experiências únicas para você</p>
             </div>
 
