@@ -7,12 +7,12 @@ const Menu = () => {
       <div className='relative'>
         <h1 className="text-customLightGreen text-3xl md:text-5xl 2xl:text-5xl font-bold">Viva novas</h1>
         <h2 className="text-customLightGreen text-xl md:text-5xl 2xl:text-5xl font-bold mt-2">experiências</h2>
-        <p className='mt-8 text-sm md:text-1xl 2xl:text-1xl text-customLightGreen w-[300px] max-w-full font-medium'>
+        <p className='mt-8 text-base md:text-lg 2xl:text-lg text-customLightGreen w-[300px] max-w-full font-medium'>
           Não deixe para depois: explore nosso catálogo de eventos que ocorrem anualmente no IFSP Cubatão.
         </p>
       </div>
 
-      <div className='hidden sm:block absolute top-20 right-0 w-60 h-60 sm:w-64 sm:h-92 md:w-96 md:h-100 2xl:w-96 2xl:h-100 sm:right-8 md:right-4 2xl:right-4 lg:right-28 xl:right-44 2xl:right-44'>
+      <div className='hidden sm:block absolute top-20 right-0 w-72 h-72 sm:w-80 sm:h-100 md:w-96 md:h-120 xl:w-120 xl:h-140 2xl:w-140 2xl:h-160 sm:right-8 md:right-4 xl:right-4 2xl:right-4 lg:right-28 xl:right-44 2xl:right-44'>
         <Image src="/images/homemfesta.png" alt="Homem Festa" layout="fill" objectFit="cover" />
       </div>
 
