@@ -16,7 +16,7 @@ export default function Home() {
 
   
   return (
-    <div className="overflow-x-hidden ">
+    <div className="overflow-x-hidden flex flex-col items-center">
       <MobileNav nav={nav} closeNav={closeNav} />
       <Nav openNav={openNav} />
       <Menu />

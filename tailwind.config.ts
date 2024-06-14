@@ -15,7 +15,7 @@ const config: Config = {
         greenp: '#053003'
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+        inter: ['Montserrat', 'Inter', 'sans-serif'],
       },
 
       spacing: {
