@@ -4,7 +4,7 @@ import React from "react";
 const Menu = () => {
   return (
     <div className="flex flex-row items-center justify-center mt-12 mb-12">
-      <div className="w-5/12 mr-26">
+      <div className="mr-40">
         <div className="max-w-100 pb-8">
           <span className="text-customLightGreen font-extrabold text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl">
             Viva novas experiências
@@ -29,7 +29,9 @@ const Menu = () => {
             src="/images/homemfesta.png"
             alt="Homem Festa"
             fill
-            objectFit="contain"
+            style={{
+              objectFit: "contain",
+            }}
           />
         </div>
       </div>
