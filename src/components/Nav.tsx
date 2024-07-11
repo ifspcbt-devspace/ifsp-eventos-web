@@ -2,6 +2,7 @@ import { Bars3Icon } from '@heroicons/react/24/solid';
 import React from 'react';
 import { IoSearch } from "react-icons/io5";
 import { LuUser2 } from "react-icons/lu";
+import SignIn from './login/SignIn';
 
 interface Props {
   openNav: () => void;
@@ -19,9 +20,7 @@ const Nav = ({ openNav }: Props) => {
         <div className='nav-link hover:text-slate-500 transition-all duration-200 text-customLightGreen font-inter cursor-pointer'><IoSearch /></div>
         <div className='nav-link hover:text-slate-500 transition-all duration-200 text-customLightGreen font-inter cursor-pointer ml-2'><LuUser2 /></div>
         <div className='ml-2'>
-          <button className='bg-customLightGreen hover:bg-slate-300 transition-all duration-200 text-black font-semibold text-base px-4 py-1 rounded-lg'>
-            Entrar
-          </button>
+          <SignIn/>
         </div>
         <div onClick={openNav}>
           <Bars3Icon className="w-[2rem] md:hidden h-[2rem] cursor-pointer text-customLightGreen" />

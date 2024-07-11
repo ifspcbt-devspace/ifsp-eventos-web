@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { NextUIProvider } from "@nextui-org/react";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -15,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={montserrat.className}>{children}</body>
+    <html lang="pt-br" className="dark">
+      <body className={montserrat.className}>
+        <NextUIProvider>{children}</NextUIProvider>
+      </body>
     </html>
   );
 }

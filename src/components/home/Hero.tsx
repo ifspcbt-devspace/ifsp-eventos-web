@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Menu = () => {
+const Hero = () => {
   return (
     <div className="flex flex-row items-center justify-center mt-12 mb-12">
       <div className="mr-40">
@@ -39,4 +39,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Hero;
