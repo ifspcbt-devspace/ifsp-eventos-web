@@ -22,11 +22,11 @@ const Description = () => {
       <div className="space-x-8 flex flex-wrap justify-center mt-16">
         <div className="w-56 h-56 bg-greenxd rounded-lg border p-4">
           <div className="bg-white w-20 h-20 rounded-lg border flex items-center justify-center mb-2">
-            <GrLocation className="text-5xl" />
+            <GrLocation className="text-5xl text-amber-950" />
           </div>
           <div>
-            <h1 className="font-bold mb-2">Localização</h1>
-            <p className="max-w-full text-sm font-semibold">
+            <h1 className="font-bold mb-2 text-green-950">Localização</h1>
+            <p className="max-w-full text-sm font-semibold text-green-900">
               R. Maria Cristina, 50 - Casqueiro, Cubatão - SP, 11533-160
             </p>
           </div>
@@ -34,11 +34,11 @@ const Description = () => {
 
         <div className="w-56 h-56 bg-greenxd rounded-lg border p-4">
           <div className="bg-white w-20 h-20 rounded-lg border flex items-center justify-center mb-2">
-            <FaUserEdit className="text-5xl" />
+            <FaUserEdit className="text-5xl text-amber-950" />
           </div>
           <div>
-            <h1 className="font-bold mb-2">Experiência Única</h1>
-            <p className="max-w-full text-sm font-semibold">
+            <h1 className="font-bold mb-2 text-green-950">Experiência Única</h1>
+            <p className="max-w-full text-sm font-semibold text-green-900">
               Nossos eventos visam proporcionar muita diversão.
             </p>
           </div>
@@ -46,11 +46,11 @@ const Description = () => {
 
         <div className="w-56 h-56 bg-greenxd rounded-lg border p-4">
           <div className="bg-white w-20 h-20 rounded-lg border flex items-center justify-center mb-2">
-            <LuClipboardList className="text-5xl" />
+            <LuClipboardList className="text-5xl text-amber-950" />
           </div>
           <div>
-            <h1 className="font-bold mb-2">Segurança</h1>
-            <p className="max-w-full text-sm font-semibold">
+            <h1 className="font-bold mb-2 text-green-950">Segurança</h1>
+            <p className="max-w-full text-sm font-semibold text-green-900">
               Controlamos o acesso ao evento
             </p>
           </div>
@@ -58,11 +58,11 @@ const Description = () => {
 
         <div className="w-56 h-56 bg-greenxd rounded-lg border p-4">
           <div className="bg-white w-20 h-20 rounded-lg border flex items-center justify-center mb-2">
-            <RiShakeHandsLine className="text-5xl" />
+            <RiShakeHandsLine className="text-5xl text-amber-950" />
           </div>
           <div>
-            <h1 className="font-bold mb-2">Suporte</h1>
-            <p className="max-w-full text-sm font-semibold">
+            <h1 className="font-bold mb-2 text-green-950">Suporte</h1>
+            <p className="max-w-full text-sm font-semibold text-green-900">
               Temos voluntários que estarão a disposição do convidado
             </p>
           </div>
