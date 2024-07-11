@@ -3,9 +3,8 @@ import Image from "next/image";
 
 const Introduction = () => {
   return (
-    <div className="mb-20 bg-black">
-      <div className="flex flex-row justify-center">
-        <div className="w-5/12 flex items-center justify-end mr-26">
+      <div className="mb-20 flex flex-row justify-center items-center">
+        <div className="">
           <Image
             src="/images/festa.webp"
             alt="Festa image"
@@ -14,7 +13,7 @@ const Introduction = () => {
             className="rounded-2xl"
           />
         </div>
-        <div className="w-5/12 mt-4">
+        <div className="w-5/12 mt-4 flex justify-end">
           <div className="flex flex-col w-[65%]">
             <div className="mt-2">
               <p className="text-[24px] sm:text-[32px] xl:text-[40px] text-customLightGreen font-extrabold leading-normal">
@@ -51,7 +50,6 @@ const Introduction = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

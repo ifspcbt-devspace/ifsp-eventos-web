@@ -16,13 +16,12 @@ export default function Home() {
 
   
   return (
-    <div className="overflow-x-hidden flex flex-col items-center">
+    <div className="overflow-x-hidden flex flex-col justify-center items-center">
       <MobileNav nav={nav} closeNav={closeNav} />
       <Nav openNav={openNav} />
       <Menu />
-      <div className=" mt-72"></div>
+      <div className="mt-40"></div>
       <Introduction />
-      <div className=" mt-2"></div>
       <Description />
       <Events />
       <Footer />

@@ -31,8 +31,7 @@ const config: Config = {
       },
 
       height: {
-        '60': '22rem',
-        '110': '32rem',
+        '98': '28rem',
         '128': '32rem',  // 512px
         '144': '36rem',  // 576px
         '160': '40rem',  // 640px
