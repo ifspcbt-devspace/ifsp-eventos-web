@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Modal,
   ModalContent,
@@ -9,22 +9,32 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  Checkbox,
   Input,
   Link,
 } from "@nextui-org/react";
 import { MailIcon } from "@/icons/MailIcon";
 import { LockIcon } from "@/icons/LockIcon";
-import { login } from "@/server-actions/auth.action";
+import { getSession, login, logout } from "@/server-actions/auth.action";
 import { toastConfig } from "@/utils";
 import { toast } from "react-toastify";
 import SignUp from "../register/SignUp";
+import { AuthService } from "@/services/auth.service";
+import { SessionData } from "@/models";
 
 export default function SignIn() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [session, setSession] = React.useState<SessionData | undefined>();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  useEffect(() => {
+    getSession().then((data) => {
+      if (data) setSession(data);
+      setIsLoading(false);
+    });
+  }, [setSession]);
+
   const validateEmail = (value: string) =>
     value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
   const validatePassword = (value: string) => value.length >= 6;
@@ -39,6 +49,16 @@ export default function SignIn() {
 
     return validatePassword(password) ? false : true;
   }, [password]);
+
+  const handleOpenModal = async () => {
+    setIsLoading(true);
+    if (session) {
+      await logout();
+      toast.info("Logout efetuado", toastConfig);
+      setSession(undefined);
+    } else onOpen();
+    setIsLoading(false);
+  };
 
   const handleLogin = async (
     e: React.FormEvent<HTMLFormElement>,
@@ -56,6 +76,12 @@ export default function SignIn() {
     if (resp && resp.error) {
       toast.error(resp.error, toastConfig);
     } else {
+      const s = await getSession();
+      if (s) setSession(s);
+      else {
+        toast.error("Erro ao obter sessão", toastConfig);
+        return;
+      }
       toast.success("Login efetuado com sucesso", toastConfig);
       onClose();
     }
@@ -65,11 +91,13 @@ export default function SignIn() {
   return (
     <>
       <Button
-        onPress={onOpen}
+        onPress={handleOpenModal}
+        isLoading={isLoading}
         className="bg-customLightGreen hover:bg-slate-300 transition-all duration-200 text-black font-semibold text-base px-4 py-1 rounded-lg"
       >
-        Entrar
+        {!session ? "Entrar" : "Sair"}
       </Button>
+
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}

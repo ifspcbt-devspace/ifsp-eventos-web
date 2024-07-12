@@ -9,6 +9,11 @@ export async function login(data: FormData) {
   return await authService.login({ email: login, password });
 }
 
+export async function logout() {
+  const authService = new AuthService();
+  await authService.logout();
+}
+
 export async function register(data: FormData) {
   const authService = new AuthService();
   const name = data.get("name") as string;
@@ -27,4 +32,9 @@ export async function register(data: FormData) {
     cpf,
     phone_number,
   });
+}
+
+export async function getSession() {
+  const authService = new AuthService();
+  return await authService.getSession();
 }
