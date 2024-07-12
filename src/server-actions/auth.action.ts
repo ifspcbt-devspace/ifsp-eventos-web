@@ -38,3 +38,10 @@ export async function getSession() {
   const authService = new AuthService();
   return await authService.getSession();
 }
+
+export async function isAuthenticated() {
+  const authService = new AuthService();
+  const isAuth = await authService.isAuthenticated();
+  if (!isAuth) await authService.logout();
+  return isAuth;
+}

@@ -14,7 +14,12 @@ import {
 } from "@nextui-org/react";
 import { MailIcon } from "@/icons/MailIcon";
 import { LockIcon } from "@/icons/LockIcon";
-import { getSession, login, logout } from "@/server-actions/auth.action";
+import {
+  getSession,
+  isAuthenticated,
+  login,
+  logout,
+} from "@/server-actions/auth.action";
 import { toastConfig } from "@/utils";
 import { toast } from "react-toastify";
 import SignUp from "../register/SignUp";
@@ -29,8 +34,8 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
-    getSession().then((data) => {
-      if (data) setSession(data);
+    Promise.all([getSession(), isAuthenticated()]).then(([s, isAuth]) => {
+      if (isAuth && s) setSession(s);
       setIsLoading(false);
     });
   }, [setSession]);

@@ -1,4 +1,5 @@
 import { SessionData } from "@/models";
+import { atob } from "buffer";
 import { sealData, unsealData } from "iron-session";
 import { cookies } from "next/headers";
 
@@ -117,11 +118,12 @@ export class AuthService {
   getExpiration(token: string | null = null) {
     if (!token) return 0;
     const [, payload] = token.split(".");
-    const data = JSON.parse(window.atob(payload));
+    const data = JSON.parse(atob(payload));
     return data.exp * 1000;
   }
 
   async logout() {
-    cookies().delete("auth_session");
+    const ck = cookies();
+    if (ck.has("auth_session")) ck.delete("auth_session");
   }
 }
