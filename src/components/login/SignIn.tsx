@@ -23,7 +23,6 @@ import {
 import { toastConfig } from "@/utils";
 import { toast } from "react-toastify";
 import SignUp from "../register/SignUp";
-import { AuthService } from "@/services/auth.service";
 import { SessionData } from "@/models";
 
 export default function SignIn() {

@@ -34,6 +34,11 @@ export async function register(data: FormData) {
   });
 }
 
+export async function confirmAccount(token: string) {
+  const authService = new AuthService();
+  return await authService.confirmAccount(token);
+}
+
 export async function getSession() {
   const authService = new AuthService();
   return await authService.getSession();

@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className="dark">
-      <body className={montserrat.className}>
+    <html lang="pt-br" className="dark min-h-full">
+      <body className={montserrat.className + " h-full"}>
         <ToastContainer />
         <NextUIProvider>{children}</NextUIProvider>
       </body>

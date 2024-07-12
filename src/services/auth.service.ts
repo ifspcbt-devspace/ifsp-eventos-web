@@ -44,6 +44,23 @@ export class AuthService {
     }
   }
 
+  async confirmAccount(token: string) {
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/auth/activate/${token}`,
+      {
+        method: "POST",
+      }
+    );
+
+    if (response.status !== 204) {
+      const data = await response.json();
+      if (response.status === 404) return { error: "Token não encontrado" };
+      if (response.status === 400)
+        return { error: data.errors ? data.errors[0].message : data.message };
+      return { error: "Ocorreu um erro interno" };
+    }
+  }
+
   async login(input: { email: string; password: string }) {
     const response = await fetch(`${process.env.API_BASE_URL}/auth/login`, {
       method: "POST",
