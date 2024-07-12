@@ -9,7 +9,15 @@ export class AuthService {
     this.pass = process.env.IRON_SESSION_PASSWORD as string;
   }
 
-  async register(input: {name: string, email: string, username: string, password: string, birth_date: string, cpf: string, phone_number: string}) {
+  async register(input: {
+    name: string;
+    email: string;
+    username: string;
+    password: string;
+    birth_date: string;
+    cpf: string;
+    phone_number: string;
+  }) {
     const response = await fetch(`${process.env.API_BASE_URL}/auth/register`, {
       method: "POST",
       body: JSON.stringify({
@@ -19,33 +27,20 @@ export class AuthService {
         password: input.password,
         birth_date: input.birth_date,
         cpf: input.cpf,
-        phone_number: input.phone_number
+        phone_number: input.phone_number,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    const data = await response.json();
-    if (response.status === 409) return { error: "Usuário já existe" };
-    if (response.status === 400) return { error: data.message };
-    if (!response.ok) return { error: "Ocorreu um erro interno" };
-
-    const session: SessionData = {
-      access_token: data.token,
-      user: {
-        id: data.user.id,
-        email: data.user.email,
-        name: data.user.name,
-        birth_date: data.user.birth_date,
-        cpf_initials: data.user.cpf_initials,
-        phone_number_initials: data.user.phone_number_initials,
-        company_id: data.user.company_id,
-        role: data.user.role,
-        username: data.user.username
-      },
-    };
-    await this.setSession(session);
+    if (response.status !== 201) {
+      const data = await response.json();
+      if (response.status === 409) return { error: "Usuário já existe" };
+      if (response.status === 400)
+        return { error: data.errors ? data.errors[0].message : data.message };
+      return { error: "Ocorreu um erro interno" };
+    }
   }
 
   async login(input: { email: string; password: string }) {
@@ -63,7 +58,8 @@ export class AuthService {
     const data = await response.json();
     if (response.status === 401) return { error: "Credenciais inválidas" };
     if (response.status === 404) return { error: "Usuário não encontrado" };
-    if (response.status === 400) return { error: data.message };
+    if (response.status === 400)
+      return { error: data.errors ? data.errors[0].message : data.message };
     if (!response.ok) return { error: "Ocorre um erro interno" };
 
     const session: SessionData = {
@@ -77,7 +73,7 @@ export class AuthService {
         phone_number_initials: data.user.phone_number_initials,
         company_id: data.user.company_id,
         role: data.user.role,
-        username: data.user.username
+        username: data.user.username,
       },
     };
     await this.setSession(session);

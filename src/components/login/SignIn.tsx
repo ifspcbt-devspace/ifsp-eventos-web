@@ -18,11 +18,13 @@ import { LockIcon } from "@/icons/LockIcon";
 import { login } from "@/server-actions/auth.action";
 import { toastConfig } from "@/utils";
 import { toast } from "react-toastify";
+import SignUp from "../register/SignUp";
 
 export default function SignIn() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
   const validateEmail = (value: string) =>
     value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
   const validatePassword = (value: string) => value.length >= 6;
@@ -43,8 +45,11 @@ export default function SignIn() {
     onClose: () => void
   ) => {
     e.preventDefault();
+    setIsLoading(true);
+
     if (isEmailInvalid || isPasswordInvalid) {
       toast.error("Corrija as credenciais primeiro", toastConfig);
+      setIsLoading(false);
       return;
     }
     const resp = await login(new FormData(e.currentTarget));
@@ -54,6 +59,7 @@ export default function SignIn() {
       toast.success("Login efetuado com sucesso", toastConfig);
       onClose();
     }
+    setIsLoading(false);
   };
 
   return (
@@ -114,13 +120,7 @@ export default function SignIn() {
                   />
 
                   <div className="flex py-2 px-1 justify-between">
-                    <Checkbox
-                      classNames={{
-                        label: "text-small",
-                      }}
-                    >
-                      Lembre-se de mim
-                    </Checkbox>
+                    <SignUp />
                     <Link color="primary" href="#" size="sm">
                       Esqueceu sua senha?
                     </Link>
@@ -128,12 +128,18 @@ export default function SignIn() {
                 </form>
               </ModalBody>
               <ModalFooter>
-                <Button className="font-semibold" color="danger" variant="flat">
+                <Button
+                  onPress={onClose}
+                  className="font-semibold"
+                  color="danger"
+                  variant="flat"
+                >
                   Fechar
                 </Button>
                 <Button
                   type="submit"
                   className="hover:bg-slate-300 transition-all duration-200 bg-customLightGreen text-black font-semibold"
+                  isLoading={isLoading}
                   form="login-form"
                 >
                   Entrar

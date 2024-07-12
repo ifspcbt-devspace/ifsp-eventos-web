@@ -3,6 +3,7 @@ import React from 'react';
 import { IoSearch } from "react-icons/io5";
 import { LuUser2 } from "react-icons/lu";
 import SignIn from './login/SignIn';
+import SignUp from './register/SignUp';
 
 interface Props {
   openNav: () => void;
