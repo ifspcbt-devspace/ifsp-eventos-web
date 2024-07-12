@@ -10,7 +10,7 @@ const Events = () => {
         </h1>
       </div>
 
-      <div className="mt-16 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-4/6 gap-8">
+      <div className="mt-16 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12">
         <div className="flex flex-col bg-greenxd rounded-2xl col-span-1 row-span-1 h-98 w-80">
           <div className="relative w-full h-80 object-contain">
             <Image

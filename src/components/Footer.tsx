@@ -1,4 +1,4 @@
-import { FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -49,19 +49,19 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="flex items-center text-customLightGreen font-semibold text-[13px] cursor-pointer"
           >
-            <AiOutlineFacebook />
+            <FaFacebook />
             <h1 className="ml-2">Facebook</h1>
           </a>
         </div>
         <div className="flex items-center text-customLightGreen font-semibold text-[13px] mt-2">
           <a
-            href="https://github.com/MateusDJR1/IFSP-EVENTOS-WEB"
+            href="https://github.com/ifspcbt-devspace"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center text-customLightGreen font-semibold text-[13px] cursor-pointer"
           >
-            <FaXTwitter />
-            <h1 className="ml-2">Twiter(x)</h1>
+            <FaGithub />
+            <h1 className="ml-2">GitHub</h1>
           </a>
         </div>
       </div>
