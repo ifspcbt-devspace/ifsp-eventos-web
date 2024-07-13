@@ -97,7 +97,7 @@ export default function SignIn() {
       <Button
         onPress={handleOpenModal}
         isLoading={isLoading}
-        className="bg-customLightGreen hover:bg-slate-300 transition-all duration-200 text-black font-semibold text-base px-4 py-1 rounded-lg"
+        className="bg-customLightGreen hover:bg-slate-300 transition-all duration-200 text-black font-semibold text-small md:text-base px-4 py-1 rounded-lg"
       >
         {!session ? "Entrar" : "Sair"}
       </Button>

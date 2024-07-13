@@ -14,7 +14,7 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="flex flex-col justify-start text-xl text-customLightGreen ">
+      <div className="hidden md:flex flex-col justify-start text-xl text-customLightGreen ">
         <h1 className="text-customLightGreen font-bold text-xl mb-2">Sobre</h1>
         <p className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer">
           Nossa história

@@ -20,7 +20,7 @@ export default function Home() {
       <MobileNav nav={nav} closeNav={closeNav} />
       <Nav openNav={openNav} />
       <Hero />
-      <div className="mt-40"></div>
+      <div className="mt-20"></div>
       <Introduction />
       <Description />
       <Events />
