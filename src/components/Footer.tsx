@@ -16,15 +16,28 @@ const Footer = () => {
 
       <div className="hidden md:flex flex-col justify-start text-xl text-customLightGreen ">
         <h1 className="text-customLightGreen font-bold text-xl mb-2">Sobre</h1>
-        <p className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer">
+        <a
+          href="https://cbt.ifsp.edu.br/index.php/historia-do-campus"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer"
+        >
           Nossa história
-        </p>
-        <p className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer">
+        </a>
+        <a
+          href="https://cbt.ifsp.edu.br/index.php/missao-institucional"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer"
+        >
           Motivação
-        </p>
-        <p className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer">
+        </a>
+        <a
+          href="#eventos"
+          className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer"
+        >
           Eventos
-        </p>
+        </a>
       </div>
 
       <div className="flex flex-col justify-start text-xl text-customLightGreen text-left">
