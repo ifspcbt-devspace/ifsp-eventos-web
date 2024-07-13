@@ -95,7 +95,7 @@ export default function SignUp() {
 
   return (
     <>
-      <Link color="primary" href="#" className="text-sm" onPress={onOpen}>
+      <Link color="primary" href="#" className="text-sm" onClick={onOpen}>
         Registre-se
       </Link>
       <Modal
