@@ -10,6 +10,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "IFSPEventos | Home",
   description: "Eventos do IFSP Cubatão",
+  metadataBase: new URL("https://ifsp-eventos.vercel.app/"),
 };
 
 export default function RootLayout({
@@ -18,7 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className="dark min-h-full">
+    <html
+      lang="pt-br"
+      className="dark min-h-full scroll-smooth"
+      style={{ scrollBehavior: "smooth" }}
+    >
       <body className={montserrat.className + " h-full"}>
         <ToastContainer />
         <NextUIProvider>{children}</NextUIProvider>

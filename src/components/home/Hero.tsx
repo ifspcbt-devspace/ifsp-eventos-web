@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
+
+
   return (
     <div className="flex flex-col xl:flex-row items-center justify-center mt-12 mb-12">
       <div className="xl:mr-40 text-center xl:text-start">
@@ -17,9 +20,9 @@ const Hero = () => {
         </p>
 
         <div className="mt-14">
-          <button className="rounded-lg px-6 hover:bg-slate-300 transition-all duration-200 py-3 text-base xl:text-lg font-semibold bg-customLightGreen text-black">
+          <Link  href="/#eventos" scroll className="rounded-lg px-6 hover:bg-slate-300 transition-all duration-200 py-3 text-base xl:text-lg font-semibold bg-customLightGreen text-black">
             Ver eventos
-          </button>
+          </Link>
         </div>
       </div>
 

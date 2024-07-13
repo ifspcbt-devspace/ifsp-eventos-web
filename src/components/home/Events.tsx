@@ -3,7 +3,7 @@ import EventCard from "./EventCard";
 
 const Events = () => {
   return (
-    <div className="mt-5 mb-48 bg-black w-full flex flex-col items-center">
+    <div id="eventos" className="mt-5 mb-48 bg-black w-full flex flex-col items-center">
       <div className="text-center">
         <h1 className="text-xl md:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-customLightGreen">
           Nossos Próximos Eventos
