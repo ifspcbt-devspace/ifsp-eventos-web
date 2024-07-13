@@ -101,8 +101,9 @@ export default function SignUp() {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        isDismissable={false}
         backdrop="blur"
-        placement="top-center"
+        placement="center"
       >
         <ModalContent>
           {(onClose) => (
