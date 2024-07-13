@@ -8,8 +8,8 @@ import { ToastContainer } from "react-toastify";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Eventos | Home",
-  description: "Eventos do IFSP",
+  title: "IFSPEventos | Home",
+  description: "Eventos do IFSP Cubatão",
 };
 
 export default function RootLayout({
