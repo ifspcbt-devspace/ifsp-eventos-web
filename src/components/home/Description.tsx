@@ -20,7 +20,7 @@ const Description = () => {
         </div>
       </div>
 
-      <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10 mt-16">
+      <div className="grid xl:grid-cols-4 grid-cols-2 gap-4 md:gap-10 mt-16">
         <DescriptionCard
           title="Localização"
           description="R. Maria Cristina, 50 - Casqueiro, Cubatão - SP, 11533-160"
