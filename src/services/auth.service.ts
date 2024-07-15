@@ -113,8 +113,9 @@ export class AuthService {
     });
     cookies().set("auth_session", encryptedSession, {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "strict",
+      expires: new Date(this.getExpiration(session.access_token)),
     });
   }
 
