@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import EventCard from "./EventCard";
@@ -6,7 +6,10 @@ import { Event } from "@/models";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
 import { toastConfig } from "@/utils";
 import { toast } from "react-toastify";
-import { listUserEnrollments } from "@/server-actions/enrollment.action";
+import {
+  enrollUser,
+  listUserEnrollments,
+} from "@/server-actions/enrollment.action";
 import { searchEvents } from "@/server-actions/event.action";
 
 const Events = () => {
@@ -48,7 +51,14 @@ const Events = () => {
                 )
               ) {
                 toast.warn("Você já está inscrito neste evento", toastConfig);
-              } else toast.success("Teste");
+              } else {
+                const resp = await enrollUser(event.id);
+                if (resp && "error" in resp) {
+                  toast.error(resp.error, toastConfig);
+                } else {
+                  toast.success("Inscrição realizada com sucesso", toastConfig);
+                }
+              }
             }}
             name={event.name}
             date={event.init_date.toLocaleDateString()}

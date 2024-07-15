@@ -34,7 +34,7 @@ export default function ({
           {name} - {date}
         </div>
         <div className="font-semibold text-center text-greenp text-[14px] mb-3">
-          {participants}/{maxParticipants} Participantes
+          Até {maxParticipants} Participantes
         </div>
         <div className="flex flex-row justify-between items-center w-9/12">
           <button onClick={handleEventClick} className="text-[13px] bg-greenp hover:bg-slate-600 transition-all duration-200 text-white font-semibold px-[0.65rem] py-[0.3rem] rounded-[5px]">
