@@ -14,7 +14,6 @@ export default function Home() {
   const [nav, setNav] = useState(false);
   const openNav = () => setNav(true);
   const closeNav = () => setNav(false);
-
   return (
     <div className="overflow-x-hidden flex flex-col justify-center items-center">
       <MobileNav nav={nav} closeNav={closeNav} />
