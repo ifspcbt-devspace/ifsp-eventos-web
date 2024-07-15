@@ -1,24 +1,65 @@
+"use client"
+
 import React from "react";
 import EventCard from "./EventCard";
+import { Event } from "@/models";
+import Loading from "@/app/auth/email/confirmation/[token]/loading";
+import { toastConfig } from "@/utils";
+import { toast } from "react-toastify";
+import { listUserEnrollments } from "@/server-actions/enrollment.action";
+import { searchEvents } from "@/server-actions/event.action";
 
 const Events = () => {
+  const [events, setEvents] = React.useState<Event[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchEvents = async () => {
+      const events = await searchEvents();
+      setEvents(events);
+      setLoading(false);
+    };
+
+    fetchEvents();
+  }, []);
+
+  if ((events && "error" in events) || loading) return <Loading />;
+
   return (
-    <div id="eventos" className="mt-5 mb-48 bg-black w-full flex flex-col items-center">
+    <div
+      id="eventos"
+      className="mt-5 mb-48 bg-black w-full flex flex-col items-center"
+    >
       <div className="text-center">
         <h1 className="text-xl md:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-customLightGreen">
           Nossos Próximos Eventos
         </h1>
       </div>
       <div className="mt-16 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12">
-        <EventCard
-          name="Festa Junina"
-          date="29/06"
-          participants={0}
-          maxParticipants={500}
-          imageSrc="/images/festajunina.jpg"
-        />
+        {events.map((event) => (
+          <EventCard
+            handleEventClick={async () => {
+              const enrollments = await listUserEnrollments();
+              if ("error" in enrollments) {
+                toast.error("Você não está autenticado", toastConfig);
+              } else if (
+                enrollments.some(
+                  (enrollment: any) => enrollment.event_id === event.id
+                )
+              ) {
+                toast.warn("Você já está inscrito neste evento", toastConfig);
+              } else toast.success("Teste");
+            }}
+            name={event.name}
+            date={event.init_date.toLocaleDateString()}
+            participants={0}
+            maxParticipants={500}
+            imageSrc="/images/festajunina.jpg"
+          />
+        ))}
         <EventCard
           name="Hallowif"
+          handleEventClick={() => toast.warn("Evento bloqueado", toastConfig)}
           date="??/10"
           participants={0}
           maxParticipants={500}
@@ -26,6 +67,7 @@ const Events = () => {
         />
         <EventCard
           name="Em breve"
+          handleEventClick={() => toast.warn("Evento bloqueado", toastConfig)}
           date="??/??"
           participants={0}
           maxParticipants={500}

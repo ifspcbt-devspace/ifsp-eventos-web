@@ -1,18 +1,23 @@
 import Image from "next/image";
 
 export default function ({
+  handleEventClick,
   name,
   date,
   participants,
   maxParticipants,
   imageSrc,
 }: {
+  eventId?: string;
+  handleEventClick?: (e: any) => void;
   name: string;
   date: string;
   participants: number;
   maxParticipants: number;
   imageSrc: string;
 }) {
+  
+
   return (
     <div className="flex flex-col bg-greenxd rounded-2xl col-span-1 row-span-1 h-80 w-64 md:h-98 md:w-80">
       <div className="relative w-full h-60 md:h-80 object-contain">
@@ -32,7 +37,7 @@ export default function ({
           {participants}/{maxParticipants} Participantes
         </div>
         <div className="flex flex-row justify-between items-center w-9/12">
-          <button className="text-[13px] bg-greenp hover:bg-slate-600 transition-all duration-200 text-white font-semibold px-[0.65rem] py-[0.3rem] rounded-[5px]">
+          <button onClick={handleEventClick} className="text-[13px] bg-greenp hover:bg-slate-600 transition-all duration-200 text-white font-semibold px-[0.65rem] py-[0.3rem] rounded-[5px]">
             Inscrever
           </button>
 

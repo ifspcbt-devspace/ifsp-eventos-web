@@ -3,8 +3,6 @@ import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
-
-
   return (
     <div className="flex flex-col xl:flex-row items-center justify-center mt-12 mb-12">
       <div className="xl:mr-40 text-center xl:text-start">

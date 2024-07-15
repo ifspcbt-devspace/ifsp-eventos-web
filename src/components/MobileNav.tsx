@@ -13,9 +13,6 @@ const MobileNav = ({ nav, closeNav }: Props) => {
     <div className={`fixed ${navAnimation} transition-transform duration-300 top-0 left-0 right-0 bottom-0 z-[10000] bg-black`}>
       <div className="w-full h-full flex flex-col items-center justify-center">
         <div className="nav-link-mobile text-customLightGreen text-[21.5px]">Home</div>
-        <div className="nav-link-mobile text-customLightGreen text-[21.5px]">Entrar</div>
-        <div className="nav-link-mobile text-customLightGreen text-[21.5px]">Usuário</div>
-        <div className="nav-link-mobile text-customLightGreen text-[21.5px]">Pesquisar</div>
         <div className="nav-link-mobile text-customLightGreen text-[21.5px]">Eventos</div>
         <div className="nav-link-mobile text-customLightGreen text-[21.5px]">Contato</div>
       </div>
