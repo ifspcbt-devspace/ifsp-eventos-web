@@ -78,7 +78,11 @@ export default function SignUp() {
     formData.append("password", password);
     formData.append(
       "birth_date",
-      birthDate?.toDate(getLocalTimeZone()).toLocaleDateString() || ""
+      birthDate?.toDate(getLocalTimeZone()).toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }) || ""
     );
     formData.append("cpf", cpf);
     formData.append("phone_number", phoneNumber);
