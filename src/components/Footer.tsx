@@ -1,20 +1,18 @@
 import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
-import { AiOutlineFacebook } from "react-icons/ai";
-import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <footer className="w-full bg-zinc-950 text-white py-16 flex flex-row items-stretch justify-around">
       <div className="flex flex-col justify-start text-customLightGreen">
-        <h1 className="text-customLightGreen font-extrabold text-xl">
+        <h1 className="text-customLightGreen font-extrabold text-lg sm:text-xl">
           IFSP EVENTOS
         </h1>
-        <p className="w-56 text-customLightGreen font-semibold text-[13px] mt-2">
+        <p className="w-56 text-customLightGreen font-semibold max-w-24 sm:max-w-max text-[11px] sm:text-[13px] mt-2">
           Proporcionando experiências únicas para você
         </p>
       </div>
 
-      <div className="hidden md:flex flex-col justify-start text-xl text-customLightGreen ">
+      <div className="hidden md:flex flex-col justify-start text-xl text-customLightGreen">
         <h1 className="text-customLightGreen font-bold text-xl mb-2">Sobre</h1>
         <a
           href="https://cbt.ifsp.edu.br/index.php/historia-do-campus"

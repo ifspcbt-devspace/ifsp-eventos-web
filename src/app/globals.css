@@ -19,6 +19,12 @@ body {
   border-radius: 4px; 
 }
 
+@media screen and (max-width: 320px) {
+  #__next {
+    display: flex
+  }
+}
+
 .nav-link {
   @apply relative text-customLightGreen cursor-pointer text-[17px] w-fit md:block hidden;
 }

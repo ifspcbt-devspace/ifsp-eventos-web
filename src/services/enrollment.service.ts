@@ -52,8 +52,6 @@ export class EnrollmentService {
 
     if (response.status !== 201) {
       const data = await response.json();
-      console.log(data)
-      console.log(await this.authService.getToken())
       if (response.status === 400)
         return { error: data.errors ? data.errors[0].message : data.message };
       if (response.status === 401) return { error: "Faça o login antes" };
