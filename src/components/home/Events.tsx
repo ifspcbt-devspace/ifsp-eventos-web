@@ -41,6 +41,7 @@ const Events = () => {
       <div className="mt-16 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12">
         {events.map((event) => (
           <EventCard
+            key={event.id}
             handleEventClick={async () => {
               const enrollments = await listUserEnrollments();
               if ("error" in enrollments) {
