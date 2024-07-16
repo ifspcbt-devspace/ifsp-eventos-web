@@ -63,7 +63,6 @@ const Events = () => {
             }}
             name={event.name}
             date={event.init_date.toLocaleDateString()}
-            participants={0}
             maxParticipants={500}
             imageSrc="/images/festajunina.jpg"
           />
@@ -72,7 +71,6 @@ const Events = () => {
           name="Hallowif"
           handleEventClick={() => toast.warn("Evento bloqueado", toastConfig)}
           date="??/10"
-          participants={0}
           maxParticipants={500}
           imageSrc="/images/iconeinterrogacao.webp"
         />
@@ -80,7 +78,6 @@ const Events = () => {
           name="Em breve"
           handleEventClick={() => toast.warn("Evento bloqueado", toastConfig)}
           date="??/??"
-          participants={0}
           maxParticipants={500}
           imageSrc="/images/iconeinterrogacao.webp"
         />

@@ -1,10 +1,13 @@
+"use client";
+
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
+import React from "react";
 
 export default function ({
   handleEventClick,
   name,
   date,
-  participants,
   maxParticipants,
   imageSrc,
 }: {
@@ -12,11 +15,15 @@ export default function ({
   handleEventClick?: (e: any) => void;
   name: string;
   date: string;
-  participants: number;
   maxParticipants: number;
   imageSrc: string;
 }) {
-  
+  const [isLoading, setIsLoading] = React.useState(false);
+  const handleClick = async (e: any) => {
+    setIsLoading(true);
+    if (handleEventClick) handleEventClick(e);
+    setIsLoading(false);
+  };
 
   return (
     <div className="flex flex-col bg-greenxd rounded-2xl col-span-1 row-span-1 h-80 w-64 md:h-98 md:w-80">
@@ -37,9 +44,13 @@ export default function ({
           Até {maxParticipants} Participantes
         </div>
         <div className="flex flex-row justify-between items-center w-9/12">
-          <button onClick={handleEventClick} className="text-[13px] bg-greenp hover:bg-slate-600 transition-all duration-200 text-white font-semibold px-[0.65rem] py-[0.3rem] rounded-[5px]">
+          <Button
+            isLoading={isLoading}
+            onClick={handleClick}
+            className="text-[13px] bg-greenp hover:bg-slate-600 transition-all duration-200 text-white font-semibold px-[0.65rem] py-[0.3rem] rounded-[5px]"
+          >
             Inscrever
-          </button>
+          </Button>
 
           <p className="font-bold text-greens">Grátis</p>
         </div>
