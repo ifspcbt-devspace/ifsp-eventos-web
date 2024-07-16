@@ -169,7 +169,7 @@ export default function SignUp() {
                     placeholder="Digite sua senha"
                     isInvalid={isPasswordInvalid}
                     onValueChange={setPassword}
-                    errorMessage="Senha deve ter no mínimo 6 caracteres"
+                    errorMessage="Senha deve ter no mínimo 8 caracteres"
                     type="password"
                     variant="bordered"
                   />

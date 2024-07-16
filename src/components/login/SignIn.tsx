@@ -41,7 +41,7 @@ export default function SignIn() {
 
   const validateEmail = (value: string) =>
     value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
-  const validatePassword = (value: string) => value.length >= 6;
+  const validatePassword = (value: string) => value.length >= 8;
 
   const isEmailInvalid = React.useMemo(() => {
     if (email === "") return false;
@@ -147,7 +147,7 @@ export default function SignIn() {
                     placeholder="Digite sua senha"
                     isInvalid={isPasswordInvalid}
                     onValueChange={setPassword}
-                    errorMessage="Senha deve ter no mínimo 6 caracteres"
+                    errorMessage="Senha deve ter no mínimo 8 caracteres"
                     type="password"
                     variant="bordered"
                   />
