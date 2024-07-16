@@ -2,7 +2,7 @@ import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-zinc-950 text-white py-16 flex flex-row items-stretch justify-around">
+    <footer className="w-full bg-zinc-950 text-white py-16 flex flex-row flex-wrap items-stretch justify-around">
       <div className="flex flex-col justify-start text-customLightGreen">
         <h1 className="text-customLightGreen font-extrabold text-lg sm:text-xl">
           IFSP EVENTOS
