@@ -10,7 +10,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "IFSPEventos | Home",
   description: "Eventos do IFSP Cubatão",
-  metadataBase: new URL("http://srv563244.hstgr.cloud/"),
+  metadataBase: new URL("https://wwww.srv563244.hstgr.cloud/"),
   openGraph: {
     siteName: "IFSPEventos",
     title: "IFSPEventos | Home",
