@@ -16,7 +16,7 @@ export interface User {
 }
 
 export interface Role {
-  code: string;
+  code: number;
   description: string;
 }
 
