@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --size: 1;
+  --background: #000;
+  --color1: #d25778;
+  --color2: #ec585c;
+  --color3: #e7d155;
+  --color4: #56a8c6;
+}
+
+.ticket {
+  width: 748px;
+  height: 320px;
+  position: relative;
+  transition: all 300ms cubic-bezier(0.03, 0.98, 0.53, 0.99) 0s;
+  background: linear-gradient(
+    to right,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
+  );
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.bg-btn {
+  background: linear-gradient(
+    to right,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
+  );
+}
+
+.ticket:before,
+.ticket:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 130px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 2;
+  background-color: var(--background);
+}
+
+.ticket:before {
+  border: 5px solid var(--color1);
+  left: -30px;
+  clip-path: circle(65% at 100% 50%);
+}
+
+.ticket:after {
+  border: 5px solid var(--color4);
+  right: -30px;
+  clip-path: circle(65% at 0 50%);
+}
+
+.ticket-content-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--background);
+  border-radius: 15px;
+  @apply p-8
+}
+
+.ticket-vertical {
+  width: 320px;
+  height: 640px;
+  margin: auto;
+  position: relative;
+  transition: all 300ms cubic-bezier(0.03, 0.98, 0.53, 0.99) 0s;
+  background: linear-gradient(
+    to bottom,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
+  );
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.ticket-vertical:before,
+.ticket-vertical:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 130px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 2;
+  background-color: var(--background);
+}
+
+.ticket-vertical:before {
+  border: 5px solid var(--color1);
+  top: -30px;
+  clip-path: circle(65% at 50% 100%);
+}
+
+.ticket-vertical:after {
+  border: 5px solid var(--color4);
+  bottom: -30px;
+  clip-path: circle(65% at 50% 0);
+}
+
+.ticket-content-wrapper-vertical {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--background);
+  border-radius: 15px;
+  @apply py-12 px-6
+}
