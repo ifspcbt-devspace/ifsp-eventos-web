@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
-import "react-toastify/dist/ReactToastify.min.css";
+import 'react-toastify/ReactToastify.min.css';
 import { ToastContainer } from "react-toastify";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
