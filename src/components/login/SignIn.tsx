@@ -24,6 +24,7 @@ import { toastConfig } from "@/utils";
 import { toast } from "react-toastify";
 import SignUp from "../register/SignUp";
 import { SessionData } from "@/models";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -31,13 +32,14 @@ export default function SignIn() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     Promise.all([getSession(), isAuthenticated()]).then(([s, isAuth]) => {
       if (isAuth && s) setSession(s);
       setIsLoading(false);
     });
-  }, [setSession]);
+  }, [router]);
 
   const validateEmail = (value: string) =>
     value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);

@@ -11,10 +11,12 @@ import {
   listUserEnrollments,
 } from "@/server-actions/enrollment.action";
 import { searchEvents } from "@/server-actions/event.action";
+import { useRouter } from "next/navigation";
 
 const Events = () => {
   const [events, setEvents] = React.useState<Event[]>([]);
   const [loading, setLoading] = React.useState(true);
+  const router = useRouter();
 
   React.useEffect(() => {
     const fetchEvents = async () => {
@@ -22,9 +24,8 @@ const Events = () => {
       setEvents(events);
       setLoading(false);
     };
-
     fetchEvents();
-  }, []);
+  }, [router]);
 
   if ((events && "error" in events) || loading) return <Loading />;
 
