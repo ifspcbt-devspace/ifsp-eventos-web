@@ -40,6 +40,18 @@ export interface Event {
   };
 }
 
+export interface Ticket {
+  id: string;
+  event_id: string;
+  user_id: string;
+  description: string;
+  valid_in: Date;
+  expired_in: Date;
+  status: string;
+  code: string;
+  last_time_consumed: Date;
+}
+
 export interface Enrollment {
   id: string;
   event_id: string;
