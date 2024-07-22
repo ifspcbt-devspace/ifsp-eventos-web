@@ -143,6 +143,10 @@ export class AuthService {
   }
 
   logout() {
-    cookies().delete("auth_session");
+    cookies().delete({
+      name: "auth_session",
+      domain: ".srv563244.hstgr.cloud",
+      path: "/",
+    });
   }
 }
