@@ -10,16 +10,17 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function TicketUI({ id }: { id: string }) {
-  const handleValidate = async () => {
-    const resp = await consumeTicket(id);
-    if (resp && resp.error) {
-      toast.error(resp.error, toastConfig);
-      return;
-    } else toast.success("Ticket validado com sucesso!", toastConfig);
-  };
   const [ticket, setTicket] = useState<any>();
   const [user, setUser] = useState<any>();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const handleValidate = async () => {
+    setLoading(true);
+    const resp = await consumeTicket(id);
+    if (resp && resp.error) toast.error(resp.error, toastConfig);
+    else toast.success("Ticket validado com sucesso!", toastConfig);
+    setLoading(false);
+  };
   useEffect(() => {
     const fetchTicket = async (id: string) => {
       const resp = await getTicket(id);
@@ -53,12 +54,13 @@ export default function TicketUI({ id }: { id: string }) {
           </div>
 
           <div className="px-12">
-            <p>Nome cadastrado: {user.name}</p>
-            <p>Status: {ticket.status}</p>
+            <p>Nome cadastrado: {user?.name}</p>
+            <p>Status: {ticket?.status}</p>
           </div>
           <div className="mx-auto">
             <Button
               onClick={handleValidate}
+              isLoading={loading}
               className="mt-8 text-xl bg-btn rounded-md px-3 py-2 text-black font-extrabold text-opacity-100"
             >
               Validar
@@ -81,12 +83,13 @@ export default function TicketUI({ id }: { id: string }) {
           </div>
 
           <div className="text-center">
-            <p>{user.name}</p>
-            <p>Status: {ticket.status}</p>
+            <p>{user?.name}</p>
+            <p>Status: {ticket?.status}</p>
           </div>
           <div className="mx-auto">
             <Button
               onClick={handleValidate}
+              isLoading={loading}
               className="mt-8 text-xl bg-btn rounded-md px-3 py-2 text-black font-extrabold text-opacity-100"
             >
               Validar
