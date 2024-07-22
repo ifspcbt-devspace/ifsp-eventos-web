@@ -1,13 +1,12 @@
 import { unsealData } from "iron-session";
 import { NextResponse } from "next/server";
-import type { NextFetchEvent, NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 import { SessionData } from "./models";
 
 const password = process.env.IRON_SESSION_PASSWORD as string;
 
-export async function middleware(request: NextRequest, event: NextFetchEvent) {
-  const encryptedSession = request.cookies.get("auth_session")?.value;
-  console.log(encryptedSession);
+export async function middleware(request: NextRequest) {
+  const encryptedSession = request.cookies.get("auth_session_lx")?.value;
   if (!encryptedSession)
     return NextResponse.redirect(new URL("/", request.url));
 

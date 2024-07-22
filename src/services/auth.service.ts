@@ -119,6 +119,15 @@ export class AuthService {
       sameSite: "strict",
       expires: new Date(this.getExpiration(session.access_token)),
     });
+
+    cookies().set("auth_session_lx", encryptedSession, {
+      httpOnly: true,
+      domain: ".srv563244.hstgr.cloud",
+      path: "/",
+      secure: false,
+      sameSite: "lax",
+      expires: new Date(this.getExpiration(session.access_token)),
+    });
   }
 
   async getToken() {
@@ -145,6 +154,12 @@ export class AuthService {
   logout() {
     cookies().delete({
       name: "auth_session",
+      domain: ".srv563244.hstgr.cloud",
+      path: "/",
+    });
+
+    cookies().delete({
+      name: "auth_session_lx",
       domain: ".srv563244.hstgr.cloud",
       path: "/",
     });
