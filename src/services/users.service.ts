@@ -8,7 +8,7 @@ export class UserService {
   }
 
   async getUser(id: string) {
-    const response = await fetch(`${process.env.API_BASE_URL}/user/${id}`, {
+    const response = await fetch(`${process.env.API_BASE_URL}/auth/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${await this.authService.getToken()}`,
