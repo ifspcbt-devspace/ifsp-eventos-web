@@ -113,6 +113,8 @@ export class AuthService {
     });
     cookies().set("auth_session", encryptedSession, {
       httpOnly: true,
+      domain: ".srv563244.hstgr.cloud",
+      path: "/",
       secure: false,
       sameSite: "strict",
       expires: new Date(this.getExpiration(session.access_token)),
@@ -140,8 +142,7 @@ export class AuthService {
     return data.exp * 1000;
   }
 
-  async logout() {
-    const ck = cookies();
-    if (ck.has("auth_session")) ck.delete("auth_session");
+  logout() {
+    cookies().delete("auth_session");
   }
 }

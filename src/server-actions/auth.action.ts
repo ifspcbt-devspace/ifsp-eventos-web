@@ -11,7 +11,7 @@ export async function login(data: FormData) {
 
 export async function logout() {
   const authService = new AuthService();
-  await authService.logout();
+  authService.logout();
 }
 
 export async function register(data: FormData) {
@@ -49,6 +49,6 @@ export async function getSession() {
 export async function isAuthenticated() {
   const authService = new AuthService();
   const isAuth = await authService.isAuthenticated();
-  if (!isAuth) await authService.logout();
+  if (!isAuth) authService.logout();
   return isAuth;
 }
