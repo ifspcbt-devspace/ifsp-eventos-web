@@ -6,9 +6,8 @@ import { SessionData } from "./models";
 const password = process.env.IRON_SESSION_PASSWORD as string;
 
 export async function middleware(request: NextRequest, event: NextFetchEvent) {
-  if (!request.cookies.has("auth_session"))
-    return NextResponse.redirect(new URL("/", request.url));
   const encryptedSession = request.cookies.get("auth_session")?.value;
+  console.log(encryptedSession);
   if (!encryptedSession)
     return NextResponse.redirect(new URL("/", request.url));
 
