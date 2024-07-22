@@ -10,7 +10,7 @@ export class TicketService {
 
   async consume(id: string) {
     const response = await fetch(
-      process.env.API_BASE_URL + `/ticket/${id}/check`,
+      `${process.env.API_BASE_URL}/ticket/${id}/check`,
       {
         method: "PATCH",
         headers: {
