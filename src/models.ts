@@ -53,8 +53,8 @@ export interface Ticket {
 }
 
 export enum TicketStatus {
-  AVAILABLE = "Disponível",
-  CONSUMED = "Checado",
+  AVAILABLE = "Aguardando validação",
+  CONSUMED = "Validado",
   EXPIRED = "Expirado",
 }
 

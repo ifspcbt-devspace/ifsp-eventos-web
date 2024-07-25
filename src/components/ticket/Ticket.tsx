@@ -40,6 +40,20 @@ export default function TicketUI({ id }: { id: string }) {
     fetchTicket(id);
   }, [router]);
 
+  const getAge = (birthDate: string) => {
+    if (!birthDate) return "";
+    const today = new Date();
+    const [day, month, year] = birthDate.split("/");
+    const birth = new Date(`${year}-${month}-${day}`);
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    const d = today.getDate() - birth.getDate();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate()) || d < 0) {
+      age--;
+    }
+    return age + " anos";
+  };
+
   return (
     <>
       {/* desktop */}
@@ -55,8 +69,9 @@ export default function TicketUI({ id }: { id: string }) {
           </div>
 
           <div className="px-12">
-            <p>Nome cadastrado: {user?.name}</p>
-            <p>Status: {ticket?.status}</p>
+            <p>Nome cadastrado: {user?.name || "Carregando..."}</p>
+            <p>Idade: {getAge(user?.birth_date)}</p>
+            <p className="text-green-500 mt-2 text-center">{ticket?.status}</p>
           </div>
           <div className="mx-auto">
             <Button
@@ -84,8 +99,9 @@ export default function TicketUI({ id }: { id: string }) {
           </div>
 
           <div className="text-center">
-            <p>{user?.name}</p>
-            <p>Status: {ticket?.status}</p>
+            <p>{user?.name || "Carregando..."}</p>
+            <p>Idade: {getAge(user?.birth_date)}</p>
+            <p className="text-green-500 mt-2">{ticket?.status}</p>
           </div>
           <div className="mx-auto">
             <Button
