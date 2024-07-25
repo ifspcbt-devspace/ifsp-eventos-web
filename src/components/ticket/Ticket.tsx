@@ -1,5 +1,6 @@
 "use client";
 
+import { Ticket, TicketStatus } from "@/models";
 import "./style.css";
 import { consumeTicket, getTicket } from "@/server-actions/ticket.action";
 import { getUser } from "@/server-actions/user.action";
@@ -10,7 +11,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function TicketUI({ id }: { id: string }) {
-  const [ticket, setTicket] = useState<any>();
+  const [ticket, setTicket] = useState<Ticket>();
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();

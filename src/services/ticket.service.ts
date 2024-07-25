@@ -1,4 +1,4 @@
-import { Ticket } from "@/models";
+import { Ticket, TicketStatus } from "@/models";
 import { AuthService } from "./auth.service";
 
 export class TicketService {
@@ -55,7 +55,7 @@ export class TicketService {
       description: data.description,
       valid_in: new Date(data.valid_in),
       expired_in: new Date(data.expired_in),
-      status: data.status,
+      status: TicketStatus[data.status as keyof typeof TicketStatus],
       code: data.code,
       last_time_consumed: new Date(data.last_time_consumed),
     };

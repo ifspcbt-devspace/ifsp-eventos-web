@@ -47,9 +47,15 @@ export interface Ticket {
   description: string;
   valid_in: Date;
   expired_in: Date;
-  status: string;
+  status: TicketStatus;
   code: string;
   last_time_consumed: Date;
+}
+
+export enum TicketStatus {
+  AVAILABLE = "Disponível",
+  CONSUMED = "Checado",
+  EXPIRED = "Expirado",
 }
 
 export interface Enrollment {
