@@ -18,7 +18,7 @@ export default function TicketUI({ id }: { id: string }) {
   const handleValidate = async () => {
     setLoading(true);
     const resp = await consumeTicket(id);
-    if (resp && resp.error) toast.error(resp.error, toastConfig);
+    if (resp.error) toast.error(resp.error, toastConfig);
     else toast.success("Ticket validado com sucesso!", toastConfig);
     setLoading(false);
   };

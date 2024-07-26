@@ -19,7 +19,7 @@ export class TicketService {
       }
     );
 
-    if (response.status !== 201) {
+    if (response.status !== 202) {
       const data = await response.json();
       if (response.status === 400)
         return { error: data.errors ? data.errors[0].message : data.message };
@@ -28,6 +28,7 @@ export class TicketService {
       if (response.status === 403) return { error: "Acesso negado" };
       return { error: "Ocorreu um erro interno" };
     }
+    return {}
   }
 
   async get(id: string) {
