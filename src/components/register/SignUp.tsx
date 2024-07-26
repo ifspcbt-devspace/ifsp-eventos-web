@@ -91,7 +91,7 @@ export default function SignUp() {
     if (resp && resp.error) {
       toast.error(resp.error, toastConfig);
     } else {
-      toast.success("Ative sua conta através do e-mail enviado", toastConfig);
+      toast.success("Conta criada com sucesso", toastConfig);
       onClose();
     }
     setIsLoading(false);
