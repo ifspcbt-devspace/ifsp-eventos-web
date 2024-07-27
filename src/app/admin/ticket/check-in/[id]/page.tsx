@@ -1,6 +1,11 @@
 import { Suspense } from "react";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
 import TicketUI from "@/components/ticket/Ticket";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Validação',
+}
 
 export default function Page({ params }: { params: { id: string } }) {
   return (

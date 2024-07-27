@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
-import 'react-toastify/ReactToastify.min.css';
+import "react-toastify/ReactToastify.min.css";
 import { ToastContainer } from "react-toastify";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "IFSPEventos | Home",
+  title: {
+    template: "%s | IFSPEventos",
+    default: "IFSPEventos",
+  },
   description: "Eventos do IFSP Cubatão",
   metadataBase: new URL("https://srv563244.hstgr.cloud/"),
   openGraph: {
