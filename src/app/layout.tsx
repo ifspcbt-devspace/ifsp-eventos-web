@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://srv563244.hstgr.cloud/"),
   openGraph: {
     siteName: "IFSPEventos",
-    title: "IFSPEventos | Home",
+    title: "IFSPEventos",
     description: "Eventos do IFSP Cubatão",
     type: "website",
     locale: "pt_BR",

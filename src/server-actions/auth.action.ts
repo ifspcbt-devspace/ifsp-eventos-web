@@ -17,8 +17,8 @@ export async function logout() {
 export async function register(data: FormData) {
   const authService = new AuthService();
   const name = data.get("name") as string;
-  const email = data.get("email") as string;
-  const username = data.get("username") as string;
+  const email = (data.get("email") as string).trim();
+  const username = (data.get("username") as string).trim();
   const password = data.get("password") as string;
   const birth_date = data.get("birth_date") as string;
   if (birth_date === "") return { error: "Data de nascimento inválida" };

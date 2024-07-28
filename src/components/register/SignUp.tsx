@@ -49,7 +49,7 @@ export default function SignUp() {
 
   const isEmailInvalid = React.useMemo(() => {
     if (email === "") return false;
-    return validateEmail(email) ? false : true;
+    return validateEmail(email.trim()) ? false : true;
   }, [email]);
   const isPasswordInvalid = React.useMemo(() => {
     if (password === "") return false;
