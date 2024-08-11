@@ -18,7 +18,8 @@ const Hero = () => {
         </p>
 
         <div className="mt-14">
-          <Link  href="/#eventos" scroll className="rounded-lg px-6 hover:bg-slate-300 transition-all duration-200 py-3 text-base xl:text-lg font-semibold bg-customLightGreen text-black">
+          <Link href="/#eventos" scroll
+                className="rounded-lg px-6 hover:bg-slate-300 transition-all duration-200 py-3 text-base xl:text-lg font-semibold bg-customLightGreen text-black">
             Ver eventos
           </Link>
         </div>
@@ -30,6 +31,7 @@ const Hero = () => {
             src="/images/homemfesta.png"
             alt="Homem Festa"
             fill
+            priority={true}
             style={{
               objectFit: "contain",
             }}

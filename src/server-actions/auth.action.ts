@@ -1,6 +1,6 @@
 "use server";
 
-import { AuthService } from "@/services/auth.service";
+import {AuthService} from "@/services/auth.service";
 
 export async function login(data: FormData) {
   const authService = new AuthService();
@@ -37,8 +37,7 @@ export async function register(data: FormData) {
 
 export async function confirmAccount(token: string) {
   const authService = new AuthService();
-  const response = await authService.confirmAccount(token);
-  return response;
+  return await authService.confirmAccount(token);
 }
 
 export async function getSession() {

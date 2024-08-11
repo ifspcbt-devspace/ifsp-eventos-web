@@ -3,8 +3,9 @@ import Image from "next/image";
 
 const Introduction = () => {
   return (
-    <div className="flex flex-col-reverse xl:flex-row justify-center items-center">
-      <div className="relative h-64 w-64 sm:w-80 sm:h-100 md:w-96 md:h-128 xl:w-128 xl:h-144 2xl:w-144 2xl:h-160 rounded-2xl">
+    <div className="flex flex-col-reverse xl:flex-row justify-center items-center mt-20">
+      <div
+        className="relative h-64 w-64 sm:w-80 sm:h-100 md:w-96 md:h-128 xl:w-128 xl:h-144 2xl:w-144 2xl:h-160 rounded-2xl">
         <Image
           src="/images/festa.webp"
           alt="Festa image"

@@ -113,7 +113,7 @@ export class AuthService {
     });
     cookies().set("auth_session", encryptedSession, {
       httpOnly: true,
-      domain: ".srv563244.hstgr.cloud",
+      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
       secure: false,
       sameSite: "strict",
@@ -122,7 +122,7 @@ export class AuthService {
 
     cookies().set("auth_session_lx", encryptedSession, {
       httpOnly: true,
-      domain: ".srv563244.hstgr.cloud",
+      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
       secure: false,
       sameSite: "lax",
@@ -154,13 +154,13 @@ export class AuthService {
   logout() {
     cookies().delete({
       name: "auth_session",
-      domain: ".srv563244.hstgr.cloud",
+      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
     });
 
     cookies().delete({
       name: "auth_session_lx",
-      domain: ".srv563244.hstgr.cloud",
+      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
     });
   }
