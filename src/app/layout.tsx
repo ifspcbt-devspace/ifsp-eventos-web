@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import {Inter} from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import "react-toastify/ReactToastify.min.css";
 import { ToastContainer } from "react-toastify";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +34,7 @@ export default function RootLayout({
       className="dark min-h-full scroll-smooth"
       style={{ scrollBehavior: "smooth" }}
     >
-      <body className={montserrat.className + " h-full"}>
+      <body className={inter.className + " h-full"}>
         <ToastContainer />
         <NextUIProvider>{children}</NextUIProvider>
       </body>
