@@ -17,17 +17,17 @@ export default function Header() {
               objectFit: "contain",
             }}
           />
-
         </div>
 
 
-        <div
+        <form action={"#"}
           className={`ml-6 my-auto bg-neutral-100 py-1.5 px-2 rounded-md border-1 w-72 transition-colors duration-200 border-neutral-100 hover:border-neutral-300 focus-within:border-neutral-300 flex items-center`}>
           <CiSearch className={"text-neutral-500 font-bold text-xl"}/>
-          <input type="search" maxLength={255} title={`Digite o nome do evento`}
-                 className={`ml-1.5 bg-transparent outline-none w-full text-sm font-medium`}
+          <input type="text" maxLength={255} title={`Digite o nome do evento`}
+                 className={`ml-1.5 bg-transparent outline-none w-full text-sm font-medium appearance-none`}
                  placeholder={"Pesquisar eventos"}/>
-        </div>
+          <input type="submit" className="hidden" value="Search"/>
+        </form>
       </div>
 
       <div className={`col-start-6 col-span-3 my-auto`}>
@@ -44,7 +44,6 @@ export default function Header() {
               Registre-se
             </div>
           </Link>
-
         </nav>
       </div>
 

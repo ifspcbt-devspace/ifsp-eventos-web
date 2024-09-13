@@ -1,60 +1,39 @@
-"use client";
-
-import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 export default function ({
-  handleEventClick,
-  name,
-  date,
-  maxParticipants,
-  imageSrc,
-}: {
-  eventId?: string;
-  handleEventClick?: (e: any) => void;
-  name: string;
-  date: string;
-  maxParticipants: number;
-  imageSrc: string;
+                           event
+                         }: {
+  event: {
+    id: string;
+    name: string;
+    description: string;
+    img: string;
+    owner: string;
+    date: string;
+  }
 }) {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const handleClick = async (e: any) => {
-    setIsLoading(true);
-    if (handleEventClick) handleEventClick(e);
-    setIsLoading(false);
-  };
 
   return (
-    <div className="flex flex-col bg-greenxd rounded-2xl col-span-1 row-span-1 h-80 w-64 md:h-98 md:w-80">
-      <div className="relative w-full h-60 md:h-80 object-contain">
+    <Link href={"#"}
+          className="flex flex-col bg-transparent rounded-2xl col-span-1 row-span-1 h-full w-full duration-200 cursor-pointer no-underline hover:-translate-y-2">
+      <div className="relative w-full h-full rounded-xl mb-4 overflow-hidden">
         <Image
-          src={imageSrc}
+          src={event.img}
           alt="event-image"
           quality={100}
-          fill
-          className="rounded-t-xl"
+          height={100}
+          width={100}
+          className="overflow-clip box-content object-cover align-middle max-w-full w-full h-full inline-block"
         />
       </div>
-      <div className="flex-1 flex flex-col items-center py-2">
-        <div className="text-center font-bold text-greens mb-4">
-          {name} - {date}
-        </div>
-        <div className="font-semibold text-center text-greenp text-[14px] mb-3">
-          Até {maxParticipants} Participantes
-        </div>
-        <div className="flex flex-row justify-between items-center w-9/12">
-          <Button
-            isLoading={isLoading}
-            onClick={handleClick}
-            className="text-[13px] bg-greenp hover:bg-slate-600 transition-all duration-200 text-white font-semibold px-[0.65rem] py-[0.3rem] rounded-[5px]"
-          >
-            Inscrever
-          </Button>
-
-          <p className="font-bold text-greens">Grátis</p>
-        </div>
+      <div className={"text-sm opacity-75 mb-1.5"}>Por {event.owner}</div>
+      <div className={`text-black text-left max-w-[450px]`}>
+        <span
+          className={"text-black mb-3 text-2xl block font-semibold"}>{event.name + " - " + new Date(event.date).toLocaleString([], {dateStyle: "short"})}</span>
+        <p className={"text-sm opacity-75"}>{event.description}</p>
       </div>
-    </div>
+    </Link>
   );
 }

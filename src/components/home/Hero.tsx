@@ -1,42 +1,28 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import './hero.css';
+import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col xl:flex-row items-center justify-center mt-12 mb-12">
-      <div className="xl:mr-40 text-center xl:text-start">
-        <div className="w-full xl:max-w-100 pb-8">
-          <span className="text-customLightGreen font-extrabold text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl">
-            Viva novas experiências
+    <div className="w-full py-20 grid grid-cols-10 light-color-gradient text-black">
+      <div className={`col-start-3 col-span-6 grid grid-cols-2 gap-x-4 hero-grid`}>
+        <div className={`max-w-[500px]`}>
+          <span className={`heading`}>
+          Divirta-se em nossos eventos
           </span>
+
+          <p className={`opacity-80 font-normal mb-8 block leading-7 text-xl`}>
+            Não deixe para depois: explore nosso catálogo de eventos que ocorrem anualmente no IFSP Cubatão
+          </p>
+
+          <Link href="#" className="button w-button">Visualizar</Link>
         </div>
 
-        <p className="mt-8 text-small 2xl:text-lg text-customLightGreen px-6 xl:px-0 xl:w-90 font-bold">
-          Não deixe para depois: explore nosso catálogo de eventos que ocorrem
-          anualmente no IFSP Cubatão.
-        </p>
-
-        <div className="mt-14">
-          <Link href="/#eventos" scroll
-                className="rounded-lg px-6 hover:bg-slate-300 transition-all duration-200 py-3 text-base xl:text-lg font-semibold bg-customLightGreen text-black">
-            Ver eventos
-          </Link>
+        <div className={`flex justify-end`}>
+          <Image src={`/images/hero.svg`} alt={"hero image"} width={337} height={331} />
         </div>
-      </div>
 
-      <div className="mt-6 xl:mt-0">
-        <div className="relative h-72 w-72 sm:w-80 sm:h-100 md:w-96 md:h-128 xl:w-128 xl:h-144 2xl:w-144 2xl:h-160">
-          <Image
-            src="/images/homemfesta.png"
-            alt="Homem Festa"
-            fill
-            priority={true}
-            style={{
-              objectFit: "contain",
-            }}
-          />
-        </div>
       </div>
     </div>
   );

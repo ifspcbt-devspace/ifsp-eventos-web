@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: black;
+* {
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -23,27 +23,4 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.nav-link {
-  @apply relative text-customLightGreen cursor-pointer text-[17px] w-fit md:block hidden;
-}
-
-.nav-link-mobile {
-  @apply relative mb-[2rem] font-bold text-customLightGreen cursor-pointer text-[27px] w-fit;
-}
-
-.nav-link-mobile::after {
-  @apply block absolute h-[2px] bg-customLightGreen w-full scale-x-0 transition duration-300 origin-center;
-  content: "";
-}
-
-.nav-link-mobile:hover::after {
-  @apply scale-x-100;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }

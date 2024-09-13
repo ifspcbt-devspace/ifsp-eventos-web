@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | IFSPEventos",
-    default: "IFSPEventos",
+    template: "%s | IFSP Eventos",
+    default: "IFSP Eventos",
   },
   description: "Eventos do IFSP Cubatão",
   metadataBase: new URL("https://srv563244.hstgr.cloud/"),
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-br"
-      className="dark min-h-full scroll-smooth"
+      className="light min-h-full scroll-smooth"
       style={{ scrollBehavior: "smooth" }}
     >
       <body className={inter.className + " h-full"}>
