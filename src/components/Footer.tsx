@@ -1,81 +1,91 @@
-import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
+
+import "./footer.css"
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-zinc-950 text-white py-16 flex flex-row flex-wrap items-stretch justify-around">
-      <div className="flex flex-col justify-start text-customLightGreen">
-        <h1 className="text-customLightGreen font-extrabold text-lg sm:text-xl">
-          IFSP EVENTOS
-        </h1>
-        <p className="w-56 text-customLightGreen font-semibold max-w-24 sm:max-w-max text-[11px] sm:text-[13px] mt-2">
-          Proporcionando experiências únicas para você
+    <footer className="w-full grid grid-cols-10 bg-white text-black py-16 gap-4">
+      <div className="col-start-3 col-span-3 flex flex-col justify-start">
+        <Link className={`mb-5`} href={`/`}>
+          <Image src={`/images/logo_recortada.png`} className={`overflow-clip bg-clip-content`} height={100} width={204}
+                 alt={`logo_recortada.png`}/>
+        </Link>
+        <p className={`opacity-75 text-small mb-5`}>Feito pelo time <Link className={`text-[#626a72]`} target={`_blank`}
+                                                                          href={`https://github.com/ifspcbt`}>IFSPCBT
+          Informática</Link>.</p>
+        <p className="opacity-75 text-small">
+          © 2024 IFSP Eventos. Todos os direitos reservados.
         </p>
       </div>
 
-      <div className="hidden md:flex flex-col justify-start text-xl text-customLightGreen">
-        <h1 className="text-customLightGreen font-bold text-xl mb-2">Sobre</h1>
-        <a
-          href="https://cbt.ifsp.edu.br/index.php/historia-do-campus"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer"
+      <div className="col-start-7 col-span-1 flex flex-col justify-start">
+        <h5 className="footer-header">GERAL</h5>
+        <Link
+          href="/"
+          className="footer-link"
         >
-          Nossa história
-        </a>
-        <a
-          href="https://cbt.ifsp.edu.br/index.php/missao-institucional"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer"
-        >
-          Motivação
-        </a>
-        <a
-          href="#eventos"
-          className="text-customLightGreen font-semibold text-[13px] mt-2 cursor-pointer"
+          Início
+        </Link>
+        <Link
+          href="/events"
+          className="footer-link"
         >
           Eventos
-        </a>
+        </Link>
+        <Link
+          href="mailto:ifspcbt.informatica@gmail.com?subject=Suporte%20-%20IFSP%20Eventos"
+          className="footer-link"
+        >
+          Contato
+        </Link>
+        <Link
+          href="/terms-conditions"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-link"
+        >
+          Termos e Condições
+        </Link>
+        <Link
+          href="/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-link"
+        >
+          Política de Privacidade
+        </Link>
       </div>
 
-      <div className="flex flex-col justify-start text-xl text-customLightGreen text-left">
-        <h1 className="text-customLightGreen font-bold text-xl mb-2">
-          Redes sociais
-        </h1>
-        <div className="flex items-center text-customLightGreen font-semibold text-[13px] mt-2">
-          <a
-            href="https://www.instagram.com/ifspcubatao/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-customLightGreen font-semibold text-[13px] cursor-pointer"
-          >
-            <FaInstagram />
-            <h1 className="ml-2">Instagram</h1>
-          </a>
-        </div>
-        <div className="flex items-center text-customLightGreen font-semibold text-[13px] mt-2">
-          <a
-            href="https://www.facebook.com/ifspcubatao/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-customLightGreen font-semibold text-[13px] cursor-pointer"
-          >
-            <FaFacebook />
-            <h1 className="ml-2">Facebook</h1>
-          </a>
-        </div>
-        <div className="flex items-center text-customLightGreen font-semibold text-[13px] mt-2">
-          <a
-            href="https://github.com/ifspcbt-devspace"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-customLightGreen font-semibold text-[13px] cursor-pointer"
-          >
-            <FaGithub />
-            <h1 className="ml-2">GitHub</h1>
-          </a>
-        </div>
+      <div className="col-start-8 col-span-1 flex flex-col justify-start">
+        <h5 className="footer-header">gerenciamento</h5>
+        <Link
+          href="/auth/sign-in"
+          className="footer-link"
+        >
+          Entrar
+        </Link>
+        <Link
+          href="/auth/sign-up"
+          className="footer-link"
+        >
+          Registre-se
+        </Link>
+        <Link
+          href="/profile"
+          className="footer-link"
+        >
+          Perfil
+        </Link>
+        <Link
+          href="/auth/change-password"
+          className="footer-link"
+        >
+          Redefinir senha
+        </Link>
       </div>
+
+
     </footer>
   );
 };

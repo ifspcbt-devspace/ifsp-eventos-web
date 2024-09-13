@@ -1,0 +1,9 @@
+* {
+  --gradient-red: #ff010126;
+}
+
+.black-gradient {
+  background-color: var(--black);
+  background-image: radial-gradient(circle farthest-corner at 0% 50%, var(--gradient-red), #0000 47%), radial-gradient(circle farthest-corner at 40% 130%, #7aa7ff69, #0000 58%);
+  color: var(--white);
+}

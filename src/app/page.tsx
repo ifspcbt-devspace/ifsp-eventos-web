@@ -4,6 +4,7 @@ import {Suspense} from "react";
 import Hero from "@/components/home/Hero";
 import Loading from "./auth/email/confirmation/[token]/loading";
 import Header from "@/components/Header";
+import Warn from "@/components/home/Warn";
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Suspense fallback={<Loading/>}>
         <Events/>
       </Suspense>
+      <Warn/>
       <Footer/>
     </div>
   );
