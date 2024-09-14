@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import React from "react";
 import {Metadata} from "next";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicy() {
   return (
     <div className={"bg-back-grey"}>
+      <Header/>
       <div className={`w-full h-48 black-gradient`}></div>
       <div className={`px-12 py-20 mx-auto max-w-[1230px] min-h-[30px] relative`}>
         <div className={`mx-auto bg-white max-w-[800px] rounded-xl z-10 -mt-48 pt-20 px-16 pb-12 shadow-md`}>
@@ -16,7 +18,8 @@ export default function PrivacyPolicy() {
           <p className="mb-12">Última atualização em setembro de 2024</p>
           <p>
             Esta Política de Privacidade refere-se aos dados pessoais que o(a) IFSP Eventos pode obter quando seus
-            usuários utilizam os serviços prestados durante a navegação no ambiente virtual. Ela descreve como os dados
+            usuários utilizam os serviços prestados durante a navegação no ambiente virtual. Ela descreve como os
+            dados
             serão coletados, armazenados e utilizados, conforme a Lei 12.965/2014 (Marco Civil da Internet), o Decreto
             8.771/2016 e a Lei 13.709/2018 (Lei Geral de Proteção de Dados).
           </p>
@@ -39,7 +42,8 @@ export default function PrivacyPolicy() {
             </li>
             <li>- Dados pessoais podem ser usados anonimamente para fins estatísticos.</li>
             <li>- Medidas de segurança serão implementadas, mas não garantem 100% de proteção.</li>
-            <li>- Os dados poderão ser excluídos a pedido do usuário, exceto registros de conexão exigidos por lei.</li>
+            <li>- Os dados poderão ser excluídos a pedido do usuário, exceto registros de conexão exigidos por lei.
+            </li>
             <li>- Esta Política se aplica a todas as plataformas do IFSP Eventos, como websites, mídias sociais e
               softwares.
             </li>
@@ -69,8 +73,10 @@ export default function PrivacyPolicy() {
           <p>O IFSP Eventos pode transferir informações dos usuários para terceiros, conforme permitido pela
             legislação.</p>
           <p>Medidas técnicas e organizacionais serão adotadas para proteger os dados contra acessos não autorizados.
-            Algumas informações, como dados pessoais, podem ser públicas quando o usuário usa determinados serviços.</p>
-          <p>O IFSP Eventos utiliza cookies, e ao acessar o site, o usuário concorda com seu uso, conforme a Política de
+            Algumas informações, como dados pessoais, podem ser públicas quando o usuário usa determinados
+            serviços.</p>
+          <p>O IFSP Eventos utiliza cookies, e ao acessar o site, o usuário concorda com seu uso, conforme a Política
+            de
             Cookies.</p>
           <p>‍</p>
           <p>‍</p>

@@ -46,7 +46,7 @@ const mockEvents = [
   }
 ]
 
-const Events = () => {
+const Events = ({max, search, all = false}: { max?: number, search?: string, all?: boolean }) => {
   const [events, setEvents] = React.useState<Event[]>([]);
   const [loading, setLoading] = React.useState(true);
   const router = useRouter();
@@ -65,13 +65,14 @@ const Events = () => {
   return (
     <div className={`w-full py-20 bg-white grid grid-cols-10`}
     >
-
-      <div className={`col-start-3 col-span-6 flex items-start justify-between mb-6`}>
-        <span className={`text-2xl leading-[1.4em] font-semibold block`}>Eventos</span>
-        <Link href={`#`}
-              className={`hover:text-[#626a72] hover:bg-[#e7ecf0] bg-[#f5f6f7] text-[#626a72] shadow-inner inset-1 px-6 py-2 font-medium leading-6 text-center rounded-lg duration-200 cursor-pointer inline-block`}>Veja
-          todos eventos</Link>
-      </div>
+      {!all && !search && (
+        <div className={`col-start-3 col-span-6 flex items-start justify-between mb-6`}>
+          <span className={`text-2xl leading-[1.4em] font-semibold block`}>Eventos</span>
+          <Link href={`#`}
+                className={`hover:text-[#626a72] hover:bg-[#e7ecf0] bg-[#f5f6f7] text-[#626a72] shadow-inner inset-1 px-6 py-2 font-medium leading-6 text-center rounded-lg duration-200 cursor-pointer inline-block`}>Veja
+            todos eventos</Link>
+        </div>
+      )}
 
       <div className={`col-start-3 col-span-6 grid grid-cols-3 gap-y-8 gap-x-12`}>
         {

@@ -47,6 +47,13 @@ h3 {
   color: var(--white);
 }
 
+.light-page-header {
+  background-color: var(--back-grey);
+  background-image: radial-gradient(circle at 0%, #ff010121, #0000 41%), radial-gradient(circle at 30% 150%, #7aa7ff3d, #0000 54%);
+  padding-top: 96px;
+  padding-bottom: 32px;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
 }

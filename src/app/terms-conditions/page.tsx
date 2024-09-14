@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import React from "react";
 import {Metadata} from "next";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: 'Termos & Condições',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function TermsConditions() {
   return (
     <div className={"bg-back-grey"}>
+      <Header/>
       <div className={`w-full h-48 black-gradient`}></div>
       <div className={`px-12 py-20 mx-auto max-w-[1230px] min-h-[30px] relative`}>
         <div className={`mx-auto bg-white max-w-[800px] rounded-xl z-10 -mt-48 pt-20 px-16 pb-12 shadow-md`}>
@@ -36,7 +38,8 @@ export default function TermsConditions() {
           </ol>
           <p>
             Esta licença será automaticamente revogada caso qualquer uma dessas restrições seja violada, podendo ser
-            rescindida a qualquer momento por IFSP Eventos. Após o término da licença, você deve excluir todo o conteúdo
+            rescindida a qualquer momento por IFSP Eventos. Após o término da licença, você deve excluir todo o
+            conteúdo
             baixado.
           </p>
           <p>‍</p>
@@ -44,8 +47,10 @@ export default function TermsConditions() {
           <h3>2. Isenção de Responsabilidade</h3>
           <p>
             Os materiais no site IFSP Eventos são fornecidos "como estão". Não oferecemos garantias, expressas ou
-            implícitas, e isentamos de qualquer responsabilidade por garantias implícitas, incluindo adequação a um fim
-            específico ou não violação de direitos. O IFSP Eventos não garante a precisão, confiabilidade ou resultados
+            implícitas, e isentamos de qualquer responsabilidade por garantias implícitas, incluindo adequação a um
+            fim
+            específico ou não violação de direitos. O IFSP Eventos não garante a precisão, confiabilidade ou
+            resultados
             do uso dos materiais.
           </p>
           <p>‍</p>
@@ -61,7 +66,8 @@ export default function TermsConditions() {
           <p>‍</p>
           <p>‍</p>
           <h3>4. Precisão dos Materiais</h3>
-          <p>Os materiais do site IFSP Eventos podem conter erros técnicos, tipográficos ou fotográficos. O IFSP Eventos
+          <p>Os materiais do site IFSP Eventos podem conter erros técnicos, tipográficos ou fotográficos. O IFSP
+            Eventos
             não garante que o conteúdo seja preciso, completo ou atual e pode alterá-lo a qualquer momento, sem aviso
             prévio.</p>
           <p>‍</p>

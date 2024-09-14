@@ -4,7 +4,6 @@ import "./globals.css";
 import {NextUIProvider} from "@nextui-org/react";
 import "react-toastify/ReactToastify.min.css";
 import {ToastContainer} from "react-toastify";
-import Header from "@/components/Header";
 import React from "react";
 
 const inter = Inter({subsets: ["latin"]});
@@ -40,7 +39,6 @@ export default function RootLayout(
     <body className={inter.className + " h-full"}>
     <ToastContainer/>
     <NextUIProvider>
-      <Header/>
       {children}
     </NextUIProvider>
     </body>

@@ -16,11 +16,11 @@ const Hero = () => {
             Não deixe para depois: explore nosso catálogo de eventos que ocorrem anualmente no IFSP Cubatão
           </p>
 
-          <Link href="#" className="button w-button">Visualizar</Link>
+          <Link href="/events" className="button w-button">Visualizar</Link>
         </div>
 
         <div className={`flex justify-end`}>
-          <Image src={`/images/hero.svg`} alt={"hero image"} width={337} height={331} />
+          <Image src={`/images/hero.svg`} alt={"hero image"} width={337} height={331}/>
         </div>
 
       </div>
