@@ -1,5 +1,3 @@
-import './warn.css'
-
 export default function Warn() {
   return (
     <div className={`black-gradient py-20 relative w-full`}>

@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --back-grey: #f5f6f7;
-  --gradient-pink: #ef98cf40;
-  --black: #1d1d1d;
-  --white: #ffffff;
-  --dark-grey: #33383f;
-}
-
 .hero-grid {
   grid-template-rows: auto;
   grid-template-columns: 1.4fr 1fr;
