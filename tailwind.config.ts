@@ -1,5 +1,5 @@
-import type { Config } from "tailwindcss";
-import { nextui } from "@nextui-org/react";
+import type {Config} from "tailwindcss";
+import {nextui} from "@nextui-org/react";
 
 const config: Config = {
   content: [
@@ -12,13 +12,21 @@ const config: Config = {
     dark: {},
     extend: {
       colors: {
-        customLightGreen: "#f0ffd9",
-        greenxd: "#C2DEAD",
-        greens: "#002600",
-        greenp: "#053003",
+        "white": "white",
+        "black": "#1d1d1d",
+        "dark-grey": "#33383f",
+        "light-grey": "#99a4af",
+        "grey": "#626a72",
+        "gradient-red": "#ff010126",
+        "back-grey": "#f5f6f7",
+        "gradient-pink": "#ef98cf40",
+        "gradient-blue": "#7aa7ff52",
+        "dim-grey": "#495158",
+        "silver": "#e7ecf0",
+        "soft-grey": "#cbd5df",
       },
       fontFamily: {
-        montserrat: ["Montserrat", "Inter", "sans-serif"],
+        roboto: ["Roboto", "Inter", "sans-serif"],
       },
 
       spacing: {

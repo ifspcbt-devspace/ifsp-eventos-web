@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/react";
+import {NextUIProvider} from "@nextui-org/react";
 import "react-toastify/ReactToastify.min.css";
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
+import React from "react";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | IFSPEventos",
-    default: "IFSPEventos",
+    template: "%s | IFSP Eventos",
+    default: "IFSP Eventos",
   },
   description: "Eventos do IFSP Cubatão",
   metadataBase: new URL("https://srv563244.hstgr.cloud/"),
@@ -23,21 +24,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout(
+  {
+    children,
+  }: Readonly<{
+    children: React.ReactNode;
+  }>) {
   return (
     <html
       lang="pt-br"
-      className="dark min-h-full scroll-smooth"
-      style={{ scrollBehavior: "smooth" }}
+      className="light min-h-full scroll-smooth"
+      style={{scrollBehavior: "smooth"}}
     >
-      <body className={montserrat.className + " h-full"}>
-        <ToastContainer />
-        <NextUIProvider>{children}</NextUIProvider>
-      </body>
+    <body className={inter.className + " h-full"}>
+    <ToastContainer/>
+    <NextUIProvider>
+      {children}
+    </NextUIProvider>
+    </body>
     </html>
   );
 }
