@@ -113,7 +113,6 @@ export class AuthService {
     });
     cookies().set("auth_session", encryptedSession, {
       httpOnly: true,
-      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
       secure: false,
       sameSite: "strict",
@@ -122,7 +121,6 @@ export class AuthService {
 
     cookies().set("auth_session_lx", encryptedSession, {
       httpOnly: true,
-      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
       secure: false,
       sameSite: "lax",
@@ -154,13 +152,11 @@ export class AuthService {
   logout() {
     cookies().delete({
       name: "auth_session",
-      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
     });
 
     cookies().delete({
       name: "auth_session_lx",
-      domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_DOMAIN : "localhost",
       path: "/",
     });
   }
