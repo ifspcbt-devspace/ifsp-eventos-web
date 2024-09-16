@@ -15,12 +15,15 @@ export default function SearchEvents() {
   return (
     <div className="bg-back-grey">
       <title>Resultados da Pesquisa | IFSP Eventos</title>
-      <Header search={query}/>
+      <Suspense>
+        <Header search={query}/>
+      </Suspense>
       <LightPageHeader title={"Resultados da pesquisa"}/>
       <Suspense fallback={<Loading/>}>
         <Events search={query}/>
       </Suspense>
       <Footer/>
     </div>
+
   );
 }

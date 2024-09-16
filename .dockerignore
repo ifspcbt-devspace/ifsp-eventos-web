@@ -1,9 +1,7 @@
-Dockerfile
+.git/
+.gitignore
+.next/
+out/
 .dockerignore
-node_modules
-npm-debug.log
-README.md
-.next
-!.next/static
-!.next/standalone
-.git
+Dockerfile
+node_modules/
