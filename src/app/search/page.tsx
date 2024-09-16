@@ -13,17 +13,15 @@ export default function SearchEvents() {
   const query = searchParams.get("query") || "";
   if (query == "") redirect("/events", RedirectType.replace);
   return (
-    <div className="bg-back-grey">
-      <title>Resultados da Pesquisa | IFSP Eventos</title>
-      <Suspense>
+    <Suspense fallback={<Loading/>}>
+      <div className="bg-back-grey">
+        <title>Resultados da Pesquisa | IFSP Eventos</title>
         <Header search={query}/>
-      </Suspense>
-      <LightPageHeader title={"Resultados da pesquisa"}/>
-      <Suspense fallback={<Loading/>}>
+        <LightPageHeader title={"Resultados da pesquisa"}/>
         <Events search={query}/>
-      </Suspense>
-      <Footer/>
-    </div>
+        <Footer/>
+      </div>
+    </Suspense>
 
   );
 }
