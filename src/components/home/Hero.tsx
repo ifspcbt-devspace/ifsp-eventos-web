@@ -16,7 +16,7 @@ const Hero = () => {
             Não deixe para depois: explore nosso catálogo de eventos que ocorrem anualmente no IFSP Cubatão
           </p>
 
-          <Link href="/events" className="button w-button">Visualizar</Link>
+          <Link href="/events" className="hero-button">Visualizar</Link>
         </div>
 
         <div className={`flex justify-end`}>

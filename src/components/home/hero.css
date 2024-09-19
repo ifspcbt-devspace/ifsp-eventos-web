@@ -22,11 +22,11 @@
   position: relative;
 }
 
-.button:hover {
+.hero-button:hover {
   background-color: var(--dark-grey);
 }
 
-.button {
+.hero-button {
   background-color: var(--black);
   color: var(--white);
   text-align: center;

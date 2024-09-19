@@ -37,9 +37,9 @@ export default function Header({search=""} : {search?: string}) {
             <Link href={"/events"}>Eventos</Link>
           </div>
           <div className={`inline-block cursor-pointer text-neutral-500 duration-200 hover:text-neutral-950`}>
-            <Link href={"#entrar"}>Entrar</Link>
+            <Link href={"/auth/log-in"}>Entrar</Link>
           </div>
-          <Link href={"#registrar"}>
+          <Link href={"/auth/sign-up"}>
             <div
               className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-1.5 px-5 rounded-md`}>
               Registre-se

@@ -60,7 +60,7 @@ const Footer = () => {
       <div className="col-start-8 col-span-1 flex flex-col justify-start">
         <h5 className="footer-header">gerenciamento</h5>
         <Link
-          href="/auth/sign-in"
+          href="/auth/log-in"
           className="footer-link"
         >
           Entrar
