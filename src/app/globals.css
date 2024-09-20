@@ -66,3 +66,27 @@ h3 {
   background: #f0ffd9;
   border-radius: 4px;
 }
+
+.utility-page-wrap {
+  background-color: var(--black);
+  color: var(--white);
+  background-image: radial-gradient(circle at 50% 0, #ef98cf33, #0000 57%), radial-gradient(circle at 0 20%, #7aa7ff40, #0000 42%);
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  height: 90vh;
+  min-height: auto;
+  max-height: 100%;
+  padding: 20px;
+  display: flex;
+}
+
+.utility-page-content {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  width: 380px;
+  display: flex;
+  margin: 0 0 15px;
+}

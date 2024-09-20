@@ -7,11 +7,15 @@ import "./signup.css";
 import {Button} from "@nextui-org/react";
 import {useMask} from "@react-input/mask";
 import React from "react";
+import {useSearchParams} from "next/navigation";
 
 export default function Register() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
+  const params = useSearchParams();
+  const redirectTo = params.get("redir") || "/";
+
   const phoneRef = useMask({
     mask: "(__) _____-____",
     replacement: {_: /\d/},
@@ -40,6 +44,7 @@ export default function Register() {
 
   return (
     <div className="full-page-wrapper text-black">
+      <title>Registrar | IFSP Eventos</title>
       <Link href="/" className="z-10 relative mb-8 opacity-100 hover:opacity-80 duration-200 text-grey w-[190px] h-[46px]">
         <Image priority={true} className="absolute object-contain border-0 inline-block h-auto" src={"/images/logo_branca_recortada.png"} alt={"logo"}
                fill/>
@@ -68,7 +73,7 @@ export default function Register() {
           >Registrar</Button>
           <div className="form-card-footer">
             <span>Já tem uma conta?</span>
-            <Link className="text-grey duration-200 hover:opacity-90" href="/auth/log-in">Entre</Link>
+            <Link className="text-grey duration-200 hover:opacity-90" href="/auth/log-in">Entrar</Link>
           </div>
         </form>
       </div>
