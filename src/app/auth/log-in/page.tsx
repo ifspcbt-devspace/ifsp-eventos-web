@@ -1,12 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
 import "./login.css";
 import {Button} from "@nextui-org/react";
+import React from "react";
+import {useSearchParams} from "next/navigation";
 
 export default function Login() {
+  const params = useSearchParams();
+  const redirectTo = params.get("redir") || "/";
+
+
   return (
     <div className="full-page-wrapper text-black">
+      <title>Login | IFSP Eventos</title>
       <Link href="/" className="z-10 mb-8 opacity-100 hover:opacity-80 duration-200 text-grey">
         <Image priority={true} className="border-0 inline-block" src={"/images/logo_branca_recortada.png"}
                alt={"logo branca"}
