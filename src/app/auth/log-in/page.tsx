@@ -5,10 +5,19 @@ import Image from "next/image";
 
 import "./login.css";
 import {Button} from "@nextui-org/react";
-import React from "react";
+import React, {Suspense} from "react";
 import {useSearchParams} from "next/navigation";
+import Loading from "@/app/auth/email/confirmation/[token]/loading";
 
-export default function Login() {
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<Loading/>}>
+      <Login/>
+    </Suspense>
+  )
+}
+
+function Login() {
   const params = useSearchParams();
   const redirectTo = params.get("redir") || "/";
 

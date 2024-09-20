@@ -6,10 +6,20 @@ import Image from "next/image";
 import "./signup.css";
 import {Button} from "@nextui-org/react";
 import {useMask} from "@react-input/mask";
-import React from "react";
+import React, {Suspense} from "react";
 import {useSearchParams} from "next/navigation";
+import Loading from "@/app/auth/email/confirmation/[token]/loading";
 
-export default function Register() {
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<Loading/>}>
+      <Register/>
+    </Suspense>
+  )
+}
+
+
+function Register() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -45,8 +55,10 @@ export default function Register() {
   return (
     <div className="full-page-wrapper text-black">
       <title>Registrar | IFSP Eventos</title>
-      <Link href="/" className="z-10 relative mb-8 opacity-100 hover:opacity-80 duration-200 text-grey w-[190px] h-[46px]">
-        <Image priority={true} className="absolute object-contain border-0 inline-block h-auto" src={"/images/logo_branca_recortada.png"} alt={"logo"}
+      <Link href="/"
+            className="z-10 relative mb-8 opacity-100 hover:opacity-80 duration-200 text-grey w-[190px] h-[46px]">
+        <Image priority={true} className="absolute object-contain border-0 inline-block h-auto"
+               src={"/images/logo_branca_recortada.png"} alt={"logo"}
                fill/>
       </Link>
 
