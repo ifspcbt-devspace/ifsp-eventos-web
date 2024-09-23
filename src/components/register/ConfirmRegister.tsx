@@ -39,8 +39,8 @@ export default function ConfirmRegister(
                 <Button
                   color="primary"
                   onClick={() => {
-                    if (action) action();
                     onClose();
+                    if (action) action();
                   }}
                 >
                   Confirmar
