@@ -6,7 +6,7 @@ export async function login(data: FormData) {
   const authService = new AuthService();
   const login = data.get("email") as string;
   const password = data.get("password") as string;
-  return await authService.login({ email: login, password });
+  return await authService.login({email: login, password});
 }
 
 export async function logout() {
@@ -21,7 +21,7 @@ export async function register(data: FormData) {
   const username = (data.get("username") as string).trim();
   const password = data.get("password") as string;
   const birth_date = data.get("birth_date") as string;
-  if (birth_date === "") return { error: "Data de nascimento inválida" };
+  if (birth_date === "") return {error: "Data de nascimento inválida"};
   const cpf = data.get("cpf") as string;
   const phone_number = data.get("phone_number") as string;
   return await authService.register({
