@@ -6,12 +6,12 @@ import Image from "next/image";
 import "./signup.css";
 import {Button, Input, useDisclosure} from "@nextui-org/react";
 import {useMask} from "@react-input/mask";
-import React, {FormEvent, Suspense, useMemo, useState} from "react";
+import React, {FormEvent, Suspense, useEffect, useMemo, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
 import {generateRandomUsername, isCPF, isEmail, isNumberPhone, isValidBirthDate, toastConfig} from "@/utils";
 import {toast} from "react-toastify";
-import {login, register} from "@/server-actions/auth.action";
+import {isAuthenticated, login, register} from "@/server-actions/auth.action";
 import ConfirmRegister from "@/components/register/ConfirmRegister";
 
 export default function RegisterPage() {
@@ -32,10 +32,22 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionVerified, setSessionVerified] = useState(false);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const router = useRouter();
   const params = useSearchParams();
   const redirectTo = params.get("redir") || "/";
+
+  useEffect(() => {
+    const load = async () => {
+      const isAuth = await isAuthenticated();
+      if (isAuth) {
+        router.replace(redirectTo);
+      } else setSessionVerified(true);
+    }
+
+    load();
+  }, [router]);
 
   const phoneRef = useMask({
     mask: "(__) _____-____",
@@ -125,6 +137,8 @@ function Register() {
     }
     onOpen();
   }
+
+  if (!sessionVerified) return <></>
 
   return (
     <div className="full-page-wrapper text-black">

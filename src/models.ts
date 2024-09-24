@@ -27,7 +27,8 @@ export interface Event {
   company_id: string;
   init_date: Date;
   end_date: Date;
-  status: string;
+  status: EventStatus;
+  thumbnail?: Blob;
   address: {
     street: string;
     number: string;
@@ -38,6 +39,12 @@ export interface Event {
     country: string;
     zip_code: string;
   };
+}
+
+export enum EventStatus {
+  OPENED = "Aberto",
+  CLOSED = "Fechado",
+  CANCELED = "Cancelado",
 }
 
 export interface Ticket {

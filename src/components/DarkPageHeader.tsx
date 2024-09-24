@@ -10,7 +10,7 @@ export default function DarkPageHeader({title, subtitle}: { title: string, subti
             <h1 className={"mb-4 text-5xl font-semibold block"}>{title}</h1>
             <p className="text-xl">{subtitle}</p>
           </div>
-          <div className="event-header-block">
+          <div className="event-header-block z-10">
             <Image src={"/images/default-event-thumb.svg"} alt={"Event thumbnail"} width={650} height={100} className="event-cover"/>
           </div>
 
