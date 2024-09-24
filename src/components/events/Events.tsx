@@ -4,14 +4,12 @@ import React from "react";
 import EventCard from "./EventCard";
 import {Event} from "@/models";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
-import {useRouter} from "next/navigation";
 import Link from "next/link";
 import {downloadThumbnail, searchEvents} from "@/server-actions/event.action";
 
 const Events = ({max, search, all = false}: { max?: number, search?: string, all?: boolean }) => {
   const [events, setEvents] = React.useState<Event[]>([]);
   const [loading, setLoading] = React.useState(true);
-  const router = useRouter();
 
   React.useEffect(() => {
     const fetchEvents = async () => {
@@ -32,7 +30,7 @@ const Events = ({max, search, all = false}: { max?: number, search?: string, all
       setLoading(false);
     };
     fetchEvents();
-  }, [router]);
+  }, [search]);
 
   if (loading) return <Loading/>;
 
