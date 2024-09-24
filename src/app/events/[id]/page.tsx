@@ -9,7 +9,6 @@ import EventView from "@/components/events/single/EventView";
 export async function generateMetadata(
   {params}: { params: { id: string } }
 ): Promise<Metadata> {
-  // read route params
   const id = params.id
 
   const event = await getEvent(id);
