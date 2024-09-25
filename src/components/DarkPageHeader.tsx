@@ -8,20 +8,18 @@ export default function DarkPageHeader({title, imgUrl, subtitle, onError}: {
   onError: () => void
 }) {
   return (
-    <div className={"black-gradient grid grid-cols-10 w-full pt-24 pb-8"}>
-      <div className={"col-start-3 col-span-6"}>
+    <div className={"black-gradient grid grid-cols-10 w-full pt-24 pb-8 px-12 xl:px-0"}>
+      <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
         <div className="event-page-grid">
-          <div className="font-semibold relative">
-            <h1 className={"mb-4 text-5xl font-semibold block"}>{title}</h1>
+          <div className="row-start-1 col-start-1 col-span-2 md:col-span-1 font-semibold relative">
+            <h1 className={"mb-4 text-4xl md:text-5xl font-semibold block"}>{title}</h1>
             <p className="text-xl">{subtitle}</p>
           </div>
-          <div className="event-header-block z-10">
+          <div className="hidden col-span-1 row-start-1 col-start-2 md:block event-header-block z-10">
             <Image src={imgUrl} onError={onError} alt={"Event thumbnail"} width={650} height={100}
                    className="event-cover"/>
           </div>
-
         </div>
-
       </div>
     </div>
   )

@@ -78,10 +78,10 @@ export function EventView({params}: { params: { id: string } }) {
                       imgUrl={imgUrl}
                       onError={() => setImgUrl("/images/default-event-thumb.svg")}
                       subtitle={`Por IFSP Cubatão`}/>
-      <div className="py-10 grid grid-cols-10 w-full">
-        <div className={"col-start-3 col-span-6"}>
+      <div className="py-10 grid grid-cols-10 w-full px-12 xl:px-0">
+        <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
           <div className="event-page-grid">
-            <div className="font-semibold relative">
+            <div className="row-start-1 col-start-1 col-span-2 md:col-span-1 font-semibold relative">
               <p className="text-lg mb-8">{event?.description}</p>
               <Link href={"#"} onClick={handleSubscription}>
                 <div
