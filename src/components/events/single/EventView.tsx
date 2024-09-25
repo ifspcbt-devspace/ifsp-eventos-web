@@ -1,6 +1,6 @@
 "use client";
 
-import React, {Suspense, useEffect, useState} from "react";
+import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
 import {Event} from "@/models";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {getEvent} from "@/server-actions/event.action";
@@ -52,16 +52,20 @@ export function EventView({params}: { params: { id: string } }) {
     onOpen();
   }
 
-  const handleAction = async () => {
+  const handleAction = async (open: () => void, setTicketID: Dispatch<SetStateAction<string>>) => {
     if (event) {
       if (!isAuth) {
         router.push(`/auth/log-in?redir=${pathname + `?open=true`}`);
         return;
       }
       const resp = await enrollUser(event?.id);
-      if (resp) {
+      if (typeof resp === "object") {
         toast.error(resp.error, toastConfig);
-      } else toast.success("Inscrição foi realizada com sucesso", toastConfig);
+      } else {
+        toast.success("Inscrição foi realizada com sucesso", toastConfig);
+        setTicketID(resp);
+        open();
+      }
     }
   }
 
@@ -69,15 +73,15 @@ export function EventView({params}: { params: { id: string } }) {
 
   return (
     <>
-      <ConfirmSubscription action={handleAction} isOpen={isOpen} onOpenChange={onOpenChange}/>
+      <ConfirmSubscription action={handleAction} isOpenConfirmModal={isOpen} onOpenChangeConfirmModal={onOpenChange}/>
       <DarkPageHeader title={`${event?.name} - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}
                       imgUrl={imgUrl}
                       onError={() => setImgUrl("/images/default-event-thumb.svg")}
                       subtitle={`Por IFSP Cubatão`}/>
-      <div className="py-10 grid grid-cols-10 w-full">
-        <div className={"col-start-3 col-span-6"}>
+      <div className="py-10 grid grid-cols-10 w-full px-12 xl:px-0">
+        <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
           <div className="event-page-grid">
-            <div className="font-semibold relative">
+            <div className="row-start-1 col-start-1 col-span-2 md:col-span-1 font-semibold relative">
               <p className="text-lg mb-8">{event?.description}</p>
               <Link href={"#"} onClick={handleSubscription}>
                 <div

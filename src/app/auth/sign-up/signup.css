@@ -1,10 +1,10 @@
-.full-page-wrapper {
+.full-page-wrapper-signup {
   background-color: var(--black);
   background-image: radial-gradient(circle farthest-corner at 100% 100%, var(--gradient-blue), transparent 44%), radial-gradient(circle farthest-corner at 0% 100%, var(--gradient-red), transparent 32%);
   width: 100%;
   max-width: none;
   padding: 24px 12px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -141,7 +141,7 @@ function Register() {
   if (!sessionVerified) return <></>
 
   return (
-    <div className="full-page-wrapper text-black">
+    <div className="full-page-wrapper-signup text-black">
       <title>Registrar | IFSP Eventos</title>
 
       <ConfirmRegister
