@@ -34,7 +34,7 @@ export default function RootLayout(
     <html
       lang="pt-br"
       className="light min-h-full scroll-smooth min-w-[320px]"
-      style={{scrollBehavior: "smooth", padding: 0, margin: 0, overflow: "hidden"}}
+      style={{scrollBehavior: "smooth", padding: 0, margin: 0}}
     >
     <body className={inter.className + " h-full"}>
     <ToastContainer/>
