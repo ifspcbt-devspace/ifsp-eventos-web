@@ -52,7 +52,6 @@ img {
   overflow-clip-margin: content-box;
   overflow: clip;
   vertical-align: middle;
-  max-width: 100%;
   display: inline-block;
   mix-blend-mode: multiply;
   margin-left: auto;

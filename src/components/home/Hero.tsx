@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="w-full py-20 grid grid-cols-10 light-color-gradient text-black px-12 xl:px-0">
+    <div className="w-full py-20 grid grid-cols-10 light-color-gradient text-black px-4 xl:px-0">
       <div className={`col-start-1 col-span-10 xl:col-start-3 xl:col-span-6 grid grid-rows-2 xl:grid-rows-1 gap-4 hero-grid`}>
         <div className={`col-span-2 row-start-2 xl:row-start-1 xl:row-span-2 xl:col-span-1 xl:max-w-[500px]`}>
           <span className={`heading`}>
