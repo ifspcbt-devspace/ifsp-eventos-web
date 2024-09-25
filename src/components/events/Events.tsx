@@ -5,7 +5,7 @@ import EventCard from "./EventCard";
 import {Event} from "@/models";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
 import Link from "next/link";
-import {downloadThumbnail, searchEvents} from "@/server-actions/event.action";
+import {searchEvents} from "@/server-actions/event.action";
 
 const Events = ({max, search, all = false}: { max?: number, search?: string, all?: boolean }) => {
   const [events, setEvents] = React.useState<Event[]>([]);
@@ -21,12 +21,6 @@ const Events = ({max, search, all = false}: { max?: number, search?: string, all
         return;
       }
       setEvents(events);
-      events.forEach((event: Event) => {
-        downloadThumbnail(event.id).then(thumbnail => {
-          if (!("error" in thumbnail))
-            event.thumbnail = thumbnail;
-        })
-      });
       setLoading(false);
     };
     fetchEvents();
@@ -49,19 +43,13 @@ const Events = ({max, search, all = false}: { max?: number, search?: string, all
       <div className={`col-start-3 col-span-6 grid grid-cols-3 gap-y-8 gap-x-12`}>
         {
           events.map(event => {
-            let imgUrl;
-            try {
-              imgUrl = URL.createObjectURL(event.thumbnail as Blob)
-            } catch (e) {
-              imgUrl = "/images/default-event-thumb.svg"
-            }
             return (<EventCard event={{
               id: event.id,
               date: event.init_date,
               description: event.description,
               name: event.name,
               owner: "IFSP Cubatão",
-              imgUrl: imgUrl
+              imgUrl: `https://eventos.ifspcbt.shop/api/v1/event/${event.id}/thumbnail`
             }}/>)
           })
         }

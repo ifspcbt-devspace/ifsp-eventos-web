@@ -15,7 +15,12 @@ export class EventService {
             data_option: "any",
           },
         ],
-        sorts: [],
+        sorts: [
+          {
+            sort: "initDate",
+            direction: "asc"
+          }
+        ],
       }),
       headers: {
         "Content-Type": "application/json",
@@ -99,9 +104,6 @@ export class EventService {
   async getThumbnail(id: string) {
     const response = await fetch(`${process.env.API_BASE_URL}/event/${id}/thumbnail`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
 
     if (response.status !== 200) {
@@ -112,6 +114,8 @@ export class EventService {
       return {error: data.message};
     }
 
-    return await response.blob();
+    const blob = await response.blob();
+
+    return blob.text();
   }
 }
