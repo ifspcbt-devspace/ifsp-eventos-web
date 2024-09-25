@@ -1,6 +1,6 @@
 "use client";
 
-import React, {Suspense, useEffect, useState} from "react";
+import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
 import {Event} from "@/models";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {getEvent} from "@/server-actions/event.action";
@@ -53,7 +53,7 @@ export function EventView({params}: { params: { id: string } }) {
     onOpen();
   }
 
-  const handleAction = async () => {
+  const handleAction = async (open: () => void, setTicketID: Dispatch<SetStateAction<string>>) => {
     if (event) {
       if (!isAuth) {
         router.push(`/auth/log-in?redir=${pathname + `?open=true`}`);
@@ -64,6 +64,8 @@ export function EventView({params}: { params: { id: string } }) {
         toast.error(resp.error, toastConfig);
       } else {
         toast.success("Inscrição foi realizada com sucesso", toastConfig);
+        setTicketID(resp);
+        open();
       }
     }
   }
@@ -74,6 +76,7 @@ export function EventView({params}: { params: { id: string } }) {
     <>
       <div className={"relative"}>
         <ConfirmSubscription action={handleAction} isOpenConfirmModal={isOpen} onOpenChangeConfirmModal={onOpenChange}/>
+
       </div>
 
       <DarkPageHeader title={`${event?.name} - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}

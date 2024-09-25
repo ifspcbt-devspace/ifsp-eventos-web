@@ -18,6 +18,15 @@
   --soft-grey: #cbd5df;
 }
 
+body {
+  position: relative;
+  padding-right: 0 !important;
+}
+
+html {
+  padding-right: 0 !important;
+}
+
 @media screen and (max-width: 320px) {
   #__next {
     display: flex
