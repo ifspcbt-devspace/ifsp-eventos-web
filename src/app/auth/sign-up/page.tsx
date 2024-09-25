@@ -157,9 +157,9 @@ function Register() {
                fill/>
       </Link>
 
-      <div className="p-10 bg-white rounded-xl shadow-sm max-w-[380px]">
+      <div className="p-7 md:p-10 bg-white rounded-xl shadow-sm max-w-[380px]">
         <form className="block mt-0" autoComplete="off" onSubmit={handleOpenModal}>
-          <div className="mb-8 text-center min-w-72">
+          <div className="mb-8 text-center min-w-64">
             <span className="font-semibold block mb-3 text-2xl">Registre-se</span>
           </div>
           <Input maxLength={128} placeholder="Nome completo" name="name" title="Nome completo" onValueChange={setName}
@@ -189,7 +189,7 @@ function Register() {
                  isRequired={true} classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}}/>
 
           <Input maxLength={16} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
-                 errorMessage={"A senha deve conter pelo menos: 1 letra maiúscula; 1 letra minúscula; 1 número e 6 caracteres"}
+                 errorMessage={"A senha deve conter pelo menos: 1 letra maiúscula; 1 letra minúscula; 1 número; 1 caractere especial; e 6 caracteres"}
                  isInvalid={isPasswordInvalid}
                  classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="password" autoComplete="off"
                  isRequired={true}/>

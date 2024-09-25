@@ -93,9 +93,9 @@ function Login() {
                width={190} height={100}/>
       </Link>
 
-      <div className="p-10 bg-white rounded-xl shadow-sm max-w-[380px]">
+      <div className="p-7 sm:p-10 bg-white rounded-xl shadow-sm max-w-[380px]">
         <form className="block mt-0" onSubmit={handleOnSubmit}>
-          <div className="mb-8 text-center min-w-72">
+          <div className="mb-8 text-center min-w-64">
             <span className="font-semibold block mb-3 text-2xl">Entrar</span>
             <p className="mb-1.5 text-sm opacity-75">Preencha seus dados de login abaixo.</p>
           </div>

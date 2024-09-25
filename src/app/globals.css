@@ -18,6 +18,12 @@
   --soft-grey: #cbd5df;
 }
 
+@media screen and (max-width: 320px) {
+  #__next {
+    display: flex
+  }
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s;
