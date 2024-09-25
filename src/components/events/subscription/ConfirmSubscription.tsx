@@ -1,27 +1,18 @@
-"use client";
-
-import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure} from "@nextui-org/react";
+import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@nextui-org/react";
 import {BsClipboard2Check} from "react-icons/bs";
-import QrCodeModal from "@/components/events/subscription/qrcode/QrCodeModal";
-import {Dispatch, SetStateAction, useState} from "react";
 
 export default function ConfirmSubscription(
   {
-    action, isOpenConfirmModal,
-    onOpenChangeConfirmModal
+    action, isOpenConfirmModal, onOpenChangeConfirmModal
   }: {
-    action?: (open: () => void, setTicketID: Dispatch<SetStateAction<string>>) => void,
+    action?: () => void,
     isOpenConfirmModal: boolean,
     onOpenChangeConfirmModal: () => void
   }) {
-  const [ticketID, setTicketID] = useState('')
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
 
   return (
     <>
-      <QrCodeModal ticketId={ticketID} isOpen={isOpen} onOpenChange={onOpenChange}/>
-      <Modal isOpen={isOpenConfirmModal} onOpenChange={onOpenChangeConfirmModal} placement="center">
+      <Modal isOpen={isOpenConfirmModal} onOpenChange={onOpenChangeConfirmModal} placement="center" size="xs">
         <ModalContent>
           {(onClose) => (
             <>
@@ -42,7 +33,7 @@ export default function ConfirmSubscription(
                   color="primary"
                   onClick={() => {
                     onClose();
-                    if (action) action(onOpen, setTicketID);
+                    if (action) action();
                   }}
                 >
                   Confirmar

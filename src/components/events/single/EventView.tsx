@@ -1,6 +1,6 @@
 "use client";
 
-import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import {Event} from "@/models";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {getEvent} from "@/server-actions/event.action";
@@ -53,7 +53,7 @@ export function EventView({params}: { params: { id: string } }) {
     onOpen();
   }
 
-  const handleAction = async (open: () => void, setTicketID: Dispatch<SetStateAction<string>>) => {
+  const handleAction = async () => {
     if (event) {
       if (!isAuth) {
         router.push(`/auth/log-in?redir=${pathname + `?open=true`}`);
@@ -64,8 +64,6 @@ export function EventView({params}: { params: { id: string } }) {
         toast.error(resp.error, toastConfig);
       } else {
         toast.success("Inscrição foi realizada com sucesso", toastConfig);
-        setTicketID(resp);
-        open();
       }
     }
   }
@@ -74,16 +72,19 @@ export function EventView({params}: { params: { id: string } }) {
 
   return (
     <>
-      <ConfirmSubscription action={handleAction} isOpenConfirmModal={isOpen} onOpenChangeConfirmModal={onOpenChange}/>
+      <div className={"relative"}>
+        <ConfirmSubscription action={handleAction} isOpenConfirmModal={isOpen} onOpenChangeConfirmModal={onOpenChange}/>
+      </div>
+
       <DarkPageHeader title={`${event?.name} - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}
                       imgUrl={imgUrl}
                       onError={() => setImgUrl("/images/default-event-thumb.svg")}
                       subtitle={`Por IFSP Cubatão`}/>
       <div className="py-10 grid grid-cols-10 w-full px-4 xl:px-0">
         <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
-          <div className="hidden md:event-page-grid-view">
+          <div className="md:grid grid-cols-[1fr_400px] grid-rows-auto grid-flow-col gap-8">
             <div className="row-start-1 col-start-1 col-span-2 md:col-span-1 font-semibold relative">
-              <p className="text-lg mb-8">{event?.description}</p>
+              <p className="text-[12px] md:text-lg mb-8 block">{event?.description}</p>
               <Link href={"#"} onClick={handleSubscription}>
                 <div
                   className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
@@ -92,18 +93,10 @@ export function EventView({params}: { params: { id: string } }) {
               </Link>
             </div>
           </div>
-          <div className="block md:hidden font-semibold relative">
-            <p className="text-[12px] sm:text-lg mb-8">{event?.description}</p>
-            <Link href={"#"} onClick={handleSubscription}>
-              <div
-                className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
-                Inscreva-se
-              </div>
-            </Link>
-          </div>
         </div>
       </div>
     </>
   )
 
 }
+
