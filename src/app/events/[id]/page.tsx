@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import "@/components/darkpageheader.css";
 import {getEvent} from "@/server-actions/event.action";
 import {Metadata} from "next";
-import EventView from "@/components/events/single/EventView";
+import EventViewComponent from "@/components/events/single/EventView";
 
 export async function generateMetadata(
   {params}: { params: { id: string } }
@@ -31,7 +31,7 @@ export default function EventPage({params}: { params: { id: string } }) {
       <div className="min-h-[90vh] bg-white">
         <Header/>
         <Suspense fallback={"Carregando..."}>
-          <EventView params={params}/>
+          <EventViewComponent params={params}/>
         </Suspense>
       </div>
       <Footer/>

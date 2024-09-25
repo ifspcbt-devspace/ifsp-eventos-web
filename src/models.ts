@@ -28,7 +28,6 @@ export interface Event {
   init_date: Date;
   end_date: Date;
   status: EventStatus;
-  thumbnail?: Blob;
   address: {
     street: string;
     number: string;

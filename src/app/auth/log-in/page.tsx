@@ -70,14 +70,14 @@ function Login() {
       return;
     }
     const formData = new FormData();
-    formData.append("email", email);
+    formData.append("email", email.trim());
     formData.append("password", password);
     const respLogin = await login(formData);
     if (respLogin && respLogin.error) {
       setError(respLogin.error);
     } else {
       toast.success("Conta criada com sucesso, redirecionando...", toastConfig);
-      setTimeout(() => router.replace(redirectTo), 1500)
+      setTimeout(() => router.push(redirectTo), 1500)
     }
     setIsLoading(false)
   }

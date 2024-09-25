@@ -101,7 +101,7 @@ function Register() {
     setIsLoading(true);
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("email", email);
+    formData.append("email", email.trim());
     formData.append("username", generateRandomUsername());
     formData.append("password", password);
     formData.append("birth_date", formatDate(birthDate));
