@@ -1,4 +1,4 @@
-import { AuthService } from "./auth.service";
+import {AuthService} from "./auth.service";
 
 export class EnrollmentService {
   authService: AuthService;
@@ -20,8 +20,8 @@ export class EnrollmentService {
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
+      if (response.status === 401) return {error: "Não autorizado"};
+      return {error: "Ocorreu um erro interno"};
     }
 
     data.items = data.items.map((item: any) => {
@@ -53,9 +53,11 @@ export class EnrollmentService {
     if (response.status !== 201) {
       const data = await response.json();
       if (response.status === 400)
-        return { error: data.errors ? data.errors[0].message : data.message };
-      if (response.status === 401) return { error: "Faça o login antes" };
-      return { error: "Ocorreu um erro interno" };
+        return {error: data.errors ? data.errors[0].message : data.message};
+      if (response.status === 401) return {error: "Faça o login antes"};
+      return {error: "Ocorreu um erro interno"};
     }
+
+    return await response.text();
   }
 }
