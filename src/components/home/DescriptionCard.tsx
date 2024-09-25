@@ -14,7 +14,7 @@ export default function DescriptionCard({
       </div>
       <div>
         <h1 className="text-[10px] sm:text-sm md:text-base font-bold mb-2 text-green-950">{title}</h1>
-        <p className="max-w-full text-[9px] sm:text-[12px] md:text-sm font-semibold text-green-900">
+        <p className="text-[9px] sm:text-[12px] md:text-sm font-semibold text-green-900">
           {description}
         </p>
       </div>

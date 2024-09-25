@@ -21,7 +21,7 @@ export default function ConfirmSubscription(
   return (
     <>
       <QrCodeModal ticketId={ticketID} isOpen={isOpen} onOpenChange={onOpenChange}/>
-      <Modal isOpen={isOpenConfirmModal} onOpenChange={onOpenChangeConfirmModal}>
+      <Modal isOpen={isOpenConfirmModal} onOpenChange={onOpenChangeConfirmModal} placement="center">
         <ModalContent>
           {(onClose) => (
             <>

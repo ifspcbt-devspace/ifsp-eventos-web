@@ -9,7 +9,7 @@ export default function ConfirmRegister(
   }: { action?: () => void, isOpen: boolean, onOpenChange: () => void }) {
   return (
     <>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center">
         <ModalContent>
           {(onClose) => (
             <>

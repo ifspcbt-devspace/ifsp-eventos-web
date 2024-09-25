@@ -25,7 +25,7 @@ export default function Header({search = ""}: { search?: string }) {
   }
 
   return (<>
-    <div className={`w-full grid grid-cols-10 bg-white text-black sticky top-0 z-50 px-12 xl:px-0`}>
+    <div className={`w-full grid grid-cols-10 bg-white text-black sticky top-0 z-50 px-4 xl:px-0`}>
 
       <div className={`col-start-1 col-span-5 xl:col-start-3 xl:col-span-3 flex justify-start`}>
         <Link href={"/"} className={`relative h-[70px] w-44 cursor-pointer duration-400 hover:opacity-70`}>

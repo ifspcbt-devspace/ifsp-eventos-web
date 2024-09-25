@@ -29,13 +29,13 @@ const Events = ({max, search, all = false}: { max?: number, search?: string, all
   if (loading) return <Loading/>;
 
   return (
-    <div className={`w-full py-20 bg-white grid grid-cols-10 px-12 xl:px-0`}
+    <div className={`w-full py-20 bg-white grid grid-cols-10 px-4 xl:px-0`}
     >
       {!all && !search && (
         <div className={`col-start-1 col-span-10 xl:col-start-3 xl:col-span-6 flex items-start justify-between mb-6`}>
-          <span className={`text-2xl leading-[1.4em] font-semibold block`}>Eventos</span>
+          <span className={`text-xl md:text-2xl leading-[1.4em] font-semibold block`}>Eventos</span>
           <Link href={`#`}
-                className={`hover:text-[#626a72] hover:bg-[#e7ecf0] bg-[#f5f6f7] text-[#626a72] shadow-inner inset-1 px-6 py-2 font-medium leading-6 text-center rounded-lg duration-200 cursor-pointer inline-block`}>Veja
+                className={`text-sm md:text-lg hover:text-[#626a72] hover:bg-[#e7ecf0] bg-[#f5f6f7] text-[#626a72] shadow-inner inset-1 px-6 py-2 font-medium text-center rounded-lg duration-200 cursor-pointer inline-block`}>Veja
             todos eventos</Link>
         </div>
       )}

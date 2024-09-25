@@ -5,7 +5,7 @@ import "./footer.css"
 
 const Footer = () => {
   return (
-    <footer className="w-full grid grid-cols-10 grid-rows-2 bg-transparent text-black py-16 gap-4 px-12 xl:px-0">
+    <footer className="w-full grid grid-cols-10 grid-rows-2 bg-transparent text-black py-16 gap-4 px-4 xl:px-0">
       <div className="row-start-1 col-start-1 col-span-10 xl:row-span-2 xl:col-start-3 xl:col-span-3 flex flex-col justify-start">
         <Link className={`mb-5`} href={`/`}>
           <Image src={`/images/logo_recortada.png`} className={`overflow-clip bg-clip-content`} height={100} width={204}

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   --light-grey: #99a4af;
   --grey: #626a72;
@@ -12,12 +16,12 @@
 }
 
 .footer-link {
+  @apply text-[12px] sm:text-sm;
   color: var(--grey);
   cursor: pointer;
   margin-bottom: 0;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-size: 15px;
   text-decoration: none;
   transition: color .2s ease-in-out;
   display: block;
