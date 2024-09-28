@@ -42,7 +42,9 @@ export interface Event {
 
 export enum EventStatus {
   OPENED = "Aberto",
-  CLOSED = "Fechado",
+  FINISHED = "Finalizado",
+  SCHEDULED = "Agendado",
+  IN_PROGRESS = "Em andamento",
   CANCELED = "Cancelado",
 }
 
