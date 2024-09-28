@@ -1,16 +1,16 @@
 "use client";
 
-import { Ticket, TicketStatus } from "@/models";
+import {Ticket} from "@/models";
 import "./style.css";
-import { consumeTicket, getTicket } from "@/server-actions/ticket.action";
-import { getUser } from "@/server-actions/user.action";
-import { toastConfig } from "@/utils";
-import { Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import {consumeTicket, getTicket} from "@/server-actions/ticket.action";
+import {getUser} from "@/server-actions/user.action";
+import {toastConfig} from "@/utils";
+import {Button} from "@nextui-org/react";
+import {useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
+import {toast} from "react-toastify";
 
-export default function TicketUI({ id }: { id: string }) {
+export default function TicketUI({id}: { id: string }) {
   const [ticket, setTicket] = useState<Ticket>();
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ export default function TicketUI({ id }: { id: string }) {
         <div className="hidden ticket-content-wrapper md:flex flex-col justify-between">
           <div className="text-center">
             <span className="font-bold text-3xl">
-              TICKET - FESTA JUNINA (27/07)
+              TICKET - IFETÃO (Finais) (28/09)
             </span>
             <p className="text-base">
               INSTITUTO FEDERAL DE SÃO PAULO - CUBATÃO
@@ -91,7 +91,7 @@ export default function TicketUI({ id }: { id: string }) {
         <div className="md:hidden ticket-content-wrapper-vertical flex flex-col justify-between">
           <div className="text-center">
             <span className="font-bold text-3xl">
-              TICKET - FESTA JUNINA (27/07)
+              TICKET - IFETÃO (Finais) (28/09)
             </span>
             <p className="text-base">
               INSTITUTO FEDERAL DE SÃO PAULO - CUBATÃO
