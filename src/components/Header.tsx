@@ -6,13 +6,11 @@ import Link from "next/link";
 import {redirectSearch} from "@/server-actions/redirect-search.action";
 import {useEffect, useState} from "react";
 import {isAuthenticated, logout} from "@/server-actions/auth.action";
-import {toastConfig} from "@/utils";
-import {toast} from "react-toastify";
 import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
 import {FiMenu} from "react-icons/fi";
 
 export default function Header({search = ""}: { search?: string }) {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState<any>();
 
   useEffect(() => {
     Promise.all([isAuthenticated()]).then(([isAuth]) => {
@@ -23,6 +21,7 @@ export default function Header({search = ""}: { search?: string }) {
   const handleLogout = async () => {
     await logout();
   }
+  if (isLogged === undefined) return <></>;
 
   return (<>
     <div className={`w-full grid grid-cols-10 bg-white text-black sticky top-0 z-50 px-4 xl:px-0`}>
@@ -60,10 +59,7 @@ export default function Header({search = ""}: { search?: string }) {
           {isLogged ? (
             <>
               <div className={`inline-block cursor-pointer text-neutral-500 duration-200 hover:text-neutral-950`}>
-                <Link href={"#"} onClick={async (e) => {
-                  e.preventDefault();
-                  toast.warn("Em breve", toastConfig);
-                }}>Conta</Link>
+                <Link href={"/user/account"}>Conta</Link>
               </div>
               <div className={`inline-block cursor-pointer text-neutral-500 duration-200 hover:text-neutral-950`}>
                 <Link href={"/auth/log-in"} onClick={handleLogout}>Sair</Link>
@@ -96,10 +92,7 @@ export default function Header({search = ""}: { search?: string }) {
             </DropdownItem>
             <DropdownItem key="loginoraccount">
               {isLogged ? (
-                <Link href={"#"} onClick={async (e) => {
-                  e.preventDefault();
-                  toast.warn("Em breve", toastConfig);
-                }}>Conta</Link>
+                <Link href={"/user/account"}>Conta</Link>
               ) : (
                 <Link href={"/auth/log-in"}>Entrar</Link>
               )}

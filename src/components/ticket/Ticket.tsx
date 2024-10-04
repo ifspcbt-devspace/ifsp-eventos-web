@@ -4,11 +4,11 @@ import {Ticket} from "@/models";
 import "./style.css";
 import {consumeTicket, getTicket} from "@/server-actions/ticket.action";
 import {getUser} from "@/server-actions/user.action";
-import {toastConfig} from "@/utils";
 import {Button} from "@nextui-org/react";
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
+import {toastConfig} from "@/constants";
 
 export default function TicketUI({id}: { id: string }) {
   const [ticket, setTicket] = useState<Ticket>();

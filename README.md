@@ -28,8 +28,8 @@ To get started with the project, clone the repository and follow the installatio
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/MateusCorrea7/IFSP-EVENTOS-WEB.git
-    cd IFSP-EVENTOS-WEB
+    git clone https://github.com/ifspcbt-devspace/ifsp-eventos-web.git
+    cd ifsp-eventos-web
     ```
 
 2. **Install dependencies:**
@@ -52,15 +52,13 @@ The application will be accessible at `http://localhost:3000`.
 Make sure to configure the following environment variables before running the application:
 
 - `IRON_SESSION_PASSWORD=123456789`
-- `API_BASE_URL=http://example.com:8092/v1`
-- `PRODUCTION_DOMAIN=.example.com`
+- `API_BASE_URL=https://example.com/v1`
 
 You can create a `.env.local` file in the root of the project to store these variables:
 
 ```plaintext
 IRON_SESSION_PASSWORD=123456789
-API_BASE_URL=http://example.com:8092/v1
-PRODUCTION_DOMAIN=.example.com
+API_BASE_URL=https://example.com/v1
 ```
 
 ## Docker Deployment

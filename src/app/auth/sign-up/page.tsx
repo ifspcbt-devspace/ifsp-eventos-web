@@ -9,10 +9,12 @@ import {useMask} from "@react-input/mask";
 import React, {FormEvent, Suspense, useEffect, useMemo, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
-import {generateRandomUsername, isCPF, isEmail, isNumberPhone, isValidBirthDate, toastConfig} from "@/utils";
+import {generateRandomUsername} from "@/utils";
 import {toast} from "react-toastify";
 import {isAuthenticated, login, register} from "@/server-actions/auth.action";
 import ConfirmRegister from "@/components/register/ConfirmRegister";
+import {isCPF, isEmail, isNumberPhone, isValidBirthDate} from "@/validations";
+import {toastConfig} from "@/constants";
 
 export default function RegisterPage() {
   return (
