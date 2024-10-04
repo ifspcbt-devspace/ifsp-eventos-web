@@ -34,13 +34,13 @@ export default function ({
           className="overflow-clip box-content object-cover align-middle max-w-full w-full h-full inline-block"
         />
       </div>
-      <div className={"text-sm opacity-75 mb-1.5"}>Por {event.owner}</div>
+      <div className={"text-sm opacity-75 mb-1.5"}>Por {event.owner + " - " + event.date.toLocaleString([], {
+        day: "2-digit",
+        month: "2-digit"
+      })}</div>
       <div className={`text-black text-left max-w-[450px]`}>
         <span
-          className={"text-black mb-3 text-2xl block font-semibold"}>{event.name + " - " + event.date.toLocaleString([], {
-          day: "2-digit",
-          month: "2-digit"
-        })}</span>
+          className={"text-black mb-3 text-2xl block font-semibold"}>{event.name}</span>
         <p className={"text-sm opacity-75 line-clamp-5"}>{event.description}</p>
       </div>
     </Link>

@@ -16,9 +16,10 @@
 }
 
 .footer-link {
-  @apply text-[12px] sm:text-sm;
+  @apply text-[12px] md:text-[13px];
   color: var(--grey);
   cursor: pointer;
+  width: fit-content;
   margin-bottom: 0;
   padding-top: 5px;
   padding-bottom: 5px;
