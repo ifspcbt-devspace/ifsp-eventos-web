@@ -79,14 +79,14 @@ export function EventView({params}: { params: { id: string } }) {
 
       </div>
 
-      <DarkPageHeader title={`${event?.name} - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}
+      <DarkPageHeader title={`${event?.name}`}
                       imgUrl={imgUrl}
                       onError={() => setImgUrl("/images/default-event-thumb.svg")}
-                      subtitle={`Por IFSP Cubatão`}/>
+                      subtitle={`Por IFSP Cubatão - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}/>
       <div className="py-10 grid grid-cols-10 w-full px-4 xl:px-0">
         <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
-          <div className="md:grid grid-cols-[1fr_400px] grid-rows-auto grid-flow-col gap-8">
-            <div className="row-start-1 col-start-1 col-span-2 md:col-span-1 font-semibold relative">
+          <div className="xl:grid grid-cols-[1fr_400px] grid-rows-auto grid-flow-col gap-8">
+            <div className="row-start-1 col-start-1 col-span-2 xl:col-span-1 font-semibold relative">
               <p className="text-[12px] md:text-lg mb-8 block">{event?.description}</p>
               <Link href={"#"} onClick={handleSubscription}>
                 <div
