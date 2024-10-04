@@ -8,9 +8,10 @@ import {Button, Input} from "@nextui-org/react";
 import React, {FormEvent, Suspense, useEffect, useMemo, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
-import {isEmail, toastConfig} from "@/utils";
 import {toast} from "react-toastify";
 import {isAuthenticated, login} from "@/server-actions/auth.action";
+import {toastConfig} from "@/constants";
+import {isEmail} from "@/validations";
 
 export default function LoginPage() {
   return (

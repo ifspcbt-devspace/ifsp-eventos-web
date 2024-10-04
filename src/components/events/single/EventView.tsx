@@ -5,7 +5,7 @@ import {Event} from "@/models";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {getEvent} from "@/server-actions/event.action";
 import {toast} from "react-toastify";
-import {toastConfig} from "@/utils";
+import {toastConfig} from "@/constants";
 import DarkPageHeader from "@/components/DarkPageHeader";
 import Link from "next/link";
 import {useDisclosure} from "@nextui-org/react";

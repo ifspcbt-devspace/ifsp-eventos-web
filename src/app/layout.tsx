@@ -33,10 +33,10 @@ export default function RootLayout(
   return (
     <html
       lang="pt-br"
-      className="light min-h-full scroll-smooth min-w-[320px] relative"
+      className="light min-h-[100vh] scroll-smooth relative"
       style={{scrollBehavior: "smooth", padding: 0, margin: 0}}
     >
-    <body className={inter.className + " h-full"}>
+    <body className={inter.className + " min-h-[100vh]"}>
     <ToastContainer/>
     <NextUIProvider>
       {children}
