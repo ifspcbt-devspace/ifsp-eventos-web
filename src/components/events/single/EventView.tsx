@@ -26,7 +26,7 @@ export function EventView({params}: { params: { id: string } }) {
   const searchParams = useSearchParams();
   const [event, setEvent] = useState<Event>();
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [imgUrl, setImgUrl] = useState("/images/default-event-thumb.svg");
+  const [imgUrl, setImgUrl] = useState("/images/default-thumb.png");
   const [isAuth, setIsAuth] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -81,7 +81,7 @@ export function EventView({params}: { params: { id: string } }) {
 
       <DarkPageHeader title={`${event?.name}`}
                       imgUrl={imgUrl}
-                      onError={() => setImgUrl("/images/default-event-thumb.svg")}
+                      onError={() => setImgUrl("/images/default-thumb.png")}
                       subtitle={`Por IFSP Cubatão - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}/>
       <div className="py-10 grid grid-cols-10 w-full px-4 xl:px-0">
         <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
