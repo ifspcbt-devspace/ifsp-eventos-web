@@ -2,12 +2,13 @@ import {Bounce, ToastOptions} from "react-toastify";
 
 export const toastConfig: ToastOptions = {
   position: "top-right",
-  autoClose: 5000,
+  autoClose: 3000,
   hideProgressBar: true,
   closeOnClick: false,
-  pauseOnHover: true,
+  pauseOnHover: false,
   draggable: true,
   progress: undefined,
+  pauseOnFocusLoss: false,
   theme: "light",
   transition: Bounce,
 };

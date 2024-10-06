@@ -25,7 +25,7 @@ export default function ({
         <Image
           src={imgUrl}
           onError={() => {
-            setImgUrl("/images/default-event-thumb.svg");
+            setImgUrl("/images/default-thumb.png");
           }}
           alt="event-image"
           quality={100}

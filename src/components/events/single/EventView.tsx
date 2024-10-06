@@ -1,7 +1,7 @@
 "use client";
 
 import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
-import {Event} from "@/models";
+import {Event, SessionData} from "@/models";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {getEvent} from "@/server-actions/event.action";
 import {toast} from "react-toastify";
@@ -11,7 +11,7 @@ import Link from "next/link";
 import {useDisclosure} from "@nextui-org/react";
 import ConfirmSubscription from "@/components/events/subscription/ConfirmSubscription";
 import {enrollUser} from "@/server-actions/enrollment.action";
-import {isAuthenticated} from "@/server-actions/auth.action";
+import {getSession} from "@/server-actions/auth.action";
 import "./eventview.css"
 
 export default function EventViewComponent({params}: { params: { id: string } }) {
@@ -26,8 +26,8 @@ export function EventView({params}: { params: { id: string } }) {
   const searchParams = useSearchParams();
   const [event, setEvent] = useState<Event>();
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [imgUrl, setImgUrl] = useState("/images/default-event-thumb.svg");
-  const [isAuth, setIsAuth] = useState(false);
+  const [imgUrl, setImgUrl] = useState("/images/default-thumb.png");
+  const [session, setSession] = useState<SessionData>();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -41,8 +41,8 @@ export function EventView({params}: { params: { id: string } }) {
       }
       setEvent(event);
       setImgUrl(`https://eventos.ifspcbt.shop/api/v1/event/${event.id}/thumbnail`);
-      const isAut = await isAuthenticated();
-      setIsAuth(isAut);
+      const sessionData = await getSession();
+      if (sessionData) setSession(sessionData);
       if (searchParams.get("open")) onOpen();
     }
     load();
@@ -55,10 +55,15 @@ export function EventView({params}: { params: { id: string } }) {
 
   const handleAction = async (open: () => void, setTicketID: Dispatch<SetStateAction<string>>) => {
     if (event) {
-      if (!isAuth) {
+      if (!session) {
         router.push(`/auth/log-in?redir=${pathname + `?open=true`}`);
         return;
       }
+      if (!session.user.document_initials) {
+        router.push(`/user/account`);
+        return;
+      }
+
       const resp = await enrollUser(event?.id);
       if (typeof resp === "object") {
         toast.error(resp.error, toastConfig);
@@ -81,7 +86,7 @@ export function EventView({params}: { params: { id: string } }) {
 
       <DarkPageHeader title={`${event?.name}`}
                       imgUrl={imgUrl}
-                      onError={() => setImgUrl("/images/default-event-thumb.svg")}
+                      onError={() => setImgUrl("/images/default-thumb.png")}
                       subtitle={`Por IFSP Cubatão - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}/>
       <div className="py-10 grid grid-cols-10 w-full px-4 xl:px-0">
         <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>

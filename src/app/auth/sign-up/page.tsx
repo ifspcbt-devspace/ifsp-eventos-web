@@ -13,7 +13,7 @@ import {generateRandomUsername} from "@/utils";
 import {toast} from "react-toastify";
 import {isAuthenticated, login, register} from "@/server-actions/auth.action";
 import ConfirmRegister from "@/components/register/ConfirmRegister";
-import {isCPF, isEmail, isNumberPhone, isValidBirthDate} from "@/validations";
+import {isEmail, isNumberPhone, isRG, isValidBirthDate} from "@/validations";
 import {toastConfig} from "@/constants";
 
 export default function RegisterPage() {
@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
 function Register() {
   const [name, setName] = useState("");
-  const [cpf, setCpf] = useState("");
+  const [document, setDocument] = useState("");
   const [phone, setPhone] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [email, setEmail] = useState("");
@@ -55,8 +55,8 @@ function Register() {
     mask: "(__) _____-____",
     replacement: {_: /\d/},
   });
-  const cpfRef = useMask({
-    mask: "nnn.nnn.nnn-nn",
+  const documentRef = useMask({
+    mask: "nn.nnn.nnn-n",
     replacement: {n: /\d/},
   });
 
@@ -73,10 +73,10 @@ function Register() {
     if (email === "") return false;
     return !isEmail(email.trim());
   }, [email]);
-  const isCPFInvalid = useMemo(() => {
-    if (cpf === "") return false;
-    return !isCPF(cpf);
-  }, [cpf])
+  const isDocumentInvalid = useMemo(() => {
+    if (document === "") return false;
+    return !isRG(document);
+  }, [document])
   const isPhoneInvalid = useMemo(() => {
     if (phone === "") return false;
     return !isNumberPhone(phone);
@@ -107,7 +107,7 @@ function Register() {
     formData.append("username", generateRandomUsername());
     formData.append("password", password);
     formData.append("birth_date", formatDate(birthDate));
-    formData.append("cpf", cpf);
+    formData.append("document", document);
     formData.append("phone_number", phone);
 
     const resp = await register(formData);
@@ -127,12 +127,12 @@ function Register() {
 
   const handleOpenModal = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (email === "" || password === "" || confirmPassword === "" || name === "" || birthDate === "" || cpf === "" || phone === "") {
+    if (email === "" || password === "" || confirmPassword === "" || name === "" || birthDate === "" || document === "" || phone === "") {
       toast.error("Preencha todos os campos", toastConfig)
       setIsLoading(false);
       return;
     }
-    if (isEmailInvalid || isPasswordInvalid || isConfirmPasswordInvalid || isNameInvalid || isBirthDateInvalid || isCPFInvalid || isPhoneInvalid) {
+    if (isEmailInvalid || isPasswordInvalid || isConfirmPasswordInvalid || isNameInvalid || isBirthDateInvalid || isDocumentInvalid || isPhoneInvalid) {
       toast.error("Corrija as credenciais primeiro", toastConfig);
       setIsLoading(false);
       return;
@@ -169,8 +169,8 @@ function Register() {
                  classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="text" autoComplete="off"
                  isRequired={true}/>
 
-          <Input placeholder="CPF" name="cpf" title="CPF" ref={cpfRef}
-                 isInvalid={isCPFInvalid} errorMessage="O CPF é inválido" onValueChange={setCpf}
+          <Input placeholder="RG" name="document" title="R.G." ref={documentRef}
+                 isInvalid={isDocumentInvalid} errorMessage="O RG é inválido" onValueChange={setDocument}
                  classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="text" autoComplete="off"
                  isRequired={true}/>
 
