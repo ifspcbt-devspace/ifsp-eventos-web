@@ -1,7 +1,7 @@
-import { SessionData } from "@/models";
-import { atob } from "buffer";
-import { sealData, unsealData } from "iron-session";
-import { cookies } from "next/headers";
+import {SessionData} from "@/models";
+import {atob} from "buffer";
+import {sealData, unsealData} from "iron-session";
+import {cookies} from "next/headers";
 
 export class AuthService {
   pass: string;
@@ -16,7 +16,7 @@ export class AuthService {
     username: string;
     password: string;
     birth_date: string;
-    cpf: string;
+    document: string;
     phone_number: string;
   }) {
     const response = await fetch(`${process.env.API_BASE_URL}/auth/register`, {
@@ -27,7 +27,7 @@ export class AuthService {
         username: input.username,
         password: input.password,
         birth_date: input.birth_date,
-        cpf: input.cpf,
+        document: input.document,
         phone_number: input.phone_number,
       }),
       headers: {
@@ -38,10 +38,10 @@ export class AuthService {
     if (response.status !== 201) {
       const data = await response.json();
       console.log(data)
-      if (response.status === 409) return { error: "Usuário já existe" };
+      if (response.status === 409) return {error: "Usuário já existe"};
       if (response.status === 400)
-        return { error: data.errors ? data.errors[0].message : data.message };
-      return { error: "Ocorreu um erro interno" };
+        return {error: data.errors ? data.errors[0].message : data.message};
+      return {error: "Ocorreu um erro interno"};
     }
   }
 
@@ -55,10 +55,10 @@ export class AuthService {
 
     if (response.status !== 204) {
       const data = await response.json();
-      if (response.status === 404) return { error: "Token não encontrado" };
+      if (response.status === 404) return {error: "Token não encontrado"};
       if (response.status === 400)
-        return { error: data.errors ? data.errors[0].message : data.message };
-      return { error: "Ocorreu um erro interno" };
+        return {error: data.errors ? data.errors[0].message : data.message};
+      return {error: "Ocorreu um erro interno"};
     }
   }
 
@@ -75,11 +75,11 @@ export class AuthService {
     });
 
     const data = await response.json();
-    if (response.status === 401) return { error: "Credenciais inválidas" };
-    if (response.status === 404) return { error: "Usuário não encontrado" };
+    if (response.status === 401) return {error: "Credenciais inválidas"};
+    if (response.status === 404) return {error: "Usuário não encontrado"};
     if (response.status === 400)
-      return { error: data.errors ? data.errors[0].message : data.message };
-    if (!response.ok) return { error: "Ocorre um erro interno" };
+      return {error: data.errors ? data.errors[0].message : data.message};
+    if (!response.ok) return {error: "Ocorre um erro interno"};
 
     const session: SessionData = {
       access_token: data.token,
@@ -88,7 +88,7 @@ export class AuthService {
         email: data.user.email,
         name: data.user.name,
         birth_date: data.user.birth_date,
-        cpf_initials: data.user.cpf_initials,
+        document_initials: data.user.document_initials,
         phone_number_initials: data.user.phone_number_initials,
         company_id: data.user.company_id,
         role: data.user.role,
@@ -102,8 +102,8 @@ export class AuthService {
     const encryptedSession = cookies().get("auth_session")?.value;
     const session = encryptedSession
       ? ((await unsealData(encryptedSession, {
-          password: this.pass,
-        })) as string)
+        password: this.pass,
+      })) as string)
       : null;
     return session ? (JSON.parse(session) as SessionData) : null;
   }

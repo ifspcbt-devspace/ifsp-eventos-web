@@ -77,7 +77,7 @@ function Login() {
     if (respLogin && respLogin.error) {
       setError(respLogin.error);
     } else {
-      toast.success("Conta criada com sucesso, redirecionando...", toastConfig);
+      toast.success("Login realizado com sucesso, redirecionando...", toastConfig);
       setTimeout(() => router.push(redirectTo), 1500)
     }
     setIsLoading(false)

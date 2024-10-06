@@ -22,7 +22,7 @@ export async function register(data: FormData) {
   const password = data.get("password") as string;
   const birth_date = data.get("birth_date") as string;
   if (birth_date === "") return {error: "Data de nascimento inválida"};
-  const cpf = data.get("cpf") as string;
+  const document = data.get("document") as string;
   const phone_number = data.get("phone_number") as string;
   return await authService.register({
     name,
@@ -30,7 +30,7 @@ export async function register(data: FormData) {
     username,
     password,
     birth_date,
-    cpf,
+    document,
     phone_number,
   });
 }

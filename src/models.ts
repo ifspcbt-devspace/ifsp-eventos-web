@@ -10,7 +10,7 @@ export interface User {
   username: string;
   role: Role;
   birth_date: string;
-  cpf_initials: string;
+  document_initials: string;
   phone_number_initials: string;
   company_id: string;
 }

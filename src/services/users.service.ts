@@ -1,4 +1,4 @@
-import { AuthService } from "./auth.service";
+import {AuthService} from "./auth.service";
 
 export class UserService {
   authService: AuthService;
@@ -18,11 +18,11 @@ export class UserService {
     const data = await response.json();
     if (response.status !== 200) {
       if (response.status === 400)
-        return { error: data.errors ? data.errors[0].message : data.message };
-      if (response.status === 401) return { error: "Faça o login antes" };
-      if (response.status === 404) return { error: "Usuário não encontrado" };
-      if (response.status === 403) return { error: "Acesso negado" };
-      return { error: "Ocorreu um erro interno" };
+        return {error: data.errors ? data.errors[0].message : data.message};
+      if (response.status === 401) return {error: "Faça o login antes"};
+      if (response.status === 404) return {error: "Usuário não encontrado"};
+      if (response.status === 403) return {error: "Acesso negado"};
+      return {error: "Ocorreu um erro interno"};
     }
 
     return {
@@ -30,7 +30,7 @@ export class UserService {
       email: data.email,
       name: data.name,
       birth_date: data.birth_date,
-      cpf_initials: data.cpf_initials,
+      document_initials: data.document_initials,
       phone_number_initials: data.phone_number_initials,
       company_id: data.company_id,
       role: data.role,
