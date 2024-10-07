@@ -1,36 +1,38 @@
-import {parseAbsoluteToLocal} from "@internationalized/date";
-import {Event, EventStatus} from "@/models";
+import { parseAbsoluteToLocal } from "@internationalized/date";
+import { Event, EventStatus, TicketSale } from "@/models";
 
 export class EventService {
-
   async getEvents(query?: string, max?: number) {
-    const response = await fetch(`${process.env.API_BASE_URL}/event/search?perPage=${max || 10}`, {
-      method: "POST",
-      body: JSON.stringify({
-        filters: [
-          {
-            filter_key: "name",
-            value: query || "",
-            operation: "ic",
-            data_option: "any",
-          },
-        ],
-        sorts: [
-          {
-            sort: "initDate",
-            direction: "asc"
-          }
-        ],
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/event/search?perPage=${max || 10}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          filters: [
+            {
+              filter_key: "name",
+              value: query || "",
+              operation: "ic",
+              data_option: "any",
+            },
+          ],
+          sorts: [
+            {
+              sort: "initDate",
+              direction: "asc",
+            },
+          ],
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return {error: "Não autorizado"};
-      return {error: "Ocorreu um erro interno"};
+      if (response.status === 401) return { error: "Não autorizado" };
+      return { error: "Ocorreu um erro interno" };
     }
 
     data.items = data.items.map((item: any) => {
@@ -72,8 +74,8 @@ export class EventService {
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return {error: "Não autorizado"};
-      return {error: "Ocorreu um erro interno"};
+      if (response.status === 401) return { error: "Não autorizado" };
+      return { error: "Ocorreu um erro interno" };
     }
 
     return {
@@ -102,20 +104,54 @@ export class EventService {
   }
 
   async getThumbnail(id: string) {
-    const response = await fetch(`${process.env.API_BASE_URL}/event/${id}/thumbnail`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/event/${id}/thumbnail`,
+      {
+        method: "GET",
+      }
+    );
 
     if (response.status !== 200) {
       const data = await response.json();
-      if (response.status === 401) return {error: "Não autenticado"};
-      if (response.status === 404) return {error: "Thumbnail não encontrada"};
-      if (response.status === 403) return {error: "Acesso negado"};
-      return {error: data.message};
+      if (response.status === 401) return { error: "Não autenticado" };
+      if (response.status === 404) return { error: "Thumbnail não encontrada" };
+      if (response.status === 403) return { error: "Acesso negado" };
+      return { error: data.message };
     }
 
     const blob = await response.blob();
 
     return blob.text();
+  }
+
+  async getTicketSales(id: string) : Promise<{error: string} | TicketSale[]> {
+    const response = await fetch(
+      `${process.env.API_BASE_URL}/event/${id}/ticketSale`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }
+    );
+    const data = await response.json();
+    if (response.status !== 200) {
+      if (response.status === 401) return { error: "Não autorizado" };
+      return { error: "Ocorreu um erro interno" };
+    }
+
+    data.items = data.items.map((item: any) => {
+      return {
+        id: item.id,
+        event_id: item.event_id,
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        entries: item.entries,
+        active: item.active,
+      };
+    });
+
+    return data.items;
   }
 }

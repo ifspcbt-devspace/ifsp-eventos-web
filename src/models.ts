@@ -40,6 +40,16 @@ export interface Event {
   };
 }
 
+export interface TicketSale{
+  id: string;
+  event_id: string;
+  name: string;
+  description: string;
+  price: number;
+  entries: number;
+  active: boolean;
+}
+
 export enum EventStatus {
   OPENED = "Aberto",
   FINISHED = "Finalizado",

@@ -16,3 +16,8 @@ export async function downloadThumbnail(id: string) {
   const eventService = new EventService();
   return await eventService.getThumbnail(id);
 }
+
+export async function getTicketSales(eventId: string) {
+  const eventService = new EventService();
+  return await eventService.getTicketSales(eventId);
+}

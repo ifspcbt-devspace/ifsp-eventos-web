@@ -2,22 +2,23 @@ import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDis
 import {BsClipboard2Check} from "react-icons/bs";
 import QrCodeModal from "@/components/events/subscription/qrcode/QrCodeModal";
 import {Dispatch, SetStateAction, useState} from "react";
+import PaymentModal from "./payment/PaymentModal";
 
 export default (
   {
     action, isOpenConfirmModal, onOpenChangeConfirmModal
   }: {
-    action?: (open: () => void, setTicketID: Dispatch<SetStateAction<string>>) => void,
+    action?: (open: () => void, setPreferenceURL: Dispatch<SetStateAction<string>>) => void,
     isOpenConfirmModal: boolean,
     onOpenChangeConfirmModal: () => void
   }) => {
-  const [ticketID, setTicketID] = useState('')
+  const [preferenceURL, setPreferenceURL] = useState('');
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
 
   return (
     <>
-      <QrCodeModal ticketId={ticketID} isOpen={isOpen} onOpenChange={onOpenChange}/>
+      <PaymentModal preferenceURL={preferenceURL} isOpen={isOpen} onOpenChange={onOpenChange}/>
       <Modal isOpen={isOpenConfirmModal} onOpenChange={onOpenChangeConfirmModal} placement="center" size="xs">
         <ModalContent>
           {(onClose) => (
@@ -39,7 +40,7 @@ export default (
                   color="primary"
                   onClick={() => {
                     onClose();
-                    if (action) action(onOpen, setTicketID);
+                    if (action) action(onOpen, setPreferenceURL);
                   }}
                 >
                   Confirmar
