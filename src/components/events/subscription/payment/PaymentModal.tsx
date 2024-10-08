@@ -29,8 +29,6 @@ export default function PaymentModal({
                   <Wallet initialization={{preferenceId: preferenceURL}}/>
                 </div>
               </div>
-
-              <p>Seu link de pagamento também foi enviado por email.</p>
             </ModalBody>
             <ModalFooter>
               <Button color="default" variant="light" onClick={onClose}>
