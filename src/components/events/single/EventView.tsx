@@ -1,7 +1,7 @@
 "use client";
 
 import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
-import {Event, SessionData, TicketSale} from "@/models";
+import {Enrollment, Event, SessionData, TicketSale} from "@/models";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {getEvent, getTicketSales} from "@/server-actions/event.action";
 import {toast} from "react-toastify";
@@ -10,7 +10,7 @@ import DarkPageHeader from "@/components/DarkPageHeader";
 import Link from "next/link";
 import {useDisclosure} from "@nextui-org/react";
 import ConfirmSubscription from "@/components/events/subscription/ConfirmSubscription";
-import {upsertEnrollUser} from "@/server-actions/enrollment.action";
+import {listUserEnrollments, upsertEnrollUser} from "@/server-actions/enrollment.action";
 import {getSession} from "@/server-actions/auth.action";
 import "./eventview.css"
 
@@ -25,6 +25,7 @@ export default function EventViewComponent({params}: { params: { id: string } })
 export function EventView({params}: { params: { id: string } }) {
   const searchParams = useSearchParams();
   const [event, setEvent] = useState<Event>();
+  const [enrollment, setEnrollment] = useState();
   const [ticketSales, setTicketSales] = useState<TicketSale[]>();
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [ticketSaleID, setTicketSaleID] = useState<string>("");
@@ -42,7 +43,7 @@ export function EventView({params}: { params: { id: string } }) {
         return;
       }
       const ticketSales = await getTicketSales(event.id);
-      if("error" in ticketSales) {
+      if ("error" in ticketSales) {
         router.replace("/");
         toast.warn(ticketSales.error, toastConfig);
         return;
@@ -52,12 +53,23 @@ export function EventView({params}: { params: { id: string } }) {
       setTicketSales(ticketSales);
       const sessionData = await getSession();
       if (sessionData) setSession(sessionData);
-      if (searchParams.get("open")) onOpen();
+
+      const enrollments = await listUserEnrollments();
+      let enrollment = undefined;
+      if (!("error" in enrollments)) {
+        enrollment = enrollments.find((enrollment: Enrollment) => enrollment.event_id === event.id);
+        setEnrollment(enrollment);
+      }
+      if (searchParams.get("open") && !enrollment) onOpen();
     }
     load();
   }, [params.id]);
 
   const handleSubscription = async (ticketSaleId: string) => {
+    if (enrollment) {
+      toast.warn("Você já está inscrito neste evento", toastConfig);
+      return;
+    }
     setTicketSaleID(ticketSaleId);
     onOpen();
   }
@@ -76,8 +88,7 @@ export function EventView({params}: { params: { id: string } }) {
       if ("error" in resp) {
         toast.error(resp.error, toastConfig);
       } else {
-        toast.success("Inscrição foi realizada com sucesso", toastConfig);
-        if(typeof resp.preferenceURL === "string") {
+        if (resp.preferenceURL) {
           setPreferenceURL(resp.preferenceURL);
         }
         open();
@@ -107,21 +118,25 @@ export function EventView({params}: { params: { id: string } }) {
                 ticketSales &&
                 ticketSales.length > 0 ? (
                   ticketSales.map((ticket, index) => (
-                  <Link href={"#"} onClick={(e) => {
-                    e.preventDefault()
-                    handleSubscription(ticket.id)
-                  }}>
-                    <div key={index} className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
-                      Inscreva-se Pix: {ticket.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
-                    </div>
-                  </Link>
-                ))
-              ) : (
+                    <Link href={"#"} onClick={(e) => {
+                      e.preventDefault()
+                      handleSubscription(ticket.id)
+                    }}>
+                      <div key={index}
+                           className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
+                        {enrollment ? "Inscrito" : "Pague: " + ticket.price.toLocaleString('pt-br', {
+                          style: 'currency',
+                          currency: 'BRL'
+                        })}
+                      </div>
+                    </Link>
+                  ))
+                ) : (
                   <div
                     className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
                     Não existe ingressos para esse evento
                   </div>
-              )} 
+                )}
             </div>
           </div>
         </div>
