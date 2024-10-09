@@ -18,16 +18,20 @@ export default function PaymentModal({
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Ingresso gerado
+              Pagamento
             </ModalHeader>
             <ModalBody className="text-center mt-2 mb-2">
               <div className="mb-2">
-                Para pagar seu ingresso, clique no botão abaixo:
+                Aguarde até que o botão do Mercado Pago seja carregado:
               </div>
               <div className={`flex justify-center items-center`}>
                 <div className={`max-w-72`}>
                   <Wallet initialization={{preferenceId: preferenceURL}}/>
                 </div>
+              </div>
+              <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mt-2"
+                   role="alert">
+                O botão gerará um QR Code Pix, independente de você ter o Mercado Pago ou não.
               </div>
             </ModalBody>
             <ModalFooter>

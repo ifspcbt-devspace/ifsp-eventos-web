@@ -84,15 +84,14 @@ export function EventView({params}: { params: { id: string } }) {
         router.push(`/user/account`);
         return;
       }
-      const resp = await upsertEnrollUser(event?.id, ticketSaleID);
+      const resp = await upsertEnrollUser(event.id, ticketSaleID);
       if ("error" in resp) {
         toast.error(resp.error, toastConfig);
-      } else {
-        if (resp.preferenceURL) {
-          setPreferenceURL(resp.preferenceURL);
-        }
+      } else if (resp.preferenceURL) {
+        setPreferenceURL(resp.preferenceURL);
         open();
       }
+
     }
   }
 
@@ -118,9 +117,9 @@ export function EventView({params}: { params: { id: string } }) {
                 ticketSales &&
                 ticketSales.length > 0 ? (
                   ticketSales.map((ticket, index) => (
-                    <Link href={"#"} onClick={(e) => {
+                    <Link href={"#"} onClick={async (e) => {
                       e.preventDefault()
-                      handleSubscription(ticket.id)
+                      await handleSubscription(ticket.id)
                     }}>
                       <div key={index}
                            className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>

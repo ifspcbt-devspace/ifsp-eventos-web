@@ -15,7 +15,7 @@ export default function TermsConditions() {
       <div className={`px-12 py-20 mx-auto max-w-[1230px] min-h-[30px] relative`}>
         <div className={`mx-auto bg-white max-w-[800px] rounded-xl z-10 -mt-48 pt-20 px-16 pb-12 shadow-md`}>
           <h1 className="mb-4 text-[2.5rem] font-medium">Termos & Condições</h1>
-          <p className="mb-12">Última atualização em setembro de 2024</p>
+          <p className="mb-12">Última atualização em outubro de 2024</p>
           <p>Ao acessar o site IFSP Eventos, você concorda em cumprir estes Termos de Serviço, as leis e regulamentos
             aplicáveis, e declara ser responsável por seguir as leis locais. Se não concordar com estes termos, você
             está
@@ -87,6 +87,18 @@ export default function TermsConditions() {
           <p>Estes termos são regidos pelas leis locais aplicáveis ao IFSP Eventos. Você concorda em se submeter à
             jurisdição exclusiva dos tribunais competentes.
           </p>
+
+          <p>‍</p>
+          <p>‍</p>
+          <h3>8. Presença de Menores</h3>
+          <p>Para menores de idade, exigimos um documento assinado pelos pais ou responsáveis, autorizando a presença do
+            menor no evento. Não nos responsabilizamos em casos de falsificação da assinatura desse documento.</p>
+
+          <p>‍</p>
+          <p>‍</p>
+          <h3>9. Uso de Imagem</h3>
+          <p>As gravações realizadas pela equipe do Grêmio durante o evento serão utilizadas para engajamento de mídia.
+            Ao participar do evento, você autoriza a gravação e o uso da sua imagem para esse fim.</p>
         </div>
       </div>
       <Footer/>

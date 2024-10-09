@@ -58,8 +58,8 @@ export class EnrollmentService {
       const data = await response.json();
       if (response.status === 400)
         return { error: data.errors ? data.errors[0].message : data.message };
-      if (response.status === 401) return { error: "faça o login antes" };
-      return { error: "ocorreu um erro interno" };
+      if (response.status === 401) return { error: "Não autorizado" };
+      return { error: "Ocorreu um erro interno" };
     }
 
     const data = await response.text();
@@ -89,8 +89,8 @@ export class EnrollmentService {
       const data = await response.json();
       if (response.status === 400)
         return { error: data.errors ? data.errors[0].message : data.message };
-      if (response.status === 401) return { error: "faça o login antes" };
-      return { error: "ocorreu um erro interno" };
+      if (response.status === 401) return { error: "Não autorizado" };
+      return { error: "Ocorreu um erro interno" };
     }
 
     const data = await response.text();

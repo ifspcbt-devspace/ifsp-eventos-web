@@ -1,6 +1,5 @@
 import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure} from "@nextui-org/react";
 import {BsClipboard2Check} from "react-icons/bs";
-import QrCodeModal from "@/components/events/subscription/qrcode/QrCodeModal";
 import {Dispatch, SetStateAction, useState} from "react";
 import PaymentModal from "./payment/PaymentModal";
 
