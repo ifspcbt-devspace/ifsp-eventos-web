@@ -14,8 +14,8 @@ export function isValidBirthDate(dataNascimento: string): boolean {
     mesAtual < dataNascimentoObj.getMonth() ||
     (mesAtual === dataNascimentoObj.getMonth() && diaAtual < dataNascimentoObj.getDate())
   ) {
-    return idade - 1 >= 13;
+    return idade - 1 >= 12;
   }
 
-  return idade >= 13;
+  return idade >= 12;
 }
