@@ -71,7 +71,7 @@ export interface Ticket {
 }
 
 export enum TicketStatus {
-  AVAILABLE = "Aguardando validação",
+  AVAILABLE = "Disponível",
   CONSUMED = "Validado",
   EXPIRED = "Expirado",
 }
