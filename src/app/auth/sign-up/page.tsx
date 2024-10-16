@@ -187,7 +187,7 @@ function Register() {
           <Input type={"date"} placeholder="Nascimento" autoComplete="off" name="date" title="Data de nascimento"
                  onValueChange={setBirthDate}
                  isInvalid={isBirthDateInvalid}
-                 errorMessage={"Você deve ter pelo menos 13 anos de idade"}
+                 errorMessage={"Você deve ter pelo menos 12 anos de idade"}
                  isRequired={true} classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}}/>
 
           <Input maxLength={16} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
