@@ -68,7 +68,7 @@ export default function UserAccount() {
         <div className={`w-full grid gap-y-12 grid-cols-10 px-4 xl:px-0`}>
 
           <div
-            className={`bg-white rounded-xl shadow-sm px-8 py-8 xl:col-start-3 xl:col-span-2 col-start-2 col-span-8`}>
+            className={`bg-white rounded-xl shadow-sm px-8 py-8 xl:col-start-3 xl:col-span-2 col-start-1 col-span-10`}>
             <span className={`text-2xl font-semibold`}>Detalhes da conta</span>
             <hr className={`my-4 w-full`}/>
 
@@ -109,7 +109,7 @@ export default function UserAccount() {
             </form>
           </div>
 
-          <UserTickets/>
+          <UserTickets userId={session.user.id}/>
         </div>
 
 
