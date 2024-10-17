@@ -1,12 +1,13 @@
 import React from "react";
 import './hero.css';
 import Link from "next/link";
-import Image from "next/image";
+import {RiShining2Fill} from "react-icons/ri";
 
 const Hero = () => {
   return (
     <div className="w-full py-20 grid grid-cols-10 light-color-gradient text-black px-4 xl:px-0">
-      <div className={`col-start-1 col-span-10 xl:col-start-3 xl:col-span-6 grid grid-rows-2 xl:grid-rows-1 gap-4 hero-grid`}>
+      <div
+        className={`col-start-1 col-span-10 xl:col-start-3 xl:col-span-6 grid grid-rows-2 xl:grid-rows-1 gap-4 hero-grid`}>
         <div className={`col-span-2 row-start-2 xl:row-start-1 xl:row-span-2 xl:col-span-1 xl:max-w-[500px]`}>
           <span className={`heading`}>
           Divirta-se em nossos eventos
@@ -20,7 +21,7 @@ const Hero = () => {
         </div>
 
         <div className={`col-span-2 row-start-1 xl:row-span-2 xl:col-span-1 flex justify-end`}>
-          <Image src={`/images/hero.svg`} alt={"hero image"} width={337} height={331}/>
+          <RiShining2Fill size={330} className={`text-[#000]`}/>
         </div>
 
       </div>
