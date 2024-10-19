@@ -67,7 +67,8 @@ export function EventView({params}: { params: { id: string } }) {
 
   const handleSubscription = async (ticketSaleId: string) => {
     if (enrollment) {
-      toast.warn("Você já está inscrito neste evento", toastConfig);
+      router.push(`/user/account`);
+      toast.info("Faça o download do seu ingresso", toastConfig);
       return;
     }
     setTicketSaleID(ticketSaleId);
@@ -107,7 +108,10 @@ export function EventView({params}: { params: { id: string } }) {
       <DarkPageHeader title={`${event?.name}`}
                       imgUrl={imgUrl}
                       onError={() => setImgUrl("/images/default-thumb.png")}
-                      subtitle={`Por IFSP Cubatão - ${event?.init_date.toLocaleString([], {dateStyle: "short"})}`}/>
+                      subtitle={`Por IFSP Cubatão - ${event?.init_date.toLocaleString("pt-BR", {
+                        day: "2-digit",
+                        month: "2-digit"
+                      })}`}/>
       <div className="py-10 grid grid-cols-10 w-full px-4 xl:px-0">
         <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
           <div className="xl:grid grid-cols-[1fr_400px] grid-rows-auto grid-flow-col gap-8">
@@ -123,7 +127,7 @@ export function EventView({params}: { params: { id: string } }) {
                     }}>
                       <div key={index}
                            className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
-                        {enrollment ? "Inscrito" : "Pague: " + ticket.price.toLocaleString('pt-br', {
+                        {enrollment ? "Veja seus ingressos" : "Pague: " + ticket.price.toLocaleString('pt-br', {
                           style: 'currency',
                           currency: 'BRL'
                         })}

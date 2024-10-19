@@ -21,7 +21,6 @@ export default function Header({search = ""}: { search?: string }) {
   const handleLogout = async () => {
     await logout();
   }
-  if (isLogged === undefined) return <></>;
 
   return (<>
     <div className={`w-full grid grid-cols-10 bg-white text-black sticky top-0 z-50 px-4 xl:px-0`}>
@@ -56,7 +55,7 @@ export default function Header({search = ""}: { search?: string }) {
           <div className={`inline-block cursor-pointer text-neutral-500 duration-200 hover:text-neutral-950`}>
             <Link href={"/events"}>Eventos</Link>
           </div>
-          {isLogged ? (
+          {isLogged === undefined ? <></> : isLogged ? (
             <>
               <div className={`inline-block cursor-pointer text-neutral-500 duration-200 hover:text-neutral-950`}>
                 <Link href={"/user/account"}>Conta</Link>
@@ -91,7 +90,7 @@ export default function Header({search = ""}: { search?: string }) {
               <Link href={"/events"}>Eventos</Link>
             </DropdownItem>
             <DropdownItem key="loginoraccount">
-              {isLogged ? (
+              {isLogged === undefined ? <></> : isLogged ? (
                 <Link href={"/user/account"}>Conta</Link>
               ) : (
                 <Link href={"/auth/log-in"}>Entrar</Link>
