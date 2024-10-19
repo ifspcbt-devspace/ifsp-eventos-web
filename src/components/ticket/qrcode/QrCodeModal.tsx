@@ -54,7 +54,7 @@ export default function QrCodeModal({
                 />
               </p>
               <p>O seu ingresso foi enviado por e-mail, porém você pode baixá-lo por aqui.</p>
-              <p>Válido em: {ticket.valid_in.toLocaleString([], {dateStyle: "short"})}</p>
+              <p>Válido em: {ticket.valid_in.toLocaleString("pt-BR", {day: "2-digit", month: "2-digit"})}</p>
             </ModalBody>
             <ModalFooter>
               <Button color="default" variant="light" onClick={onClose}>

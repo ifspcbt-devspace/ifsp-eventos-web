@@ -34,7 +34,7 @@ export default function ({
           className="overflow-clip box-content object-cover align-middle max-w-full w-full h-full inline-block"
         />
       </div>
-      <div className={"text-sm opacity-75 mb-1.5"}>Por {event.owner + " - " + event.date.toLocaleString([], {
+      <div className={"text-sm opacity-75 mb-1.5"}>Por {event.owner + " - " + event.date.toLocaleString("pt-BR", {
         day: "2-digit",
         month: "2-digit"
       })}</div>
