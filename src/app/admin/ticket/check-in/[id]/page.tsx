@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page({ params }: { params: { id: string } }) {
   return (
-    <div className="w-full h-dvh flex flex-col justify-center items-center">
+    <div className="w-full h-dvh flex flex-col justify-center items-center bg-[#000] text-white">
       <Suspense fallback={<Loading />}>
         <TicketUI id={params.id} />
       </Suspense>
