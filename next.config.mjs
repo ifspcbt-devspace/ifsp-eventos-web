@@ -19,6 +19,11 @@ const nextConfig = {
                 destination: '/admin/ticket/check-in/:id',
                 permanent: false,
             },
+            {
+                source: '/admin/ticket/:id/check',
+                destination: '/admin/ticket/check-in/:id',
+                permanent: false,
+            }
         ]
     },
 
