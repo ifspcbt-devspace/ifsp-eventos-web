@@ -1,6 +1,6 @@
 "use client";
 
-import {Event, Ticket} from "@/models";
+import {Event, Ticket, TicketStatus} from "@/models";
 import "./style.css";
 import {consumeTicket, getTicket} from "@/server-actions/ticket.action";
 import {getUser} from "@/server-actions/user.action";
@@ -23,7 +23,11 @@ export default function TicketUI({id}: { id: string }) {
     setLoading(true);
     const resp = await consumeTicket(id);
     if (resp.error) toast.error(resp.error, toastConfig);
-    else toast.success("Ticket validado com sucesso!", toastConfig);
+    else {
+      toast.success("Ticket validado com sucesso!", toastConfig);
+      // @ts-ignore
+      setTicket((ticket) => ({...ticket, status: TicketStatus.CONSUMED}));
+    }
     setLoading(false);
   };
 
