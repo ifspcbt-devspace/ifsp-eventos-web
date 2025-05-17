@@ -7,17 +7,17 @@ export default (
   {
     action, isOpenConfirmModal, onOpenChangeConfirmModal
   }: {
-    action?: (open: () => void, setPreferenceURL: Dispatch<SetStateAction<string>>) => void,
+    action?: (open: () => void, setPreferenceId: Dispatch<SetStateAction<string>>) => void,
     isOpenConfirmModal: boolean,
     onOpenChangeConfirmModal: () => void
   }) => {
-  const [preferenceURL, setPreferenceURL] = useState('');
+  const [preferenceId, setPreferenceId] = useState('');
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
 
   return (
     <>
-      <PaymentModal preferenceURL={preferenceURL} isOpen={isOpen} onOpenChange={onOpenChange}/>
+      <PaymentModal preferenceId={preferenceId} isOpen={isOpen} onOpenChange={onOpenChange}/>
       <Modal isOpen={isOpenConfirmModal} onOpenChange={onOpenChangeConfirmModal} placement="center" size="xs">
         <ModalContent>
           {(onClose) => (
@@ -39,7 +39,7 @@ export default (
                   color="primary"
                   onClick={() => {
                     onClose();
-                    if (action) action(onOpen, setPreferenceURL);
+                    if (action) action(onOpen, setPreferenceId);
                   }}
                 >
                   Confirmar

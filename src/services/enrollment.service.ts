@@ -1,13 +1,10 @@
-import { AuthService } from "./auth.service";
-import { PaymentService } from "./payment.service";
+import {AuthService} from "./auth.service";
 
 export class EnrollmentService {
   authService: AuthService;
-  paymentService: PaymentService;
 
   constructor() {
     this.authService = new AuthService();
-    this.paymentService = new PaymentService();
   }
 
   async listCustomerEnrollments() {
@@ -23,8 +20,8 @@ export class EnrollmentService {
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
+      if (response.status === 401) return {error: "Não autorizado"};
+      return {error: "Ocorreu um erro interno ao consultar as inscrições"};
     }
 
     data.items = data.items.map((item: any) => {
@@ -42,11 +39,13 @@ export class EnrollmentService {
   }
 
   async enroll(eventId: string, ticketSaleId: string) {
-    const response = await fetch(`${process.env.API_BASE_URL}/enrollment`, {
+    const response = await fetch(`${process.env.API_BASE_URL}/order/pay`, {
       method: "POST",
       body: JSON.stringify({
         event_id: eventId,
-        ticket_sale_id: ticketSaleId,
+        items: [
+          {ticket_sale_id: ticketSaleId}
+        ],
       }),
       headers: {
         "Content-Type": "application/json",
@@ -57,49 +56,20 @@ export class EnrollmentService {
     if (response.status !== 201) {
       const data = await response.json();
       if (response.status === 400)
-        return { error: data.errors ? data.errors[0].message : data.message };
-      if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
+        return {error: data.errors ? data.errors[0].message : data.message};
+      if (response.status === 401) return {error: "Não autorizado"};
+      return {error: "Ocorreu um erro interno ao inscrever-se"};
     }
 
-    const data = await response.text();
-
-    const preferenceURL = await this.paymentService.createPreference(data);
+    const data = await response.json();
+    const paymentUrl = data.payment_url;
+    const urlParams = new URLSearchParams(new URL(paymentUrl).search);
+    const preferenceId = urlParams.get("pref_id");
 
     return {
-      ticketId: data,
-      preferenceURL: preferenceURL,
+      orderId: data.id,
+      preferenceId: preferenceId,
     };
   }
 
-  async upsertEnroll(eventId: string, ticketSaleId: string) {
-    const response = await fetch(`${process.env.API_BASE_URL}/enrollment/upsert`, {
-      method: "POST",
-      body: JSON.stringify({
-        event_id: eventId,
-        ticket_sale_id: ticketSaleId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${await this.authService.getToken()}`,
-      },
-    });
-
-    if (response.status !== 201) {
-      const data = await response.json();
-      if (response.status === 400)
-        return { error: data.errors ? data.errors[0].message : data.message };
-      if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
-    }
-
-    const data = await response.text();
-
-    const urlParams = new URLSearchParams(new URL(data).search);
-    const prefId = urlParams.get("pref_id");
-
-    return {
-      preferenceURL: prefId
-    };
-  }
 }

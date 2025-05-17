@@ -10,7 +10,7 @@ import DarkPageHeader from "@/components/DarkPageHeader";
 import Link from "next/link";
 import {useDisclosure} from "@nextui-org/react";
 import ConfirmSubscription from "@/components/events/subscription/ConfirmSubscription";
-import {listUserEnrollments, upsertEnrollUser} from "@/server-actions/enrollment.action";
+import {enrollUser, listUserEnrollments} from "@/server-actions/enrollment.action";
 import {getSession} from "@/server-actions/auth.action";
 import "./eventview.css"
 
@@ -29,7 +29,7 @@ export function EventView({params}: { params: { id: string } }) {
   const [ticketSales, setTicketSales] = useState<TicketSale[]>();
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [ticketSaleID, setTicketSaleID] = useState<string>("");
-  const [imgUrl, setImgUrl] = useState("/images/default-thumb.png");
+  const [imgUrl, setImgUrl] = useState("/images/default_thumb.png");
   const [session, setSession] = useState<SessionData>();
   const pathname = usePathname();
   const router = useRouter();
@@ -49,7 +49,7 @@ export function EventView({params}: { params: { id: string } }) {
         return;
       }
       setEvent(event);
-      setImgUrl(`https://eventos.ifspcbt.shop/api/v1/event/${event.id}/thumbnail`);
+      setImgUrl(`${process.env.API_BASE_URL}/event/${event.id}/thumbnail`);
       setTicketSales(ticketSales);
       const sessionData = await getSession();
       if (sessionData) setSession(sessionData);
@@ -75,7 +75,7 @@ export function EventView({params}: { params: { id: string } }) {
     onOpen();
   }
 
-  const handleAction = async (open: () => void, setPreferenceURL: Dispatch<SetStateAction<string>>) => {
+  const handleAction = async (open: () => void, setPreferenceId: Dispatch<SetStateAction<string>>) => {
     if (event) {
       if (!session) {
         router.push(`/auth/log-in?redir=${pathname + `?open=true`}`);
@@ -85,14 +85,13 @@ export function EventView({params}: { params: { id: string } }) {
         router.push(`/user/account`);
         return;
       }
-      const resp = await upsertEnrollUser(event.id, ticketSaleID);
+      const resp = await enrollUser(event.id, ticketSaleID);
       if ("error" in resp) {
         toast.error(resp.error, toastConfig);
-      } else if (resp.preferenceURL) {
-        setPreferenceURL(resp.preferenceURL);
+      } else if (resp.preferenceId) {
+        setPreferenceId(resp.preferenceId);
         open();
       }
-
     }
   }
 
@@ -107,7 +106,7 @@ export function EventView({params}: { params: { id: string } }) {
 
       <DarkPageHeader title={`${event?.name}`}
                       imgUrl={imgUrl}
-                      onError={() => setImgUrl("/images/default-thumb.png")}
+                      onError={() => setImgUrl("/images/default_thumb.png")}
                       subtitle={`Por IFSP Cubatão - ${event?.init_date.toLocaleString("pt-BR", {
                         day: "2-digit",
                         month: "2-digit"

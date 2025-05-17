@@ -27,7 +27,7 @@ export class TicketService {
       if (response.status === 401) return {error: "Faça o login antes"};
       if (response.status === 404) return {error: "Ticket não encontrado"};
       if (response.status === 403) return {error: "Acesso negado"};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao conferir o ticket"};
     }
     return {}
   }
@@ -47,7 +47,7 @@ export class TicketService {
       if (response.status === 401) return {error: "Faça o login antes"};
       if (response.status === 404) return {error: "Ticket não encontrado"};
       if (response.status === 403) return {error: "Acesso negado"};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao consultar o ticket"};
     }
 
     return {
@@ -83,7 +83,7 @@ export class TicketService {
       if (response.status === 401) return {error: "Faça o login antes"};
       if (response.status === 404) return {error: "Usuário não encontrado"};
       if (response.status === 403) return {error: "Acesso negado"};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao consultar os ingressos"};
     }
 
 

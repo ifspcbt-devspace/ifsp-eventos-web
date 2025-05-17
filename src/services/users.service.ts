@@ -30,7 +30,7 @@ export class UserService {
       if (response.status === 401) return {error: "Faça o login antes"};
       if (response.status === 404) return {error: "Usuário não encontrado"};
       if (response.status === 403) return {error: "Acesso negado"};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao atualizar o usuário"};
     }
 
     const user = {
@@ -66,7 +66,7 @@ export class UserService {
       if (response.status === 401) return {error: "Faça o login antes"};
       if (response.status === 404) return {error: "Usuário não encontrado"};
       if (response.status === 403) return {error: "Acesso negado"};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao consultar o usuário"};
     }
 
     return {

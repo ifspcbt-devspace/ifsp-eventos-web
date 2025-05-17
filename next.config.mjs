@@ -8,7 +8,7 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'eventos.ifspcbt.shop',
                 port: '',
-                pathname: '/api/v1/**',
+                pathname: '/**',
             },
         ],
     },

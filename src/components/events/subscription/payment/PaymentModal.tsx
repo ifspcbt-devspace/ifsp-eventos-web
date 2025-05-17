@@ -4,13 +4,13 @@ import {initMercadoPago, Wallet} from '@mercadopago/sdk-react';
 
 
 export default function PaymentModal({
-                                       preferenceURL, isOpen,
+                                       preferenceId, isOpen,
                                        onOpenChange
-                                     }: { preferenceURL: string, isOpen: boolean, onOpenChange: () => void }) {
+                                     }: { preferenceId: string, isOpen: boolean, onOpenChange: () => void }) {
 
   useEffect(() => {
-    initMercadoPago('APP_USR-49633992-519d-470f-b9cf-1e3c1449c636', {locale: 'pt-BR'});
-  }, [preferenceURL]);
+    initMercadoPago((process.env.MERCADO_PAGO_PUBLIC_KEY as string), {locale: 'pt-BR'});
+  }, [preferenceId]);
 
   return (
     <Modal isOpen={isOpen} classNames={{closeButton: "hidden"}} onOpenChange={onOpenChange} placement="center">
@@ -26,7 +26,7 @@ export default function PaymentModal({
               </div>
               <div className={`flex justify-center items-center`}>
                 <div className={`max-w-72`}>
-                  <Wallet initialization={{preferenceId: preferenceURL}}/>
+                  <Wallet initialization={{preferenceId: preferenceId}}/>
                 </div>
               </div>
               <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mt-2"

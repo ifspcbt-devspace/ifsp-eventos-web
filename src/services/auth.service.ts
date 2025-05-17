@@ -41,7 +41,7 @@ export class AuthService {
       if (response.status === 409) return {error: "Usuário já existe"};
       if (response.status === 400)
         return {error: data.errors ? data.errors[0].message : data.message};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao cadastrar o usuário"};
     }
   }
 
@@ -58,7 +58,7 @@ export class AuthService {
       if (response.status === 404) return {error: "Token não encontrado"};
       if (response.status === 400)
         return {error: data.errors ? data.errors[0].message : data.message};
-      return {error: "Ocorreu um erro interno"};
+      return {error: "Ocorreu um erro interno ao confirmar a conta"};
     }
   }
 
@@ -79,7 +79,7 @@ export class AuthService {
     if (response.status === 404) return {error: "Usuário não encontrado"};
     if (response.status === 400)
       return {error: data.errors ? data.errors[0].message : data.message};
-    if (!response.ok) return {error: "Ocorre um erro interno"};
+    if (!response.ok) return {error: "Ocorre um erro interno ao fazer login"};
 
     const session: SessionData = {
       access_token: data.token,

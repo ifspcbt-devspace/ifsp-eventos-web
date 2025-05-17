@@ -32,7 +32,7 @@ export class EventService {
     const data = await response.json();
     if (response.status !== 200) {
       if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
+      return { error: "Ocorreu um erro interno ao consultar os eventos" };
     }
 
     data.items = data.items.map((item: any) => {
@@ -75,7 +75,7 @@ export class EventService {
     const data = await response.json();
     if (response.status !== 200) {
       if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
+      return { error: "Ocorreu um erro interno ao consultar o evento" };
     }
 
     return {
@@ -137,7 +137,7 @@ export class EventService {
     const data = await response.json();
     if (response.status !== 200) {
       if (response.status === 401) return { error: "Não autorizado" };
-      return { error: "Ocorreu um erro interno" };
+      return { error: "Ocorreu um erro interno ao consultar os ingressos a venda" };
     }
 
     data.items = data.items.map((item: any) => {
