@@ -20,7 +20,7 @@ export class EnrollmentService {
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return {error: "Não autorizado"};
+      if (response.status === 401) return {error: "Não autorizado para listar inscrições"};
       return {error: "Ocorreu um erro interno ao consultar as inscrições"};
     }
 
@@ -57,7 +57,7 @@ export class EnrollmentService {
       const data = await response.json();
       if (response.status === 400)
         return {error: data.errors ? data.errors[0].message : data.message};
-      if (response.status === 401) return {error: "Não autorizado"};
+      if (response.status === 401) return {error: "Não autorizado para inscrever-se"};
       return {error: "Ocorreu um erro interno ao inscrever-se"};
     }
 

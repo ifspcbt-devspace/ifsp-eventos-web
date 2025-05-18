@@ -31,7 +31,7 @@ export class EventService {
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return { error: "Não autorizado" };
+      if (response.status === 401) return { error: "Não autorizado para consultar os eventos" };
       return { error: "Ocorreu um erro interno ao consultar os eventos" };
     }
 
@@ -74,7 +74,7 @@ export class EventService {
 
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return { error: "Não autorizado" };
+      if (response.status === 401) return { error: "Não autorizado para consultar o evento" };
       return { error: "Ocorreu um erro interno ao consultar o evento" };
     }
 
@@ -126,7 +126,7 @@ export class EventService {
 
   async getTicketSales(id: string) : Promise<{error: string} | TicketSale[]> {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/event/${id}/ticketSale`,
+      `${process.env.API_BASE_URL}/product/${id}/ticketSale`,
       {
         method: "GET",
         headers: {
@@ -136,7 +136,7 @@ export class EventService {
     );
     const data = await response.json();
     if (response.status !== 200) {
-      if (response.status === 401) return { error: "Não autorizado" };
+      if (response.status === 401) return { error: "Não autorizado para consultar os ingressos do evento" };
       return { error: "Ocorreu um erro interno ao consultar os ingressos a venda" };
     }
 
