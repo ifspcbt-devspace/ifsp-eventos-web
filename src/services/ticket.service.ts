@@ -11,7 +11,7 @@ export class TicketService {
 
   async consume(id: string) {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/ticket/${id}/check`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/ticket/${id}/check`,
       {
         method: "PATCH",
         headers: {
@@ -33,7 +33,7 @@ export class TicketService {
   }
 
   async get(id: string) {
-    const response = await fetch(process.env.API_BASE_URL + `/ticket/${id}`, {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + `/ticket/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${await this.authService.getToken()}`,
@@ -67,7 +67,7 @@ export class TicketService {
     error: string
   }> {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/ticket/search/user/${id}?terms=${terms}&page=${page}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/ticket/search/user/${id}?terms=${terms}&page=${page}`,
       {
         method: "GET",
         headers: {

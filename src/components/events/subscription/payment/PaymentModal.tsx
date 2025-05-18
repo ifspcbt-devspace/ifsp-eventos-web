@@ -9,7 +9,7 @@ export default function PaymentModal({
                                      }: { preferenceId: string, isOpen: boolean, onOpenChange: () => void }) {
 
   useEffect(() => {
-    initMercadoPago((process.env.MERCADO_PAGO_PUBLIC_KEY as string), {locale: 'pt-BR'});
+    initMercadoPago((process.env.NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY as string), {locale: 'pt-BR'});
   }, [preferenceId]);
 
   return (

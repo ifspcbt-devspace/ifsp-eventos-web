@@ -4,7 +4,7 @@ import { Event, EventStatus, TicketSale } from "@/models";
 export class EventService {
   async getEvents(query?: string, max?: number) {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/event/search?perPage=${max || 10}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/event/search?perPage=${max || 10}`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -65,7 +65,7 @@ export class EventService {
   }
 
   async getEvent(id: string): Promise<{ error: string } | Event> {
-    const response = await fetch(`${process.env.API_BASE_URL}/event/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/event/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -105,7 +105,7 @@ export class EventService {
 
   async getThumbnail(id: string) {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/event/${id}/thumbnail`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/event/${id}/thumbnail`,
       {
         method: "GET",
       }
@@ -126,7 +126,7 @@ export class EventService {
 
   async getTicketSales(id: string) : Promise<{error: string} | TicketSale[]> {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/product/${id}/ticketSale`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product/${id}/ticketSale`,
       {
         method: "GET",
         headers: {

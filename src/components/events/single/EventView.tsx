@@ -49,7 +49,7 @@ export function EventView({params}: { params: { id: string } }) {
         return;
       }
       setEvent(event);
-      setImgUrl(`${process.env.API_BASE_URL}/event/${event.id}/thumbnail`);
+      setImgUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/event/${event.id}/thumbnail`);
       setTicketSales(ticketSales);
       const sessionData = await getSession();
       if (sessionData) setSession(sessionData);

@@ -9,7 +9,7 @@ export class UserService {
 
   async updateUser(data: { document: string }) {
     const session = await this.authService.getSession();
-    const response = await fetch(`${process.env.API_BASE_URL}/auth/${session?.user.id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/${session?.user.id}`, {
       method: "PUT",
       body: JSON.stringify({
         name: session?.user.name,
@@ -52,7 +52,7 @@ export class UserService {
   }
 
   async getUser(id: string) {
-    const response = await fetch(`${process.env.API_BASE_URL}/auth/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${await this.authService.getToken()}`,

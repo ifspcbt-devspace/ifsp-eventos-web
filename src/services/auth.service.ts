@@ -19,7 +19,7 @@ export class AuthService {
     document: string;
     phone_number: string;
   }) {
-    const response = await fetch(`${process.env.API_BASE_URL}/auth/register`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`, {
       method: "POST",
       body: JSON.stringify({
         name: input.name,
@@ -47,7 +47,7 @@ export class AuthService {
 
   async confirmAccount(token: string) {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/auth/activate/${token}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/activate/${token}`,
       {
         method: "POST",
       }
@@ -63,7 +63,7 @@ export class AuthService {
   }
 
   async login(input: { email: string; password: string }) {
-    const response = await fetch(`${process.env.API_BASE_URL}/auth/login`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
       method: "POST",
       body: JSON.stringify({
         login: input.email,

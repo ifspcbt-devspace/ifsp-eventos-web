@@ -49,7 +49,7 @@ const Events = ({max, search, all = false}: { max?: number, search?: string, all
               description: event.description,
               name: event.name,
               owner: "IFSP Cubatão",
-              imgUrl: `${process.env.API_BASE_URL}/v1/event/${event.id}/thumbnail`
+              imgUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/event/${event.id}/thumbnail`
             }}/>)
           })
         }

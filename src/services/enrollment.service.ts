@@ -9,7 +9,7 @@ export class EnrollmentService {
 
   async listCustomerEnrollments() {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/enrollment/list`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/enrollment/list`,
       {
         method: "GET",
         headers: {
@@ -39,7 +39,7 @@ export class EnrollmentService {
   }
 
   async enroll(eventId: string, ticketSaleId: string) {
-    const response = await fetch(`${process.env.API_BASE_URL}/order/pay`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/order/pay`, {
       method: "POST",
       body: JSON.stringify({
         event_id: eventId,
