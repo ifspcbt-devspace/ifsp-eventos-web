@@ -47,7 +47,7 @@ export default function QrCodeModal({
               <p className="mx-auto mb-2">
                 <QRCodeCanvas
                   ref={canvasRef}
-                  value={`https://eventos.ifspcbt.shop/admin/ticket/check-in/${ticket.id}`}
+                  value={`https://eventos.gremioifspcbt.shop/admin/ticket/check-in/${ticket.id}`}
                   size={256}
                   level={"M"}
                   title={"Ingresso do Evento"}

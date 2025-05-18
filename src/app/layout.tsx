@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "IFSP Eventos",
   },
   description: "Eventos do IFSP Cubatão",
-  metadataBase: new URL("https://eventos.ifspcbt.shop/"),
+  metadataBase: new URL("https://eventos.gremioifspcbt.shop/"),
   openGraph: {
     siteName: "IFSP Eventos",
     title: "IFSP Eventos",

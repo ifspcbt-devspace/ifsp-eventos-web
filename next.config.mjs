@@ -6,7 +6,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'eventos.ifspcbt.shop',
+                hostname: 'eventos.gremioifspcbt.shop',
                 port: '',
                 pathname: '/**',
             },
