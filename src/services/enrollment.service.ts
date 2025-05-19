@@ -53,7 +53,7 @@ export class EnrollmentService {
       },
     });
 
-    if (response.status !== 201) {
+    if (response.status !== 200) {
       const data = await response.json();
       if (response.status === 400)
         return {error: data.errors ? data.errors[0].message : data.message};
