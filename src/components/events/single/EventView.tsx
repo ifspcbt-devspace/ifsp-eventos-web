@@ -2,7 +2,7 @@
 
 import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
 import {Enrollment, Event, SessionData, TicketSale} from "@/models";
-import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {getEvent, getTicketSales} from "@/server-actions/event.action";
 import {toast} from "react-toastify";
 import {toastConfig} from "@/constants";
@@ -23,7 +23,6 @@ export default function EventViewComponent({params}: { params: { id: string } })
 }
 
 export function EventView({params}: { params: { id: string } }) {
-  const searchParams = useSearchParams();
   const [event, setEvent] = useState<Event>();
   const [enrollment, setEnrollment] = useState();
   const [ticketSales, setTicketSales] = useState<TicketSale[]>();
@@ -60,7 +59,6 @@ export function EventView({params}: { params: { id: string } }) {
         enrollment = enrollments.find((enrollment: Enrollment) => enrollment.event_id === event.id);
         setEnrollment(enrollment);
       }
-      if (searchParams.get("open") && !enrollment) onOpen();
     }
     load();
   }, [params.id]);
@@ -78,7 +76,7 @@ export function EventView({params}: { params: { id: string } }) {
   const handleAction = async (open: () => void, setPreferenceId: Dispatch<SetStateAction<string>>) => {
     if (event) {
       if (!session) {
-        router.push(`/auth/log-in?redir=${pathname + `?open=true`}`);
+        router.push(`/auth/log-in?redir=${pathname}`);
         return;
       }
       if (!session.user.document_initials) {
