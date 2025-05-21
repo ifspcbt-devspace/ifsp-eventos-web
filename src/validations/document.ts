@@ -1,13 +1,14 @@
 export function isRG(rg: string): boolean {
-  // Remove todos os caracteres não numéricos (pontos, hífens, espaços)
-  const cleanRG = rg.replace(/[^\dXx]/g, "");
+  // Remove todos os caracteres que não são letras ou números
+  const cleanRG = rg.replace(/[^a-zA-Z0-9]/g, "");
 
-  // Verifica se o tamanho do RG é válido (8 dígitos + dígito verificador opcional)
-  if (cleanRG.length < 8 || cleanRG.length > 9) {
+  // Verifica se o tamanho está dentro de um intervalo razoável (ajustável)
+  if (cleanRG.length < 5 || cleanRG.length > 9) {
     return false;
   }
 
-  return /^[0-9]{7,9}[0-9Xx]?$/.test(cleanRG);
+  // Valida se o conteúdo possui apenas letras e números
+  return /^[a-zA-Z0-9]{5,9}$/.test(cleanRG);
 }
 
 export function isCPF(CPF: string): boolean {
