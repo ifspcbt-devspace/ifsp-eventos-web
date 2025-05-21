@@ -57,7 +57,7 @@ function Register() {
   });
   const documentRef = useMask({
     mask: "nn.nnn.nnn-n",
-    replacement: {n: /\d/},
+    replacement: {n: /[a-zA-Z0-9]/},
   });
 
   const validatePassword = (value: string) => {
