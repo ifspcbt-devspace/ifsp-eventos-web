@@ -6,13 +6,21 @@ import {consumeTicket, getTicket} from "@/server-actions/ticket.action";
 import {getUser} from "@/server-actions/user.action";
 import {Button} from "@nextui-org/react";
 import {useRouter} from "next/navigation";
-import {useEffect, useState} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import {toast} from "react-toastify";
 import {toastConfig} from "@/constants";
 import {getEvent} from "@/server-actions/event.action";
 import Loading from "@/app/auth/email/confirmation/[token]/loading";
 
-export default function TicketUI({id}: { id: string }) {
+export default function TicketCheckComponent({params}: { params: { id: string } }) {
+  return (
+    <Suspense>
+      <TicketUI params={params}/>
+    </Suspense>
+  )
+}
+
+export function TicketUI({params}: { params: { id: string } }) {
   const [ticket, setTicket] = useState<Ticket>();
   const [event, setEvent] = useState<Event>();
   const [user, setUser] = useState<any>();
@@ -21,7 +29,7 @@ export default function TicketUI({id}: { id: string }) {
   const router = useRouter();
   const handleValidate = async () => {
     setLoading(true);
-    const resp = await consumeTicket(id);
+    const resp = await consumeTicket(params.id);
     if (resp.error) toast.error(resp.error, toastConfig);
     else {
       toast.success("Ticket validado com sucesso!", toastConfig);
@@ -32,12 +40,8 @@ export default function TicketUI({id}: { id: string }) {
   };
 
   useEffect(() => {
-    const fetchTicket = async (id: string) => {
-      if (!id || id === "undefined") {
-        return;
-      }
-
-      const resp = await getTicket(id);
+    const fetchTicket = async () => {
+      const resp = await getTicket(params.id);
       if ("error" in resp) {
         router.push("/");
         toast.error(resp.error, toastConfig);
@@ -62,8 +66,8 @@ export default function TicketUI({id}: { id: string }) {
       setUser(respUser);
       setIsFetching(false);
     };
-    fetchTicket(id);
-  }, [router, id]);
+    fetchTicket();
+  }, [params.id]);
 
   const getAge = (birthDate: string) => {
     if (!birthDate) return "";
