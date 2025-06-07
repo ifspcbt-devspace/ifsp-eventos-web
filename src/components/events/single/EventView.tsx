@@ -113,7 +113,7 @@ export function EventView({params}: { params: { id: string } }) {
         <div className={"col-start-1 col-span-10 xl:col-start-3 xl:col-span-6"}>
           <div className="xl:grid grid-cols-[1fr_400px] grid-rows-auto grid-flow-col gap-8">
             <div className="row-start-1 col-start-1 col-span-2 xl:col-span-1 font-semibold relative">
-              <p className="text-[12px] md:text-lg mb-8 block">{event?.description}</p>
+              <p className="text-[12px] md:text-lg mb-8 block whitespace-pre-line">{event?.description}</p>
               {
                 ticketSales &&
                 ticketSales.length > 0 ? (
