@@ -57,7 +57,7 @@ export function TicketUI({params}: { params: { id: string } }) {
       }
       setEvent(response);
 
-      const respUser = await getUser(resp.user_id);
+      const respUser = await getUser(resp.enrollment.user_id);
       if ("error" in respUser) {
         router.push("/");
         toast.error(respUser.error, toastConfig);

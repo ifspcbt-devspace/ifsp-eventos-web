@@ -53,7 +53,14 @@ export class TicketService {
     return {
       id: data.id,
       event_id: data.event_id,
-      user_id: data.user_id,
+      enrollment: {
+        id: data.enrollment.id,
+        user_id: data.enrollment.user_id,
+        event_id: data.enrollment.event_id,
+        status: data.enrollment.status,
+        created_at: data.enrollment.created_at,
+        updated_at: data.enrollment.updated_at,
+      },
       description: data.description,
       valid_in: parseAbsoluteToLocal(data.valid_in + "T00:00:00-03:00").toDate(),
       expired_in: parseAbsoluteToLocal(data.expired_in + "T00:00:00-03:00").toDate(),
@@ -91,7 +98,14 @@ export class TicketService {
       return {
         id: ticket.id,
         event_id: ticket.event_id,
-        user_id: ticket.user_id,
+        enrollment: {
+          id: ticket.enrollment.id,
+          user_id: ticket.enrollment.user_id,
+          event_id: ticket.enrollment.event_id,
+          status: ticket.enrollment.status,
+          created_at: ticket.enrollment.created_at,
+          updated_at: ticket.enrollment.updated_at,
+        },
         description: ticket.description,
         valid_in: parseAbsoluteToLocal(ticket.valid_in + "T00:00:00-03:00").toDate(),
         expired_in: parseAbsoluteToLocal(ticket.expired_in + "T00:00:00-03:00").toDate(),

@@ -40,7 +40,7 @@ export interface Event {
   };
 }
 
-export interface TicketSale{
+export interface TicketSale {
   id: string;
   event_id: string;
   name: string;
@@ -60,8 +60,8 @@ export enum EventStatus {
 
 export interface Ticket {
   id: string;
+  enrollment: Enrollment;
   event_id: string;
-  user_id: string;
   description: string;
   valid_in: Date;
   expired_in: Date;
