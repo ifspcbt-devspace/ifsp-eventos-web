@@ -33,6 +33,10 @@ export default function TicketUI({id}: { id: string }) {
 
   useEffect(() => {
     const fetchTicket = async (id: string) => {
+      if (!id || id === "undefined") {
+        return;
+      }
+
       const resp = await getTicket(id);
       if ("error" in resp) {
         router.push("/");
@@ -59,7 +63,7 @@ export default function TicketUI({id}: { id: string }) {
       setIsFetching(false);
     };
     fetchTicket(id);
-  }, [router]);
+  }, [router, id]);
 
   const getAge = (birthDate: string) => {
     if (!birthDate) return "";
