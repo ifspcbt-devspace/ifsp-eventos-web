@@ -15,7 +15,7 @@ const Footer = ({className} : {className?: string}) => {
                                                                           href={`https://github.com/ifspcbt`}>IFSPCBT
           Informática</Link>.</p>
         <p className="opacity-75 text-small block">
-          © 2024 IFSP Eventos. Todos os direitos reservados.
+          © 2025 IFSP Eventos. Todos os direitos reservados.
         </p>
       </div>
 
