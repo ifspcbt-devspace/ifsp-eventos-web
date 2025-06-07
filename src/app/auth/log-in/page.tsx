@@ -105,7 +105,7 @@ function Login() {
                  classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="email" autoComplete="email"
                  isRequired={true}/>
 
-          <Input maxLength={16} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
+          <Input maxLength={32} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
                  isInvalid={isPasswordInvalid} errorMessage=""
                  classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="password" autoComplete="password"
                  isRequired={true}/>

@@ -190,13 +190,13 @@ function Register() {
                  errorMessage={"Você deve ter pelo menos 12 anos de idade"}
                  isRequired={true} classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}}/>
 
-          <Input maxLength={16} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
+          <Input maxLength={32} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
                  errorMessage={"A senha deve conter pelo menos: 1 letra maiúscula; 1 letra minúscula; 1 número; 1 caractere especial; e 6 caracteres"}
                  isInvalid={isPasswordInvalid}
                  classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="password" autoComplete="off"
                  isRequired={true}/>
 
-          <Input maxLength={16} placeholder="Confirmar senha" name="confirm_password" title="Confirmar senha"
+          <Input maxLength={32} placeholder="Confirmar senha" name="confirm_password" title="Confirmar senha"
                  onValueChange={setConfirmPassword}
                  isInvalid={isConfirmPasswordInvalid}
                  errorMessage="A senha não corresponse a anterior"
