@@ -1,4 +1,4 @@
-import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@nextui-org/react";
+import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@heroui/react";
 import {FaUserCheck} from "react-icons/fa6";
 import Link from "next/link";
 
@@ -22,23 +22,26 @@ export default function ConfirmRegister(
                   <FaUserCheck className="text-7xl"
                   />
                 </p>
-                <p>Concorda com nossos termos de <Link href="/privacy-policy"
-                                                       target="_blank"
-                                                       className="inline-block text-blue-800"
-                                                       rel="noopener noreferrer">política e de privacidade</Link>;
-                  e termos de <Link href="/terms-conditions"
-                                    target="_blank"
-                                    className="inline-block text-blue-800"
-                                    rel="noopener noreferrer"
-                  >uso</Link>?</p>
+                <p>
+                  Você concorda com nossa
+                  <Link href="/privacy-policy" target="_blank" className="inline-block text-blue-800"
+                        rel="noopener noreferrer">
+                    política de privacidade
+                  </Link>
+                  e com os nossos
+                  <Link href="/terms-conditions" target="_blank" className="inline-block text-blue-800"
+                        rel="noopener noreferrer">
+                    termos de uso
+                  </Link>?
+                </p>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onClick={onClose}>
+                <Button color="danger" variant="light" onPress={onClose}>
                   Cancelar
                 </Button>
                 <Button
                   color="primary"
-                  onClick={() => {
+                  onPress={() => {
                     onClose();
                     if (action) action();
                   }}

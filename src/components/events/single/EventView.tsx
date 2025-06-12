@@ -1,18 +1,16 @@
 "use client";
 
 import React, {Dispatch, SetStateAction, Suspense, useEffect, useState} from "react";
-import {Enrollment, Event, SessionData, TicketSale} from "@/models";
+import {Enrollment, Event, EventStatus, SessionData, TicketSale} from "@/models";
 import {usePathname, useRouter} from "next/navigation";
 import {getEvent, getTicketSales} from "@/server-actions/event.action";
-import {toast} from "react-toastify";
-import {toastConfig} from "@/constants";
 import DarkPageHeader from "@/components/DarkPageHeader";
 import Link from "next/link";
-import {useDisclosure} from "@nextui-org/react";
+import {useDisclosure} from "@heroui/react";
 import ConfirmSubscription from "@/components/events/subscription/ConfirmSubscription";
 import {enrollUser, listUserEnrollments} from "@/server-actions/enrollment.action";
 import {getSession} from "@/server-actions/auth.action";
-import "./eventview.css"
+import {notifyError, notifyInfo} from "@/utils";
 
 export default function EventViewComponent({params}: { params: { id: string } }) {
   return (
@@ -38,13 +36,13 @@ export function EventView({params}: { params: { id: string } }) {
       const event = await getEvent(params.id);
       if ("error" in event) {
         router.replace("/");
-        toast.warn(event.error, toastConfig);
+        notifyError({description: event.error});
         return;
       }
       const ticketSales = await getTicketSales(event.id);
       if ("error" in ticketSales) {
         router.replace("/");
-        toast.warn(ticketSales.error, toastConfig);
+        notifyError({description: ticketSales.error});
         return;
       }
       setEvent(event);
@@ -66,7 +64,7 @@ export function EventView({params}: { params: { id: string } }) {
   const handleSubscription = async (ticketSaleId: string) => {
     if (enrollment) {
       router.push(`/user/account`);
-      toast.info("Faça o download do seu ingresso", toastConfig);
+      notifyInfo({description: "Faça o download do seu ingresso"});
       return;
     }
     setTicketSaleID(ticketSaleId);
@@ -85,7 +83,7 @@ export function EventView({params}: { params: { id: string } }) {
       }
       const resp = await enrollUser(event.id, ticketSaleID);
       if ("error" in resp) {
-        toast.error(resp.error, toastConfig);
+        notifyError({description: resp.error});
       } else if (resp.preferenceId) {
         setPreferenceId(resp.preferenceId);
         open();
@@ -118,13 +116,18 @@ export function EventView({params}: { params: { id: string } }) {
                 ticketSales &&
                 ticketSales.length > 0 ? (
                   ticketSales.map((ticket, index) => (
-                    <Link href={"#"} onClick={async (e) => {
-                      e.preventDefault()
+                    <Link key={ticket.id} href={"#"} onClick={async (e) => {
+                      e.preventDefault();
+                      if (event.status != EventStatus.OPENED && event.status != EventStatus.IN_PROGRESS) {
+                        notifyError({description: "As vendas para esse evento estão encerradas."});
+                        return;
+                      }
+
                       await handleSubscription(ticket.id)
                     }}>
                       <div key={index}
-                           className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-opacity-90 text-white py-2 px-7 rounded-md`}>
-                        {enrollment ? "Veja seus ingressos" : "Pague: " + ticket.price.toLocaleString('pt-br', {
+                           className={`inline-block cursor-pointer duration-200 bg-neutral-900 hover:bg-neutral-700 text-white py-2 px-7 rounded-md`}>
+                        {enrollment ? "Veja seus ingressos" : ticket.name + " - " + "por apenas " + ticket.price.toLocaleString('pt-br', {
                           style: 'currency',
                           currency: 'BRL'
                         })}

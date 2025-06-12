@@ -1,4 +1,4 @@
-import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@nextui-org/react";
+import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@heroui/react";
 import {useEffect} from "react";
 import {initMercadoPago, Wallet} from '@mercadopago/sdk-react';
 
@@ -35,7 +35,7 @@ export default function PaymentModal({
               </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="default" variant="light" onClick={onClose}>
+              <Button color="default" variant="light" onPress={onClose}>
                 Fechar
               </Button>
             </ModalFooter>

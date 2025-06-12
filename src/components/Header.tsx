@@ -6,7 +6,7 @@ import Link from "next/link";
 import {redirectSearch} from "@/server-actions/redirect-search.action";
 import {useEffect, useState} from "react";
 import {isAuthenticated, logout} from "@/server-actions/auth.action";
-import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
+import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@heroui/dropdown";
 import {FiMenu} from "react-icons/fi";
 
 export default function Header({search = ""}: { search?: string }) {

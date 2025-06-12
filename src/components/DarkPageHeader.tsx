@@ -1,4 +1,3 @@
-import "./darkpageheader.css"
 import Image from "next/image";
 
 export default function DarkPageHeader({title, imgUrl, subtitle, onError}: {

@@ -3,15 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import "./login.css";
-import {Button, Input} from "@nextui-org/react";
-import React, {FormEvent, Suspense, useEffect, useMemo, useState} from "react";
+import {Button, Input} from "@heroui/react";
+import React, {FormEvent, Suspense, useEffect, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
-import Loading from "@/app/auth/email/confirmation/[token]/loading";
-import {toast} from "react-toastify";
+import Loading from "@/components/Loading";
 import {isAuthenticated, login} from "@/server-actions/auth.action";
-import {toastConfig} from "@/constants";
-import {isEmail} from "@/validations";
+import {notifyError, notifySuccess} from "@/utils";
 
 export default function LoginPage() {
   return (
@@ -42,31 +39,11 @@ function Login() {
     load();
   }, [router]);
 
-  const validatePassword = (value: string) => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>\/?`~\-])[A-Za-z\d!@#$%^&*()_+[\]{};':"\\|,.<>\/?`~\-]{6,}$/;
-    return passwordRegex.test(value);
-  };
-
-  const isEmailInvalid = useMemo(() => {
-    if (email === "") return false;
-    return !isEmail(email.trim());
-  }, [email]);
-
-  const isPasswordInvalid = useMemo(() => {
-    if (password === "") return false;
-    return !validatePassword(password);
-  }, [password]);
-
   const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true)
     if (email === "" || password === "") {
-      toast.error("Preencha todos os campos", toastConfig)
-      setIsLoading(false);
-      return;
-    }
-    if (isEmailInvalid || isPasswordInvalid) {
-      toast.error("Corrija as credenciais primeiro", toastConfig);
+      notifyError({description: "Preencha todos os campos"})
       setIsLoading(false);
       return;
     }
@@ -77,7 +54,7 @@ function Login() {
     if (respLogin && respLogin.error) {
       setError(respLogin.error);
     } else {
-      toast.success("Login realizado com sucesso, redirecionando...", toastConfig);
+      notifySuccess({description: "Login realizado com sucesso, redirecionando..."});
       setTimeout(() => router.push(redirectTo), 1500)
     }
     setIsLoading(false)
@@ -101,13 +78,13 @@ function Login() {
             <p className="mb-1.5 text-sm opacity-75">Preencha seus dados de login abaixo.</p>
           </div>
           <Input maxLength={128} placeholder="E-mail" name="email" title="E-mail"
-                 isInvalid={isEmailInvalid} errorMessage="O e-mail é inválido" onValueChange={setEmail}
-                 classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="email" autoComplete="email"
+                 errorMessage="Preencha o seu e-mail" onValueChange={setEmail}
+                 classNames={{inputWrapper: "rounded-[9px]", base: "mb-2"}} type="email" autoComplete="email"
                  isRequired={true}/>
 
           <Input maxLength={32} placeholder="Senha" name="password" title="Senha" onValueChange={setPassword}
-                 isInvalid={isPasswordInvalid} errorMessage=""
-                 classNames={{inputWrapper: "rounded-[9px]", base: "mb-1"}} type="password" autoComplete="password"
+                 errorMessage="Preencha a sua senha"
+                 classNames={{inputWrapper: "rounded-[9px]", base: "mb-2"}} type="password" autoComplete="password"
                  isRequired={true}/>
 
           <Button isLoading={isLoading} type="submit" className="mt-4 button data-[hover=true]:opacity-100">

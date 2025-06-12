@@ -99,7 +99,7 @@ export class AuthService {
   }
 
   async getSession() {
-    const encryptedSession = cookies().get("auth_session")?.value;
+    const encryptedSession = (await cookies()).get("auth_session")?.value;
     const session = encryptedSession
       ? ((await unsealData(encryptedSession, {
         password: this.pass,
@@ -112,7 +112,7 @@ export class AuthService {
     const encryptedSession = await sealData(JSON.stringify(session), {
       password: this.pass,
     });
-    cookies().set("auth_session", encryptedSession, {
+    (await cookies()).set("auth_session", encryptedSession, {
       httpOnly: true,
       path: "/",
       secure: false,
@@ -120,7 +120,7 @@ export class AuthService {
       expires: new Date(this.getExpiration(session.access_token)),
     });
 
-    cookies().set("auth_session_lx", encryptedSession, {
+    (await cookies()).set("auth_session_lx", encryptedSession, {
       httpOnly: true,
       path: "/",
       secure: false,
@@ -150,13 +150,13 @@ export class AuthService {
     return data.exp * 1000;
   }
 
-  logout() {
-    cookies().delete({
+  async logout() {
+    (await cookies()).delete({
       name: "auth_session",
       path: "/",
     });
 
-    cookies().delete({
+    (await cookies()).delete({
       name: "auth_session_lx",
       path: "/",
     });

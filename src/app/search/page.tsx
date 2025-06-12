@@ -4,7 +4,7 @@ import Events from "@/components/events/Events";
 import React, {Suspense} from "react";
 import Footer from "@/components/Footer";
 import LightPageHeader from "@/components/LightPageHeader";
-import Loading from "@/app/auth/email/confirmation/[token]/loading";
+import Loading from "@/components/Loading";
 import {redirect, RedirectType, useSearchParams} from "next/navigation";
 import Header from "@/components/Header";
 

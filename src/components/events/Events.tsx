@@ -3,7 +3,7 @@
 import React from "react";
 import EventCard from "./EventCard";
 import {Event} from "@/models";
-import Loading from "@/app/auth/email/confirmation/[token]/loading";
+import Loading from "@/components/Loading";
 import Link from "next/link";
 import {searchEvents} from "@/server-actions/event.action";
 
@@ -43,7 +43,7 @@ const Events = ({max, search, all = false}: { max?: number, search?: string, all
       <div className={`col-start-1 col-span-10 xl:col-start-3 xl:col-span-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-8 gap-x-12`}>
         {
           events.map(event => {
-            return (<EventCard event={{
+            return (<EventCard key={event.id} event={{
               id: event.id,
               date: event.init_date,
               description: event.description,

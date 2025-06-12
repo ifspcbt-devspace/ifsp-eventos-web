@@ -8,7 +8,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger
-} from "@nextui-org/react";
+} from "@heroui/react";
 import {QRCodeCanvas} from "qrcode.react";
 import React, {useRef} from "react";
 import {Ticket} from "@/models";
@@ -57,12 +57,12 @@ export default function QrCodeModal({
               <p>Válido em: {ticket.valid_in.toLocaleString("pt-BR", {day: "2-digit", month: "2-digit"})}</p>
             </ModalBody>
             <ModalFooter>
-              <Button color="default" variant="light" onClick={onClose}>
+              <Button color="default" variant="light" onPress={onClose}>
                 Fechar
               </Button>
               <Button
                 color="primary"
-                onClick={() => {
+                onPress={() => {
                   onClose();
                   downloadCanvas();
                 }}

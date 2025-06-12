@@ -1,4 +1,4 @@
-import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure} from "@nextui-org/react";
+import {Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure} from "@heroui/react";
 import {BsClipboard2Check} from "react-icons/bs";
 import {Dispatch, SetStateAction, useState} from "react";
 import PaymentModal from "./payment/PaymentModal";
@@ -32,12 +32,12 @@ export default (
                 <p>Você tem certeza que gostaria de realizar a inscrição neste evento?</p>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onClick={onClose}>
+                <Button color="danger" variant="light" onPress={onClose}>
                   Cancelar
                 </Button>
                 <Button
                   color="primary"
-                  onClick={() => {
+                  onPress={() => {
                     onClose();
                     if (action) action(onOpen, setPreferenceId);
                   }}

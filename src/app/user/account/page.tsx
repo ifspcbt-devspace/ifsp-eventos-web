@@ -3,13 +3,12 @@
 import Header from "@/components/Header";
 import React, {FormEvent, useEffect, useMemo, useState} from "react";
 import Footer from "@/components/Footer";
-import {Button, Input} from "@nextui-org/react";
+import {Button, Input} from "@heroui/react";
 import {useMask} from "@react-input/mask";
 import {isRG} from "@/validations";
 import {getSession} from "@/server-actions/auth.action";
 import {usePathname, useRouter} from "next/navigation";
-import {toastConfig} from "@/constants";
-import {toast} from "react-toastify";
+import {notifyError, notifySuccess} from "@/utils";
 import {updateUser} from "@/server-actions/user.action";
 import UserTickets from "@/components/user/UserTickets";
 
@@ -26,7 +25,7 @@ export default function UserAccount() {
       setSession(session);
       if (!session) router.push(`/auth/log-in?redir=${pathname}`);
       else if (session.user.document_initials === undefined || session.user.document_initials === null || session.user.document_initials === "") {
-        toast.error("Complete seu cadastro.", toastConfig);
+        notifyError({description: "Complete seu cadastro."});
         setHasDocument(false);
       } else {
         setHasDocument(true);
@@ -51,9 +50,9 @@ export default function UserAccount() {
     setIsLoading(true);
     const resp = await updateUser(rg);
     if ("error" in resp) {
-      toast.error(resp.error, toastConfig);
+      notifyError({description: resp.error});
     }
-    toast.success("Dados alterados com sucesso.")
+    notifySuccess({description: "Dados alterados com sucesso."})
     setHasDocument(true)
     setIsLoading(false);
   }
