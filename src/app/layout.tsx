@@ -1,10 +1,8 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import "./globals.css";
-import {NextUIProvider} from "@nextui-org/react";
-import "react-toastify/ReactToastify.min.css";
-import {ToastContainer} from "react-toastify";
+import '@/app/globals.css';
 import React from "react";
+import Providers from "@/app/providers";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -24,23 +22,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout(
-  {
-    children,
-  }: Readonly<{
-    children: React.ReactNode;
-  }>) {
+export default function RootLayout({children}: {
+  children: React.ReactNode
+}) {
   return (
     <html
       lang="pt-br"
-      className="light min-h-[100vh] scroll-smooth relative"
+      className={`${inter.className} light min-h-[100vh] scroll-smooth relative`}
       style={{scrollBehavior: "smooth", padding: 0, margin: 0}}
     >
-    <body className={inter.className + " min-h-[100vh]"}>
-    <ToastContainer/>
-    <NextUIProvider>
+    <body>
+    <Providers>
       {children}
-    </NextUIProvider>
+    </Providers>
     </body>
     </html>
   );

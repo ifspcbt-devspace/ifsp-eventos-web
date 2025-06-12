@@ -1,10 +1,10 @@
 import Events from "@/components/events/Events";
 import React, {Suspense} from "react";
 import Hero from "@/components/home/Hero";
-import Loading from "./auth/email/confirmation/[token]/loading";
 import Warn from "@/components/home/Warn";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Loading from "@/components/Loading";
 
 export default function Home() {
   return (

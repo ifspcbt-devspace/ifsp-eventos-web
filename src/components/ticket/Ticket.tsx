@@ -1,16 +1,14 @@
 "use client";
 
 import {Event, Ticket, TicketStatus} from "@/models";
-import "./style.css";
 import {consumeTicket, getTicket} from "@/server-actions/ticket.action";
 import {getUser} from "@/server-actions/user.action";
-import {Button} from "@nextui-org/react";
+import {Button} from "@heroui/react";
 import {useRouter} from "next/navigation";
 import React, {Suspense, useEffect, useState} from "react";
-import {toast} from "react-toastify";
-import {toastConfig} from "@/constants";
 import {getEvent} from "@/server-actions/event.action";
-import Loading from "@/app/auth/email/confirmation/[token]/loading";
+import Loading from "@/components/Loading";
+import {notifyError, notifySuccess} from "@/utils";
 
 export default function TicketCheckComponent({params}: { params: { id: string } }) {
   return (
@@ -30,9 +28,9 @@ export function TicketUI({params}: { params: { id: string } }) {
   const handleValidate = async () => {
     setLoading(true);
     const resp = await consumeTicket(params.id);
-    if (resp.error) toast.error(resp.error, toastConfig);
+    if (resp.error) notifyError(resp.error);
     else {
-      toast.success("Ticket validado com sucesso!", toastConfig);
+      notifySuccess({description: "Ticket validado com sucesso!"});
       // @ts-ignore
       setTicket((ticket) => ({...ticket, status: TicketStatus.CONSUMED}));
     }
@@ -44,7 +42,7 @@ export function TicketUI({params}: { params: { id: string } }) {
       const resp = await getTicket(params.id);
       if ("error" in resp) {
         router.push("/");
-        toast.error(resp.error, toastConfig);
+        notifyError({description: resp.error});
         return;
       }
       setTicket(resp);
@@ -52,7 +50,7 @@ export function TicketUI({params}: { params: { id: string } }) {
       const response = await getEvent(resp.event_id);
       if ("error" in response) {
         router.push("/");
-        toast.error(response.error, toastConfig);
+        notifyError({description: response.error});
         return
       }
       setEvent(response);
@@ -60,7 +58,7 @@ export function TicketUI({params}: { params: { id: string } }) {
       const respUser = await getUser(resp.enrollment.user_id);
       if ("error" in respUser) {
         router.push("/");
-        toast.error(respUser.error, toastConfig);
+        notifyError({description: respUser.error});
         return;
       }
       setUser(respUser);
@@ -110,7 +108,7 @@ export function TicketUI({params}: { params: { id: string } }) {
           </div>
           <div className="mx-auto">
             <Button
-              onClick={handleValidate}
+              onPress={handleValidate}
               isLoading={loading}
               className="mt-8 text-xl bg-btn rounded-md px-3 py-2 text-black font-extrabold text-opacity-100"
             >
@@ -144,7 +142,7 @@ export function TicketUI({params}: { params: { id: string } }) {
           </div>
           <div className="mx-auto">
             <Button
-              onClick={handleValidate}
+              onPress={handleValidate}
               isLoading={loading}
               className="mt-8 text-xl bg-btn rounded-md px-3 py-2 text-black font-extrabold text-opacity-100"
             >

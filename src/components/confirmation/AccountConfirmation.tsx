@@ -1,8 +1,8 @@
 "use client";
 
-import Loading from "@/app/auth/email/confirmation/[token]/loading";
+import Loading from "@/components/Loading";
 import { confirmAccount } from "@/server-actions/auth.action";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaCircleXmark } from "react-icons/fa6";
@@ -22,7 +22,7 @@ export default function AccountConfirmation({ token }: { token: string }) {
         Clique no botão abaixo para confirmar sua conta
       </p>
       <Button
-        onClick={async () => {
+        onPress={async () => {
           setIsLoading(true);
           setIsClicked(true);
           setTimeout(async () => {

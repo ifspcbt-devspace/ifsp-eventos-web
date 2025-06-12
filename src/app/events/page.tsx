@@ -3,7 +3,7 @@ import React, {Suspense} from "react";
 import Warn from "@/components/home/Warn";
 import Footer from "@/components/Footer";
 import LightPageHeader from "@/components/LightPageHeader";
-import Loading from "@/app/auth/email/confirmation/[token]/loading";
+import Loading from "@/components/Loading";
 import Header from "@/components/Header";
 import {Metadata} from "next";
 

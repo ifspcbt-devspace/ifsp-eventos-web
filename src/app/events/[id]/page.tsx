@@ -1,14 +1,12 @@
 import Header from "@/components/Header";
 import React, {Suspense} from "react";
 import Footer from "@/components/Footer";
-import "@/components/darkpageheader.css";
 import {getEvent} from "@/server-actions/event.action";
 import {Metadata} from "next";
 import EventViewComponent from "@/components/events/single/EventView";
 
-export async function generateMetadata(
-  {params}: { params: { id: string } }
-): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const id = params.id
 
   const event = await getEvent(id);
@@ -25,7 +23,8 @@ export async function generateMetadata(
   }
 }
 
-export default function EventPage({params}: { params: { id: string } }) {
+export default async function EventPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   return (
     <div className="bg-back-grey">
       <div className="min-h-[90vh] bg-white">
@@ -37,5 +36,4 @@ export default function EventPage({params}: { params: { id: string } }) {
       <Footer/>
     </div>
   );
-
 }

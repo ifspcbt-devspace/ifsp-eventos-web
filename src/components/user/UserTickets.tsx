@@ -1,14 +1,13 @@
 "use client";
 
 import React, {useEffect, useState} from "react";
-import {Button, CircularProgress, Popover, PopoverContent, PopoverTrigger, useDisclosure} from "@nextui-org/react";
+import {Button, CircularProgress, Popover, PopoverContent, PopoverTrigger, useDisclosure} from "@heroui/react";
 import {Event, Ticket} from "@/models";
 import {getEvent} from "@/server-actions/event.action";
-import {toast} from "react-toastify";
-import {toastConfig} from "@/constants";
 import {getTickets} from "@/server-actions/ticket.action";
 import {LuSearchX} from "react-icons/lu";
 import QrCodeModal from "@/components/ticket/qrcode/QrCodeModal";
+import {notifyError} from "@/utils";
 
 export default function UserTickets({userId}: { userId: string }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +22,7 @@ export default function UserTickets({userId}: { userId: string }) {
     async function load() {
       const response = await getTickets(userId);
       if ("error" in response) {
-        toast.error(response.error, toastConfig);
+        notifyError({description: response.error});
         return
       }
       setTicketsData(response);
@@ -52,7 +51,7 @@ export default function UserTickets({userId}: { userId: string }) {
               :
               <div className={`grid grid-cols-4 gap-y-4`}>
                 {ticketsData?.items.map((ticket) => (
-                  <TicketItem ticket={ticket} downloadAction={() => {
+                  <TicketItem key={ticket.id} ticket={ticket} downloadAction={() => {
                     setTicketView(ticket);
                     onOpen();
                   }}/>
@@ -116,7 +115,7 @@ function TicketItem({ticket, downloadAction}: { ticket: Ticket, downloadAction: 
     async function load() {
       const response = await getEvent(ticket.event_id);
       if ("error" in response) {
-        toast.error(response.error, toastConfig);
+        notifyError({description: response.error});
         return
       }
       setEvent(response);
@@ -138,7 +137,7 @@ function TicketItem({ticket, downloadAction}: { ticket: Ticket, downloadAction: 
 
     <div className={`col-span-2 xl:col-span-1`}>
       <Button
-        onClick={downloadAction}
+        onPress={downloadAction}
         className={`cursor-pointer duration-200 hover:bg-opacity-90 bg-neutral-900 text-white w-full h-full rounded-lg text-sm`}>Download</Button>
     </div>
   </>)

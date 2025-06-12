@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 export default function ({
-                           event
+                           event,
                          }: {
   event: {
     id: string;
@@ -14,34 +14,44 @@ export default function ({
     imgUrl: string;
     owner: string;
     date: Date;
-  }
+  };
 }) {
   const [imgUrl, setImgUrl] = useState(event.imgUrl);
 
   return (
-    <Link href={"/events/" + event.id}
-          className="flex flex-col bg-transparent rounded-2xl col-span-1 row-span-1 h-full w-full duration-200 cursor-pointer no-underline hover:-translate-y-2">
-      <div className="relative w-full h-full rounded-xl mb-4 overflow-hidden">
+    <Link
+      href={`/events/${event.id}`}
+      className="px-8 md:px-0 flex flex-col bg-transparent rounded-2xl w-full h-full cursor-pointer no-underline duration-200 hover:-translate-y-2"
+    >
+      {/* Imagem responsiva */}
+      <div className="rounded-xl overflow-hidden w-full mb-4 aspect-[3/4] relative">
         <Image
           src={imgUrl}
-          onError={() => {
-            setImgUrl("/images/default_thumb.png");
-          }}
+          onError={() => setImgUrl("/images/default_thumb.png")}
           alt="event-image"
           quality={100}
-          height={532}
-          width={400}
-          className="overflow-clip box-content object-cover align-middle max-w-full w-full h-full inline-block"
+          fill
+          className="object-cover"
         />
       </div>
-      <div className={"text-sm opacity-75 mb-1.5"}>Por {event.owner + " - " + event.date.toLocaleString("pt-BR", {
-        day: "2-digit",
-        month: "2-digit"
-      })}</div>
-      <div className={`text-black text-left max-w-[450px]`}>
-        <span
-          className={"text-black mb-3 text-2xl block font-semibold"}>{event.name}</span>
-        <p className={"text-sm opacity-75 line-clamp-5"}>{event.description}</p>
+
+      {/* Info do autor e data */}
+      <div className="text-sm opacity-75 mb-1.5">
+        Por {event.owner} -{" "}
+        {event.date.toLocaleString("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+        })}
+      </div>
+
+      {/* Título e descrição responsivos */}
+      <div className="text-left">
+        <span className="text-black text-xl md:text-2xl font-semibold block mb-2">
+          {event.name}
+        </span>
+        <p className="text-sm md:text-base opacity-75 line-clamp-5">
+          {event.description}
+        </p>
       </div>
     </Link>
   );
