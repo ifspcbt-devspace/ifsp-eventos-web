@@ -52,14 +52,10 @@ The application will be accessible at `http://localhost:3000`.
 
 Make sure to configure the following environment variables before running the application:
 
-- `IRON_SESSION_PASSWORD=123456789`
-- `API_BASE_URL=https://example.com/v1`
-
-You can create a `.env.local` file in the root of the project to store these variables:
-
 ```plaintext
-IRON_SESSION_PASSWORD=123456789
-API_BASE_URL=https://example.com/v1
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8091/v1
+IRON_SESSION_PASSWORD=YOUR_SECRET
+NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY=YOUR_PUBLIC_KEY
 ```
 
 ## Docker Deployment
