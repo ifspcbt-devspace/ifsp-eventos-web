@@ -7,17 +7,21 @@ import {
   ModalHeader,
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from "@heroui/react";
-import {QRCodeCanvas} from "qrcode.react";
-import React, {useRef} from "react";
-import {Ticket} from "@/models";
-
+  PopoverTrigger,
+} from '@heroui/react';
+import { QRCodeCanvas } from 'qrcode.react';
+import React, { useRef } from 'react';
+import { Ticket } from '@/models';
 
 export default function QrCodeModal({
-                                      ticket, isOpen,
-                                      onOpenChange
-                                    }: { ticket?: Ticket, isOpen: boolean, onOpenChange: () => void }) {
+  ticket,
+  isOpen,
+  onOpenChange,
+}: {
+  ticket?: Ticket;
+  isOpen: boolean;
+  onOpenChange: () => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   if (!ticket) return <></>;
@@ -34,34 +38,43 @@ export default function QrCodeModal({
   };
 
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center">
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='center'>
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">
+            <ModalHeader className='flex flex-col gap-1'>
               <div>
-                Ingresso <CodePopover code={ticket.code}/>
+                Ingresso <CodePopover code={ticket.code} />
               </div>
             </ModalHeader>
-            <ModalBody className="text-center mt-2 mb-2">
-              <p className="mx-auto mb-2">
+            <ModalBody className='mt-2 mb-2 text-center'>
+              <p className='mx-auto mb-2'>
                 <QRCodeCanvas
                   ref={canvasRef}
                   value={`https://eventos.gremioifspcbt.shop/admin/ticket/check-in/${ticket.id}`}
                   size={256}
-                  level={"M"}
-                  title={"Ingresso do Evento"}
+                  level={'M'}
+                  title={'Ingresso do Evento'}
                 />
               </p>
-              <p>O seu ingresso foi enviado por e-mail, porém você pode baixá-lo por aqui.</p>
-              <p>Válido em: {ticket.valid_in.toLocaleString("pt-BR", {day: "2-digit", month: "2-digit"})}</p>
+              <p>
+                O seu ingresso foi enviado por e-mail, porém você pode baixá-lo
+                por aqui.
+              </p>
+              <p>
+                Válido em:{' '}
+                {ticket.valid_in.toLocaleString('pt-BR', {
+                  day: '2-digit',
+                  month: '2-digit',
+                })}
+              </p>
             </ModalBody>
             <ModalFooter>
-              <Button color="default" variant="light" onPress={onClose}>
+              <Button color='default' variant='light' onPress={onClose}>
                 Fechar
               </Button>
               <Button
-                color="primary"
+                color='primary'
                 onPress={() => {
                   onClose();
                   downloadCanvas();
@@ -77,25 +90,31 @@ export default function QrCodeModal({
   );
 }
 
-function CodePopover({code}: { code: string }) {
+function CodePopover({ code }: { code: string }) {
   const copy = async () => {
     await navigator.clipboard.writeText(code);
   };
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <Popover isOpen={isOpen} onOpenChange={(open) => setIsOpen(open)} placement="right"
-             shouldCloseOnBlur={true}>
+    <Popover
+      isOpen={isOpen}
+      onOpenChange={(open) => setIsOpen(open)}
+      placement='right'
+      shouldCloseOnBlur={true}
+    >
       <PopoverTrigger>
-                <span onMouseLeave={() => setIsOpen(false)}
-                      onClick={copy}
-                      className={`text-sm opacity-90 cursor-pointer w-fit h-fit`}>#{code}</span>
+        <span
+          onMouseLeave={() => setIsOpen(false)}
+          onClick={copy}
+          className={`h-fit w-fit cursor-pointer text-sm opacity-90`}
+        >
+          #{code}
+        </span>
       </PopoverTrigger>
       <PopoverContent>
-        <div className="px-2 py-1 text-sm">
-          Código copiado!
-        </div>
+        <div className='px-2 py-1 text-sm'>Código copiado!</div>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

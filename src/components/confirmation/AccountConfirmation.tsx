@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Loading from "@/components/Loading";
-import { confirmAccount } from "@/server-actions/auth.action";
-import { Button } from "@heroui/react";
-import React from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaCircleXmark } from "react-icons/fa6";
+import Loading from '@/components/Loading';
+import { confirmAccount } from '@/server-actions/auth.action';
+import { Button } from '@heroui/react';
+import React from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
+import { FaCircleXmark } from 'react-icons/fa6';
 
 export default function AccountConfirmation({ token }: { token: string }) {
   const [isClicked, setIsClicked] = React.useState(false);
@@ -13,12 +13,12 @@ export default function AccountConfirmation({ token }: { token: string }) {
   const [res, setRes] = React.useState<any>(null);
 
   return (
-    <div className="w-full h-dvh flex flex-col justify-center items-center">
-      <h1 className={`${isLoading ? "hidden " : ""}text-4xl font-bold mb-8`}>
+    <div className='flex h-dvh w-full flex-col items-center justify-center'>
+      <h1 className={`${isLoading ? 'hidden' : ''}text-4xl mb-8 font-bold`}>
         Confirmação de conta
       </h1>
-      <p className={`${isClicked ? "hidden " : ""}`}>Obrigado pela paciência</p>
-      <p className={`${isClicked ? "hidden " : ""}mb-8`}>
+      <p className={`${isClicked ? 'hidden' : ''}`}>Obrigado pela paciência</p>
+      <p className={`${isClicked ? 'hidden' : ''}mb-8`}>
         Clique no botão abaixo para confirmar sua conta
       </p>
       <Button
@@ -32,8 +32,8 @@ export default function AccountConfirmation({ token }: { token: string }) {
           }, 10000);
         }}
         className={`${
-          isClicked ? "hidden " : ""
-        }bg-customLightGreen hover:bg-slate-300 transition-all duration-200 text-black font-semibold text-small md:text-base px-4 py-1 rounded-lg`}
+          isClicked ? 'hidden' : ''
+        }bg-customLightGreen text-small rounded-lg px-4 py-1 font-semibold text-black transition-all duration-200 hover:bg-slate-300 md:text-base`}
       >
         Verificar token
       </Button>
@@ -43,13 +43,13 @@ export default function AccountConfirmation({ token }: { token: string }) {
         isClicked &&
         (res && res.error ? (
           <>
-            <FaCircleXmark className="text-9xl text-red-500 mb-16" />
-            <span className="text-3xl">{res.error || "Token inválido"}</span>
+            <FaCircleXmark className='mb-16 text-9xl text-red-500' />
+            <span className='text-3xl'>{res.error || 'Token inválido'}</span>
           </>
         ) : (
           <>
-            <FaCheckCircle className="text-9xl text-green-500 mb-16" />
-            <span className="text-3xl">Seu token foi confirmado</span>
+            <FaCheckCircle className='mb-16 text-9xl text-green-500' />
+            <span className='text-3xl'>Seu token foi confirmado</span>
           </>
         ))
       )}

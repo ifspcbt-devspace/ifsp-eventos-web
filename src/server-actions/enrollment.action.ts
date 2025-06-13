@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { EnrollmentService } from "@/services/enrollment.service";
+import { EnrollmentService } from '@/services/enrollment.service';
 
 export async function listUserEnrollments() {
   const enrollmentService = new EnrollmentService();

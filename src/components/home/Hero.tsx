@@ -1,29 +1,34 @@
-import React from "react";
+import React from 'react';
 import './hero.css';
-import Link from "next/link";
-import {RiShining2Fill} from "react-icons/ri";
+import Link from 'next/link';
+import { RiShining2Fill } from 'react-icons/ri';
 
 const Hero = () => {
   return (
-    <div className="w-full py-20 grid grid-cols-10 light-color-gradient text-black px-4 xl:px-0">
+    <div className='light-color-gradient grid w-full grid-cols-10 px-4 py-20 text-black xl:px-0'>
       <div
-        className={`col-start-1 col-span-10 xl:col-start-3 xl:col-span-6 grid grid-rows-2 xl:grid-rows-1 gap-4 hero-grid`}>
-        <div className={`col-span-2 row-start-2 xl:row-start-1 xl:row-span-2 xl:col-span-1 xl:max-w-[500px]`}>
-          <span className={`heading`}>
-          Divirta-se em nossos eventos
-          </span>
+        className={`hero-grid col-span-10 col-start-1 grid grid-rows-2 gap-4 xl:col-span-6 xl:col-start-3 xl:grid-rows-1`}
+      >
+        <div
+          className={`col-span-2 row-start-2 xl:col-span-1 xl:row-span-2 xl:row-start-1 xl:max-w-[500px]`}
+        >
+          <span className={`heading`}>Divirta-se em nossos eventos</span>
 
-          <p className={`opacity-80 font-normal mb-8 block leading-7 text-xl`}>
-            Não deixe para depois: explore nosso catálogo de eventos que ocorrem anualmente no IFSP Cubatão
+          <p className={`mb-8 block text-xl leading-7 font-normal opacity-80`}>
+            Não deixe para depois: explore nosso catálogo de eventos que ocorrem
+            anualmente no IFSP Cubatão
           </p>
 
-          <Link href="/events" className="hero-button">Visualizar</Link>
+          <Link href='/events' className='hero-button'>
+            Visualizar
+          </Link>
         </div>
 
-        <div className={`col-span-2 row-start-1 xl:row-span-2 xl:col-span-1 flex justify-end`}>
-          <RiShining2Fill size={330} className={`text-[#000]`}/>
+        <div
+          className={`col-span-2 row-start-1 flex justify-end xl:col-span-1 xl:row-span-2`}
+        >
+          <RiShining2Fill size={330} className={`text-[#000]`} />
         </div>
-
       </div>
     </div>
   );

@@ -27,15 +27,16 @@ To get started with the project, clone the repository and follow the installatio
 ## Installation
 
 1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/ifspcbt-devspace/ifsp-eventos-web.git
-    cd ifsp-eventos-web
-    ```
+
+   ```bash
+   git clone https://github.com/ifspcbt-devspace/ifsp-eventos-web.git
+   cd ifsp-eventos-web
+   ```
 
 2. **Install dependencies:**
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ## Running the Application
 
@@ -66,14 +67,15 @@ API_BASE_URL=https://example.com/v1
 This project includes a `Dockerfile` for easy deployment. To build and run the Docker container:
 
 1. **Build the Docker image:**
-    ```bash
-    docker build -t ifsp-eventos-frontend .
-    ```
+
+   ```bash
+   docker build -t ifsp-eventos-frontend .
+   ```
 
 2. **Run the Docker container:**
-    ```bash
-    docker run -p 3000:3000 --env-file .env.local ifsp-eventos-frontend
-    ```
+   ```bash
+   docker run -p 3000:3000 --env-file .env.local ifsp-eventos-frontend
+   ```
 
 The application will be accessible at `http://localhost:3000`.
 

@@ -1,7 +1,7 @@
-import type {NextConfig} from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: 'standalone',
   reactStrictMode: false,
   images: {
     remotePatterns: [
@@ -24,8 +24,8 @@ const nextConfig: NextConfig = {
         source: '/admin/ticket/:id/check',
         destination: '/admin/ticket/check-in/:id',
         permanent: false,
-      }
-    ]
+      },
+    ];
   },
 };
 

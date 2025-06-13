@@ -1,8 +1,0 @@
-.event-page-grid-view {
-  grid-column-gap: 32px;
-  grid-row-gap: 32px;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 400px;
-  display: grid;
-  grid-auto-columns: 1fr;
-}

@@ -51,11 +51,11 @@ export interface TicketSale {
 }
 
 export enum EventStatus {
-  OPENED = "Aberto",
-  FINISHED = "Finalizado",
-  SCHEDULED = "Agendado",
-  IN_PROGRESS = "Em andamento",
-  CANCELED = "Cancelado",
+  OPENED = 'Aberto',
+  FINISHED = 'Finalizado',
+  SCHEDULED = 'Agendado',
+  IN_PROGRESS = 'Em andamento',
+  CANCELED = 'Cancelado',
 }
 
 export interface Ticket {
@@ -71,9 +71,9 @@ export interface Ticket {
 }
 
 export enum TicketStatus {
-  AVAILABLE = "Disponível",
-  CONSUMED = "Validado",
-  EXPIRED = "Expirado",
+  AVAILABLE = 'Disponível',
+  CONSUMED = 'Validado',
+  EXPIRED = 'Expirado',
 }
 
 export interface Enrollment {

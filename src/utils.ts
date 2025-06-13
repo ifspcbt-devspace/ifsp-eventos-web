@@ -1,6 +1,5 @@
-import {addToast, ToastProps} from "@heroui/react";
-import {ToastOptions} from "@react-stately/toast";
-
+import { addToast, ToastProps } from '@heroui/react';
+import { ToastOptions } from '@react-stately/toast';
 
 export function generateRandomUsername(): string {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -20,11 +19,11 @@ type ShowToastParams = {
   props?: ToastOptions & ToastProps;
 };
 
-type ToastSeverity = "default" | "success" | "danger" | "warning";
+type ToastSeverity = 'default' | 'success' | 'danger' | 'warning';
 
 const showToast = (
   severity: ToastSeverity,
-  {title, description, props}: ShowToastParams
+  { title, description, props }: ShowToastParams,
 ) => {
   addToast({
     title,
@@ -36,13 +35,13 @@ const showToast = (
 };
 
 export const notifyInfo = (params: ShowToastParams) =>
-  showToast("default", params);
+  showToast('default', params);
 
 export const notifySuccess = (params: ShowToastParams) =>
-  showToast("success", params);
+  showToast('success', params);
 
 export const notifyError = (params: ShowToastParams) =>
-  showToast("danger", params);
+  showToast('danger', params);
 
 export const notifyWarn = (params: ShowToastParams) =>
-  showToast("warning", params);
+  showToast('warning', params);

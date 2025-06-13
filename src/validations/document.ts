@@ -1,6 +1,6 @@
 export function isRG(rg: string): boolean {
   // Remove todos os caracteres que não são letras ou números
-  const cleanRG = rg.replace(/[^a-zA-Z0-9]/g, "");
+  const cleanRG = rg.replace(/[^a-zA-Z0-9]/g, '');
 
   // Verifica se o tamanho está dentro de um intervalo razoável (ajustável)
   if (cleanRG.length < 5 || cleanRG.length > 9) {
@@ -17,8 +17,16 @@ export function isCPF(CPF: string): boolean {
 
   // Verifica se o CPF tem 11 dígitos ou se é uma sequência de números iguais
   const invalidCPFs = [
-    '00000000000', '11111111111', '22222222222', '33333333333', '44444444444',
-    '55555555555', '66666666666', '77777777777', '88888888888', '99999999999'
+    '00000000000',
+    '11111111111',
+    '22222222222',
+    '33333333333',
+    '44444444444',
+    '55555555555',
+    '66666666666',
+    '77777777777',
+    '88888888888',
+    '99999999999',
   ];
 
   if (invalidCPFs.includes(CPF) || CPF.length !== 11) {
@@ -66,8 +74,7 @@ export function isCPF(CPF: string): boolean {
     }
 
     // Verifica se os dígitos calculados conferem com os dígitos informados
-    return (dig10 === CPF.charAt(9)) && (dig11 === CPF.charAt(10));
-
+    return dig10 === CPF.charAt(9) && dig11 === CPF.charAt(10);
   } catch (error) {
     // Em caso de erro de conversão ou outro erro, retorna false
     return false;

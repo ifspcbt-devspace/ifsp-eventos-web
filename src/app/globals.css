@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin './hero.ts';
 @plugin 'tailwind-scrollbar';
@@ -45,13 +45,15 @@
 
   @media screen and (max-width: 320px) {
     #__next {
-      display: flex
+      display: flex;
     }
   }
 
   input:-webkit-autofill,
   input:-webkit-autofill:focus {
-    transition: background-color 600000s 0s, color 600000s 0s;
+    transition:
+      background-color 600000s 0s,
+      color 600000s 0s;
   }
 
   input[data-autocompleted] {
@@ -59,7 +61,7 @@
   }
 
   p {
-    opacity: .9;
+    opacity: 0.9;
     margin-bottom: 16px;
     font-size: 16px;
     font-weight: 400;
@@ -67,11 +69,10 @@
   }
 
   li {
-    opacity: .9;
+    opacity: 0.9;
     font-size: 16px;
     font-weight: 400;
   }
-
 
   h3 {
     margin-top: 0;
@@ -83,13 +84,21 @@
 
   .black-gradient {
     background-color: var(--color-black);
-    background-image: radial-gradient(circle farthest-corner at 0% 50%, var(--color-gradient-red), #0000 47%), radial-gradient(circle farthest-corner at 40% 130%, #7aa7ff69, #0000 58%);
+    background-image:
+      radial-gradient(
+        circle farthest-corner at 0% 50%,
+        var(--color-gradient-red),
+        #0000 47%
+      ),
+      radial-gradient(circle farthest-corner at 40% 130%, #7aa7ff69, #0000 58%);
     color: var(--color-white);
   }
 
   .light-page-header {
     background-color: var(--color-back-grey);
-    background-image: radial-gradient(circle at 0%, #ff010121, #0000 41%), radial-gradient(circle at 30% 150%, #7aa7ff3d, #0000 54%);
+    background-image:
+      radial-gradient(circle at 0%, #ff010121, #0000 41%),
+      radial-gradient(circle at 30% 150%, #7aa7ff3d, #0000 54%);
     padding-top: 96px;
     padding-bottom: 32px;
   }
@@ -110,7 +119,9 @@
   .utility-page-wrap {
     background-color: var(--color-black);
     color: var(--color-white);
-    background-image: radial-gradient(circle at 50% 0, #ef98cf33, #0000 57%), radial-gradient(circle at 0 20%, #7aa7ff40, #0000 42%);
+    background-image:
+      radial-gradient(circle at 50% 0, #ef98cf33, #0000 57%),
+      radial-gradient(circle at 0 20%, #7aa7ff40, #0000 42%);
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -154,7 +165,17 @@
 
 .full-page-wrapper {
   background-color: var(--color-black);
-  background-image: radial-gradient(circle farthest-corner at 100% 100%, var(--color-gradient-blue), transparent 44%), radial-gradient(circle farthest-corner at 0% 100%, var(--color-gradient-red), transparent 32%);
+  background-image:
+    radial-gradient(
+      circle farthest-corner at 100% 100%,
+      var(--color-gradient-blue),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle farthest-corner at 0% 100%,
+      var(--color-gradient-red),
+      transparent 32%
+    );
   width: 100%;
   max-width: none;
   padding: 24px 12px;
@@ -175,7 +196,7 @@
   padding: 19px 12px;
   font-size: 15px;
   line-height: 1.4em;
-  transition: border-color .2s;
+  transition: border-color 0.2s;
   display: block;
   width: 100%;
   color: #333;
@@ -194,7 +215,12 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;
-  transition: box-shadow .2s, transform .2s, border-color .2s, color .2s, background-color .2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    background-color 0.2s;
   box-shadow: 0 2px #2020200d;
   cursor: pointer;
   border: 0;
@@ -222,7 +248,7 @@
   font-size: 14px;
   display: inline-block;
   text-decoration: none;
-  transition: color .2s;
+  transition: color 0.2s;
 }
 
 .below-card-link:hover {
@@ -231,7 +257,17 @@
 
 .full-page-wrapper-signup {
   background-color: var(--color-black);
-  background-image: radial-gradient(circle farthest-corner at 100% 100%, var(--color-gradient-blue), transparent 44%), radial-gradient(circle farthest-corner at 0% 100%, var(--color-gradient-red), transparent 32%);
+  background-image:
+    radial-gradient(
+      circle farthest-corner at 100% 100%,
+      var(--color-gradient-blue),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle farthest-corner at 0% 100%,
+      var(--color-gradient-red),
+      transparent 32%
+    );
   width: 100%;
   max-width: none;
   padding: 24px 12px;
@@ -250,11 +286,11 @@
   position: relative;
   transition: all 300ms cubic-bezier(0.03, 0.98, 0.53, 0.99) 0s;
   background: linear-gradient(
-      to right,
-      var(--color1),
-      var(--color2),
-      var(--color3),
-      var(--color4)
+    to right,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
   );
   border-radius: 20px;
   padding: 5px;
@@ -262,11 +298,11 @@
 
 .bg-btn {
   background: linear-gradient(
-      to right,
-      var(--color1),
-      var(--color2),
-      var(--color3),
-      var(--color4)
+    to right,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
   );
 }
 
@@ -301,7 +337,7 @@
   position: relative;
   background: var(--background);
   border-radius: 15px;
-  @apply p-8
+  @apply p-8;
 }
 
 .ticket-vertical {
@@ -311,11 +347,11 @@
   position: relative;
   transition: all 300ms cubic-bezier(0.03, 0.98, 0.53, 0.99) 0s;
   background: linear-gradient(
-      to bottom,
-      var(--color1),
-      var(--color2),
-      var(--color3),
-      var(--color4)
+    to bottom,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
   );
   border-radius: 20px;
   padding: 5px;
@@ -352,7 +388,7 @@
   position: relative;
   background: var(--background);
   border-radius: 15px;
-  @apply py-12 px-6
+  @apply px-6 py-12;
 }
 
 /* Event Styles */
@@ -410,7 +446,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   text-decoration: none;
-  transition: color .2s ease-in-out;
+  transition: color 0.2s ease-in-out;
   display: block;
 }
 

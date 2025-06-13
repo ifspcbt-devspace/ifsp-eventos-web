@@ -1,12 +1,13 @@
 {
   "name": "tickets-web",
-  "version": "0.1.0",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@heroui/react": "^2.8.0-beta.7",
@@ -27,6 +28,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

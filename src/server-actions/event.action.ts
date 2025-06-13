@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { EventService } from "@/services/event.service";
+import { EventService } from '@/services/event.service';
 
 export async function searchEvents(query?: string, max?: number) {
   const eventService = new EventService();

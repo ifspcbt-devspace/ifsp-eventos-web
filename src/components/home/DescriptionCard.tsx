@@ -8,13 +8,15 @@ export default function DescriptionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="col-span-1 row-span-1 w-[9.2rem] h-44 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-greenxd rounded-lg border p-4 text-center md:text-start">
-      <div className="bg-white w-16 h-16 md:w-20 md:h-20 rounded-lg border flex items-center justify-center mb-2 mx-auto md:mx-0">
+    <div className='bg-greenxd col-span-1 row-span-1 h-44 w-[9.2rem] rounded-lg border p-4 text-center sm:h-48 sm:w-48 md:h-56 md:w-56 md:text-start'>
+      <div className='mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-lg border bg-white md:mx-0 md:h-20 md:w-20'>
         {children}
       </div>
       <div>
-        <h1 className="text-[10px] sm:text-sm md:text-base font-bold mb-2 text-green-950">{title}</h1>
-        <p className="text-[9px] sm:text-[12px] md:text-sm font-semibold text-green-900">
+        <h1 className='mb-2 text-[10px] font-bold text-green-950 sm:text-sm md:text-base'>
+          {title}
+        </h1>
+        <p className='text-[9px] font-semibold text-green-900 sm:text-[12px] md:text-sm'>
           {description}
         </p>
       </div>

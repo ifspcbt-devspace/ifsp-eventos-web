@@ -14,7 +14,9 @@
 
 .light-color-gradient {
   background-color: var(--color-back-grey);
-  background-image: linear-gradient(54deg, #ff837a40, #ff837a00 28%), linear-gradient(241deg, var(--color-gradient-pink), #ef98cf00 36%);
+  background-image:
+    linear-gradient(54deg, #ff837a40, #ff837a00 28%),
+    linear-gradient(241deg, var(--color-gradient-pink), #ef98cf00 36%);
   position: relative;
 }
 
