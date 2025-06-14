@@ -171,7 +171,7 @@ export function EventView({ params }: { params: { id: string } }) {
                   >
                     <div
                       key={index}
-                      className={`inline-block cursor-pointer rounded-md bg-neutral-900 px-7 py-2 text-white duration-200 hover:bg-neutral-700`}
+                      className={`inline-block text-[10px] md:text-lg cursor-pointer rounded-md bg-neutral-900 px-7 py-2 text-white duration-200 hover:bg-neutral-700`}
                     >
                       {enrollment
                         ? 'Veja seus ingressos'

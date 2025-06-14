@@ -13,29 +13,31 @@ export default function DarkPageHeader({
 }) {
   return (
     <div
-      className={
-        'black-gradient grid w-full grid-cols-10 px-4 pt-24 pb-8 xl:px-0'
-      }
+      className="relative w-full black-gradient grid grid-cols-10 px-4 pt-24 pb-8 xl:px-0"
     >
-      <div className={'col-span-10 col-start-1 xl:col-span-6 xl:col-start-3'}>
-        <div className='event-page-grid'>
-          <div className='relative col-span-2 col-start-1 row-start-1 font-semibold xl:col-span-1'>
-            <h1
-              className={'mb-4 text-xl font-semibold sm:text-4xl md:text-5xl'}
-            >
+      <div className="col-span-10 col-start-1 xl:col-span-6 xl:col-start-3 relative z-10">
+        <div className="event-page-grid-mobile xl:event-page-grid-desktop">
+          {/* Texto */}
+          <div className="relative col-span-2 col-start-1 row-start-1 font-semibold xl:col-span-1">
+            <h1 className="mb-4 text-xl font-semibold sm:text-4xl md:text-5xl text-white">
               {title}
             </h1>
-            <p className='text-lg'>{subtitle}</p>
+            <p className="text-lg text-neutral-300">{subtitle}</p>
           </div>
-          <div className='event-header-block z-10 col-span-1 col-start-2 row-start-1 hidden xl:block'>
-            <Image
-              src={imgUrl}
-              onError={onError}
-              alt={'Event thumbnail'}
-              width={650}
-              height={100}
-              className='event-cover'
-            />
+
+          {/* Imagem flutuante à direita no desktop */}
+          <div className="relative col-span-1 col-start-2 row-start-1 hidden xl:block">
+            <div className="absolute top-0 right-0 w-[350px] aspect-[3/4] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={imgUrl}
+                onError={onError}
+                alt="Event thumbnail"
+                fill
+                quality={100}
+                className="object-cover"
+                sizes="(min-width: 1280px) 350px"
+              />
+            </div>
           </div>
         </div>
       </div>
