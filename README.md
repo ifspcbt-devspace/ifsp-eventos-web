@@ -82,3 +82,5 @@ Contributions are welcome! Please make sure to base your pull requests on the `d
 ## License
 
 This project is licensed under the MIT License.
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?logo=buymeacoffee&style=for-the-badge)](https://buymeacoffee.com/oleonardosilva)
