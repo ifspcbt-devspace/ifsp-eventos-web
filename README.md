@@ -1,86 +1,71 @@
-# Ticketing System Frontend
+# Frontend do Sistema de Ingressos
 
-This is the frontend for a ticketing system used for events at the Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, Campus Cubatão. Built with Next.js, this application provides a seamless experience for managing and purchasing event tickets.
+Este é o frontend de um sistema de ingressos utilizado para eventos do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, Campus Cubatão. Construído com Next.js, esta aplicação oferece uma experiência fluida para gerenciar e adquirir ingressos de eventos.
 
-## Table of Contents
+## Índice
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [Environment Variables](#environment-variables)
-- [Docker Deployment](#docker-deployment)
-- [Contributing](#contributing)
-- [License](#license)
+* [Funcionalidades](#funcionalidades)
+* [Primeiros Passos](#primeiros-passos)
+* [Instalação](#instalação)
+* [Executando a Aplicação](#executando-a-aplicação)
+* [Variáveis de Ambiente](#variáveis-de-ambiente)
+* [Contribuindo](#contribuindo)
+* [Licença](#licença)
 
-## Features
+## Funcionalidades
 
-- **Event Listing:** View a list of all available events at the Instituto Federal de São Paulo, Campus Cubatão.
-- **Ticket Purchase:** Secure and simple process for purchasing tickets.
-- **User Authentication:** Users can sign up and log in to manage their ticket purchases.
-- **Responsive Design:** Optimized for all devices, including desktops, tablets, and mobile phones.
+* **Lista de Eventos:** Visualize todos os eventos disponíveis no IFSP Campus Cubatão.
+* **Compra de Ingressos:** Processo simples e seguro para adquirir ingressos.
+* **Autenticação de Usuário:** Usuários podem se cadastrar e fazer login para gerenciar suas compras.
+* **Design Responsivo:** Otimizado para todos os dispositivos, incluindo desktops, tablets e celulares.
 
-## Getting Started
+## Primeiros Passos
 
-To get started with the project, clone the repository and follow the installation instructions below.
+Para começar com o projeto, clone o repositório e siga as instruções de instalação abaixo.
 
-## Installation
+## Instalação
 
-1. **Clone the repository:**
+1. **Clone o repositório:**
 
    ```bash
    git clone https://github.com/ifspcbt-devspace/ifsp-eventos-web.git
    cd ifsp-eventos-web
    ```
 
-2. **Install dependencies:**
+2. **Instale as dependências:**
+
    ```bash
    npm install
    ```
 
-## Running the Application
+## Executando a Aplicação
 
-To run the application in development mode:
+Para rodar a aplicação em modo de desenvolvimento:
 
 ```bash
 npm run dev
 ```
 
-The application will be accessible at `http://localhost:3000`.
+A aplicação estará disponível em `http://localhost:3000`.
 
-## Environment Variables
+## Variáveis de Ambiente
 
-Make sure to configure the following environment variables before running the application:
+Certifique-se de configurar as seguintes variáveis de ambiente antes de executar a aplicação:
 
 ```plaintext
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8091/v1
-IRON_SESSION_PASSWORD=YOUR_SECRET
-NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY=YOUR_PUBLIC_KEY
+IRON_SESSION_PASSWORD=SUA_SENHA_SECRETA
+NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY=SUA_CHAVE_PUBLICA
 ```
 
-## Docker Deployment
+> Essas variáveis devem ser colocadas no arquivo `.env.local`.
 
-This project includes a `Dockerfile` for easy deployment. To build and run the Docker container:
+## Contribuindo
 
-1. **Build the Docker image:**
+Contribuições são bem-vindas! Por favor, certifique-se de basear seus *pull requests* na branch `develop`.
 
-   ```bash
-   docker build -t ifsp-eventos-frontend .
-   ```
+## Licença
 
-2. **Run the Docker container:**
-   ```bash
-   docker run -p 3000:3000 --env-file .env.local ifsp-eventos-frontend
-   ```
+Este projeto está licenciado sob a Licença MIT.
 
-The application will be accessible at `http://localhost:3000`.
-
-## Contributing
-
-Contributions are welcome! Please make sure to base your pull requests on the `develop` branch.
-
-## License
-
-This project is licensed under the MIT License.
-
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?logo=buymeacoffee&style=for-the-badge)](https://buymeacoffee.com/oleonardosilva)
+[![Compre um café para mim](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?logo=buymeacoffee\&style=for-the-badge)](https://buymeacoffee.com/oleonardosilva)
