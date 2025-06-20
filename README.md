@@ -1,6 +1,7 @@
 # 🎟️ Frontend do Sistema de Ingressos
 
 Este é o frontend de um sistema de ingressos utilizado para eventos do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, Campus Cubatão. Construído com Next.js, esta aplicação oferece uma experiência fluida para gerenciar e adquirir ingressos de eventos.
+> 💡 Em caso de dúvidas, problemas ou sugestões, sinta-se à vontade para abrir uma [issue](https://github.com/ifspcbt-devspace/ifsp-eventos-web/issues). Estamos abertos a ideias e contribuições da comunidade!
 
 ## 📚 Índice
 
