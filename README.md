@@ -1,29 +1,29 @@
-# Frontend do Sistema de Ingressos
+# 🎟️ Frontend do Sistema de Ingressos
 
 Este é o frontend de um sistema de ingressos utilizado para eventos do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, Campus Cubatão. Construído com Next.js, esta aplicação oferece uma experiência fluida para gerenciar e adquirir ingressos de eventos.
 
-## Índice
+## 📚 Índice
 
-* [Funcionalidades](#funcionalidades)
-* [Primeiros Passos](#primeiros-passos)
-* [Instalação](#instalação)
-* [Executando a Aplicação](#executando-a-aplicação)
-* [Variáveis de Ambiente](#variáveis-de-ambiente)
-* [Contribuindo](#contribuindo)
-* [Licença](#licença)
+* [✨ Funcionalidades](#-funcionalidades)
+* [🚀 Primeiros Passos](#-primeiros-passos)
+* [🔧 Instalação](#-instalação)
+* [▶️ Executando a Aplicação](#️-executando-a-aplicação)
+* [🔐 Variáveis de Ambiente](#-variáveis-de-ambiente)
+* [🤝 Contribuindo](#-contribuindo)
+* [📄 Licença](#-licença)
 
-## Funcionalidades
+## ✨ Funcionalidades
 
 * **Lista de Eventos:** Visualize todos os eventos disponíveis no IFSP Campus Cubatão.
 * **Compra de Ingressos:** Processo simples e seguro para adquirir ingressos.
 * **Autenticação de Usuário:** Usuários podem se cadastrar e fazer login para gerenciar suas compras.
 * **Design Responsivo:** Otimizado para todos os dispositivos, incluindo desktops, tablets e celulares.
 
-## Primeiros Passos
+## 🚀 Primeiros Passos
 
 Para começar com o projeto, clone o repositório e siga as instruções de instalação abaixo.
 
-## Instalação
+## 🔧 Instalação
 
 1. **Clone o repositório:**
 
@@ -38,7 +38,7 @@ Para começar com o projeto, clone o repositório e siga as instruções de inst
    npm install
    ```
 
-## Executando a Aplicação
+## ▶️ Executando a Aplicação
 
 Para rodar a aplicação em modo de desenvolvimento:
 
@@ -48,7 +48,7 @@ npm run dev
 
 A aplicação estará disponível em `http://localhost:3000`.
 
-## Variáveis de Ambiente
+## 🔐 Variáveis de Ambiente
 
 Certifique-se de configurar as seguintes variáveis de ambiente antes de executar a aplicação:
 
@@ -60,12 +60,12 @@ NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY=SUA_CHAVE_PUBLICA
 
 > Essas variáveis devem ser colocadas no arquivo `.env.local`.
 
-## Contribuindo
+## 🤝 Contribuindo
 
 Contribuições são bem-vindas! Por favor, certifique-se de basear seus *pull requests* na branch `develop`.
 
-## Licença
+## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT.
+Este projeto está licenciado sob a Licença AGPL-3.0.
 
 [![Compre um café para mim](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?logo=buymeacoffee\&style=for-the-badge)](https://buymeacoffee.com/oleonardosilva)
