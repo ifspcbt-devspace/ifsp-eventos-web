@@ -40,7 +40,6 @@ export class AuthService {
 
     if (response.status !== 201) {
       const data = await response.json();
-      console.log(data);
       if (response.status === 409) return { error: 'Usuário já existe' };
       if (response.status === 400)
         return { error: data.errors ? data.errors[0].message : data.message };

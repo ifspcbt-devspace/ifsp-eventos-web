@@ -24,12 +24,11 @@ const Events = ({
       const events = await searchEvents(search, max);
 
       if ('error' in events) {
-        console.error(events.error);
         setLoading(false);
         return;
       }
       setEvents(events);
-      //setLoading(false);
+      setLoading(false);
     };
     fetchEvents();
   }, [search]);
