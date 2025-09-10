@@ -10,10 +10,11 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@heroui/react": "^2.8.0-beta.7",
+    "@heroui/react": "^2.8.4",
     "@internationalized/date": "^3.8.2",
     "@mercadopago/sdk-react": "^1.0.3",
     "@react-input/mask": "^2.0.4",
+    "framer-motion": "^12.23.12",
     "iron-session": "^8.0.4",
     "libphonenumber-js": "^1.12.9",
     "next": "15.3.3",

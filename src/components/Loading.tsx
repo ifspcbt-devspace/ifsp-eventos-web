@@ -1,6 +1,6 @@
 'use client';
 
-import { CircularProgress } from '@heroui/react';
+import { Spinner } from '@heroui/react';
 
 export default function Loading({ className = '' }: { className?: string }) {
   return (
@@ -10,12 +10,11 @@ export default function Loading({ className = '' }: { className?: string }) {
         className
       }
     >
-      <CircularProgress
+      <Spinner
         aria-label='Carregando...'
+        color='default'
         classNames={{
-          svg: 'w-20 h-20 text-black',
-          indicator: 'stroke-black',
-          track: 'stroke-gray-200',
+          wrapper: 'w-20 h-20 text-6xl mb-6',
         }}
       />
       <span className='text-2xl font-medium'>Carregando...</span>

@@ -29,7 +29,7 @@ const Events = ({
         return;
       }
       setEvents(events);
-      setLoading(false);
+      //setLoading(false);
     };
     fetchEvents();
   }, [search]);

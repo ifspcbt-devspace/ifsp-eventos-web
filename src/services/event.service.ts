@@ -131,7 +131,7 @@ export class EventService {
 
   async getTicketSales(id: string): Promise<{ error: string } | TicketSale[]> {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product/${id}/ticketSale`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product/list?event_id=${id}`,
       {
         method: 'GET',
         headers: {
